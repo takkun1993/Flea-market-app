@@ -189,15 +189,6 @@ Things you may want to cover:
 - belongs_to :item
 
 
-## evaluations(active_hash)テーブル
-|Column|Type|Options|
-|------|----|-------|
-|evaluation|string|null:false|
-
-### Association
-- has_many :user_evaluations
-
-
 ## item_imgsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -218,55 +209,10 @@ Things you may want to cover:
 - has_many :items
 
 
-## sizes(active_hash)テーブル
-|Column|Type|Options|
-|------|----|-------|
-|size|string|null:false|
-
-### Association
-- has_many :items
-
-
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|
-
-### Association
-- has_many :items
-
-
-## item_conditions(active_hash)テーブル
-|Column|Type|Options|
-|------|----|-------|
-|item_condition|string|null:false|
-
-### Association
-- has_many :items
-
-
-## postage_payers(active_hash)テーブル
-|Column|Type|Options|
-|------|----|-------|
-|postage_payer|string|null:false|
-
-### Association
-- has_many :items
-
-
-## preparation_days(active_hash)テーブル
-|Column|Type|Options|
-|------|----|-------|
-|preparation_day|string|null:false|
-
-### Association
-- has_many :items
-
-
-## postage_types(active_hash)テーブル
-|Column|Type|Options|
-|------|----|-------|
-|postage_type|string|null:false|
 
 ### Association
 - has_many :items
