@@ -1,0 +1,49 @@
+.payment_method_main
+  .payment_method_logo_box
+    .payment_method_logo_box_logo
+      %a(href="#")
+        = image_tag src="/logo.png",size:"185x49"
+  .payment_method_main_box
+    .payment_method_main_box_area
+      .payment_method_main_box_area_title
+        %m2
+          支払い方法
+      .payment_method_main_box_area_payment_method
+        .payment_method_title
+          支払い方法
+          .payment_method_registration
+            = link_to '#' do
+              %m3
+                登録してください
+      .payment_method_main_box_area_purchase_area
+        .purchase_btn
+          = link_to '#' do
+            %m5
+              選択した支払い方法を使う
+        .back_btn
+          = link_to '#' do
+            %m6
+              もどる
+  .payment_method_space
+  .payment_method_footer
+    .precautions
+      .precautions1
+        = link_to '#' do
+          %h6
+            プライバシーポリシー
+      .precautions2
+        = link_to '#' do
+          %h6
+            フリマ利用規約
+      .precautions3
+        = link_to '#' do
+          %h6
+            特定商取引に関する表記
+    .payment_method_footer_logo_box
+      .payment_method_footer_logo_box_logo
+        = link_to '#' do
+          %p3
+            = image_tag src="/logo-white.png",size:"185x49"
+            .company_name
+              %h9
+                © FURIMA, Inc.

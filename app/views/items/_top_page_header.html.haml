@@ -1,0 +1,33 @@
+.log-in_header
+  .search-pcheader
+    .headerInner
+      .mainHeader
+        .icon
+          %a(href="#")
+            = image_tag src="/logo.png",size:"140x41"
+        .searchBox
+          キーワードから探す
+          -# = form_tag('/search', method: :get, class: 'search-form') do
+          -#   %input.search-form__input{name: "keyword", placeholder: "何をお探しですか？", type: "text", value: ""}
+          -#   %button.btn-search{title: "検索", type: "submit"}
+              -# = fa_icon "search",class: "search-form__icon"
+        .searchBtn
+          = link_to "#" do
+            %i.fas.fa-search
+      .nav
+        .listsleft
+          %ul
+            .listsleft_items1
+              = link_to "#" do
+                カテゴリー
+              .listsleft_items2
+                = link_to "#" do
+                  ブランド
+        .listsright
+          %ul
+            .listsright_login
+              = link_to "#" do
+                ログイン
+              .listsright_new
+                = link_to "#" do
+                  新規登録
