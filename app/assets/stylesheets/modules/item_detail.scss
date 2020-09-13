@@ -5,17 +5,16 @@
 }
 
 .bread-crumbs {
-  width: 100%;
+  width: 100vw;
   height: 55px;
   border-top: 1px solid #eee;
   box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
   position: relative;
-  padding: 0 60px;
 }
 
 ul6 {
   padding: 17px 0 16px;
-  width: 100%;
+  width: 100vw;
   height: 54px;
   max-width: 1140px;
   font-size: 14px;
@@ -39,7 +38,7 @@ i {
 .item_detail_main {
   display: flex;
   width: 100vw;
-  height: 2020px;
+  height: 2050px;
   justify-content: center;
   padding-top: 50px;
   background-color: #f8f8f8;
@@ -261,9 +260,9 @@ i {
               border: 1px solid #ffb340;
             }
 
-              a {
-                color: #3CCACE;
-              }
+              // a {
+              //   color: #3CCACE;
+              // }
 
               .fas {
                 display: inline-block;
@@ -368,7 +367,7 @@ i {
 
 .appBanner {
   background-image: url(/bg-appBanner-pict.jpg);
-  padding: 180px 40px;
+  padding: 180px 0px;
   position: relative;
   background-size: 100%;
   background-position: center;
@@ -376,9 +375,10 @@ i {
 }
 
   .inner {
-    width: 1360px;
+    width: 100vw;
     height: 160px;
     color: #fff;
+    margin: 0 auto;
     text-align: center;
   }
 
