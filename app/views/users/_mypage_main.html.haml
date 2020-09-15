@@ -1,9 +1,9 @@
 .right-contents
   %section.user-info
     .user-info__contents
-      %a{href:'#'}
+      = link_to '#' do
         %figure
-          %img{alt:'', height:'60', src: '//static.mercdn.net/thumb/members/394621039.jpg?1579745078', width: '60'}
+          = image_tag '//static.mercdn.net/thumb/members/394621039.jpg?1579745078', width: '60', height:'60',alt:''
         %p
           tttt
   %section.user-todo

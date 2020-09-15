@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'items/item_detail'
   get 'items/item_exhibition'
   get 'items/item_purchase'
-  get 'cards/new'
+  resources :cards, only: :new
   root 'items#index'
   resources :users, only: [:index, :edit, :update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

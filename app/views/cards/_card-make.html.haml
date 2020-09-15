@@ -15,17 +15,17 @@
         %input{type:'text', name:'number', id:'card_number', value:'', class:'form-group__input', placeholder:'半角数字のみ', maxlength:'16'}
         %ul.card-list
           %li.icon-visa
-            %img{alt:'visa', src:'/assets/visa.gif', width:'40', height:'30'}
+            =image_tag '/assets/visa.gif', width:'40', height:'30',alt:'visa'
           %li.icon-master
-            %img{alt:'master', src:'/assets/master.gif', width:'40', height:'30'}
+            =image_tag  '/assets/master.gif', width:'40', height:'30',alt:'master'
           %li.icon-discover
-            %img{alt:'discover', src:'/assets/discover', width:'40', height:'30'}
+            =image_tag '/assets/discover', width:'40', height:'30',alt:'discover'
           %li.icon-jcb
-            %img{alt:'jcb', src:'/assets/jcb.gif', width:'40', height:'30'}
+            =image_tag '/assets/jcb.gif', width:'40', height:'30',alt:'jcb'
           %li.icon-amex
-            %img{alt:'amex', src:'/assets/amex.gif', width:'40', height:'30'}
+            =image_tag '/assets/amex.gif', width:'40', height:'30',alt:'amex'
           %li.icon-diners
-            %img{alt:'diners', src:'/assets/diners', width:'40', height:'30'}
+            =image_tag '/assets/diners', width:'40', height:'30',alt:'diners'
       .form-group
         %label
           有効期限
