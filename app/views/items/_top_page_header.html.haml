@@ -3,14 +3,10 @@
     .headerInner
       .mainHeader
         .icon
-          %a(href="#")
+          = link_to "#" do
             = image_tag src="/logo.png",size:"140x41"
         .searchBox
           キーワードから探す
-          -# = form_tag('/search', method: :get, class: 'search-form') do
-          -#   %input.search-form__input{name: "keyword", placeholder: "何をお探しですか？", type: "text", value: ""}
-          -#   %button.btn-search{title: "検索", type: "submit"}
-              -# = fa_icon "search",class: "search-form__icon"
         .searchBtn
           = link_to "#" do
             %i.fas.fa-search

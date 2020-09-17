@@ -4,22 +4,22 @@
 .bread-crumbs
   %ul6
     %li5
-      %a(href="#")
+      = link_to '#' do
         FURIMA
     %li6
       %i.fa.fa-angle-right
     %li7
-      %a(href="#")
+      = link_to '#' do
         レディース
     %li8
       %i.fa.fa-angle-right
     %li9
-      %a(href="#")
+      = link_to '#' do
         トップス
     %li10
       %i.fa.fa-angle-right
     %li11
-      %a(href="#")
+      = link_to '#' do
         Tシャツ/カットソー(半袖/袖なし)
     %li12
       %i.fa.fa-angle-right
@@ -149,10 +149,12 @@
       %p2
         今すぐ無料ダウンロード！
     .inner_icon
-      %a3(href="#")
-        = image_tag src="/app-store-btn.svg",size:"180x58.33"
-      %a4(href="#")
-        = image_tag src="/google-play-btn.svg",size:"180x58.33"
+      = link_to '#' do
+        %a3
+          = image_tag src="/app-store-btn.svg",size:"180x58.33"
+      = link_to '#' do
+        %a4
+          = image_tag src="/google-play-btn.svg",size:"180x58.33"
 .item_detail_footer
   =render 'items/top_page_footer'
 = link_to '#' do

@@ -42,10 +42,6 @@ a {
 
 h2 {
   font-weight: 600;
-  // margin-block-start: 0.83em;
-  // margin-block-end: 0.83em;
-  // margin-inline-start: 0px;
-  // margin-inline-end: 0px;
 }
 
 .item_purchase_main_box_area_itemInfo {
@@ -302,9 +298,11 @@ p3 {
   display: block;
   align-items: center;
   justify-content: center;
+  padding-left: 45px;
 }
 
 h9 {
   color: white;
+  justify-content: center;
 }
 
