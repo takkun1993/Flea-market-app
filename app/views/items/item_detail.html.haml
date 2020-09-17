@@ -2,29 +2,30 @@
   =render 'items/top_page_header'
 
 .bread-crumbs
-  %ul6
-    %li5
+  %ul
+    %li
       = link_to '#' do
         FURIMA
-    %li6
+    %li
       %i.fa.fa-angle-right
-    %li7
+    %li
       = link_to '#' do
         レディース
-    %li8
+    %li
       %i.fa.fa-angle-right
-    %li9
+    %li
       = link_to '#' do
         トップス
-    %li10
+    %li
       %i.fa.fa-angle-right
-    %li11
+    %li
       = link_to '#' do
         Tシャツ/カットソー(半袖/袖なし)
-    %li12
+    %li
       %i.fa.fa-angle-right
-    %li13
-      神戸牛ヒレステーキ200g
+    %li
+      %p
+        神戸牛ヒレステーキ200g
       
 
 .item_detail_main
@@ -34,11 +35,11 @@
         .h1
         神戸牛ヒレステーキ200g
       .item_detail_main_itembox_body
-        %ul1
-          %li1
+        %ul
+          %li
             = image_tag src="/beef.jpg",size:"560x346"
-            %ul2
-              %li2
+            %ul
+              %li
                 = image_tag src="/beef.jpg",size:"140x87"
       .item_detail_main_itembox_price
         %span
@@ -65,15 +66,15 @@
                 カテゴリー
               %td
                 = link_to '#' do
-                  %b2
+                  %b
                     レディース
                 %br/
                 = link_to '#' do
-                  %b2
+                  %b
                     トップス
                 %br/
                 = link_to '#' do
-                  %b2
+                  %b
                     Tシャツ/カットソー(半袖/袖なし)
             %tr
               %th
@@ -100,7 +101,7 @@
                 発送元の地域
               %td
                 = link_to '#' do
-                  %b2
+                  %b
                     北海道
             %tr
               %th
@@ -108,21 +109,22 @@
               %td
                 1-2日で発送
       .optionalarea
-        %ul3
-          %li3
-            = link_to '#' do
-              %b2
+        .optional_likebtn
+          %ul
+            %li
+              = link_to '#' do
                 %i.fas.fa-star
                   お気に入り 1
-        %ul4
-          %li4
-            = link_to '#' do
-              %i.fa.fa-flag
-                不適切な商品の通報
+        .optional
+          %ul
+            %li
+              = link_to '#' do
+                %i.fa.fa-flag
+                  不適切な商品の通報
 
     .item_detail_main_commentbox
       .comment_content
-        %ul5
+        %ul
           .foom
             = form_with url: users_path do |form|
               = form.text_area :text_area
@@ -146,14 +148,14 @@
       %h2
         だれでもかんたん、人生を変えるフリマアプリ
     .inner_text
-      %p2
+      %p
         今すぐ無料ダウンロード！
     .inner_icon
       = link_to '#' do
-        %a3
+        %a
           = image_tag src="/app-store-btn.svg",size:"180x58.33"
       = link_to '#' do
-        %a4
+        %a
           = image_tag src="/google-play-btn.svg",size:"180x58.33"
 .item_detail_footer
   =render 'items/top_page_footer'

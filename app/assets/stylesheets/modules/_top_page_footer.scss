@@ -5,7 +5,6 @@
   padding: 60px 0 0;
   color: #fff;
   text-align: center;
-}
 
   .contents {
     max-width: 840px;
@@ -40,7 +39,7 @@
         font-weight: bold;
       }
 
-      a5 {
+      a {
         color: #fff;
         text-decoration: none;
         font-size: 12px;
@@ -53,20 +52,21 @@
     width: 100%;
     margin: 0 auto;
     background-color: #272727;
-  }
 
-  p {
-    font-size: 14px;
-    background-color: #272727;
-  }
+    p {
+      font-size: 14px;
+      background-color: #272727;
+    }
 
-  .footer_company_name {
-    display: block;
-    align-items: center;
-    justify-content: center;
-    background-color: #272727;
-  }
+    .footer_company_name {
+      display: block;
+      align-items: center;
+      justify-content: center;
+      background-color: #272727;
+    }
 
-  h10 {
-    color: white;
+    h3 {
+      color: white;
+    }
   }
+}
