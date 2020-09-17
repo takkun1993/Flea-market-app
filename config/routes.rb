@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'items/top_page_footer'
   get 'items/payment_method'
   get 'items/shipping_address'
+  resources :cards, only: :new
   root 'items#index'
   resources :users, only: [:index, :edit, :update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

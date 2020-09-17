@@ -1,4 +1,4 @@
-@import "reset";
+@import "./reset";
 @import "modules/top_page";
 @import "modules/user_mypage";
 @import "modules/item_detail";
@@ -7,6 +7,8 @@
 @import "modules/top_page_header";
 @import "modules/top_page_footer";
 @import "modules/new";
+@import "modules/cards-header";
+@import "modules/card-make";
 @import "modules/payment_method";
 @import "modules/shipping_address";
 @import "font-awesome-sprockets";
