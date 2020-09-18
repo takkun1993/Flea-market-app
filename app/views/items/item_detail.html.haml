@@ -1,2 +1,168 @@
 .item_detail_header
-  <アイテム詳細画面>
+  =render 'items/top_page_header'
+
+.bread-crumbs
+  %ul
+    %li
+      = link_to '#' do
+        FURIMA
+    %li
+      %i.fa.fa-angle-right
+    %li
+      = link_to '#' do
+        レディース
+    %li
+      %i.fa.fa-angle-right
+    %li
+      = link_to '#' do
+        トップス
+    %li
+      %i.fa.fa-angle-right
+    %li
+      = link_to '#' do
+        Tシャツ/カットソー(半袖/袖なし)
+    %li
+      %i.fa.fa-angle-right
+    %li
+      %p
+        神戸牛ヒレステーキ200g
+      
+
+.item_detail_main
+  .item_detail_main_box
+    .item_detail_main_itembox
+      .item_detail_main_itembox_name
+        .h1
+        神戸牛ヒレステーキ200g
+      .item_detail_main_itembox_body
+        %ul
+          %li
+            = image_tag src="/beef.jpg",size:"560x346"
+            %ul
+              %li
+                = image_tag src="/beef.jpg",size:"140x87"
+      .item_detail_main_itembox_price
+        %span
+          ¥10000
+      .item_detail_main_itembox_price-detail
+        %span
+          税込）送料込み
+      .item_detail_main_itembox_purchase-btn
+        = link_to '#' do
+          %g
+            購入する
+      .item_detail_main_itembox_item-detail-comment
+        この商品は、テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト
+      .item_detail_main_itembox_table
+        %table
+          %tbody
+            %tr
+              %th
+                出品者
+              %td
+                あああ
+            %tr
+              %th
+                カテゴリー
+              %td
+                = link_to '#' do
+                  %b
+                    レディース
+                %br/
+                = link_to '#' do
+                  %b
+                    トップス
+                %br/
+                = link_to '#' do
+                  %b
+                    Tシャツ/カットソー(半袖/袖なし)
+            %tr
+              %th
+                ブランド
+              %td
+                
+            %tr
+              %th
+                商品のサイズ
+              %td
+
+            %tr
+              %th
+                商品の状態
+              %td
+                新品/未使用
+            %tr
+              %th
+                配送料の負担
+              %td
+                送料込み(消費者負担)
+            %tr
+              %th
+                発送元の地域
+              %td
+                = link_to '#' do
+                  %b
+                    北海道
+            %tr
+              %th
+                発送日の目安
+              %td
+                1-2日で発送
+      .optionalarea
+        .optional_likebtn
+          %ul
+            %li
+              = link_to '#' do
+                %i.fas.fa-star
+                  お気に入り 1
+        .optional
+          %ul
+            %li
+              = link_to '#' do
+                %i.fa.fa-flag
+                  不適切な商品の通報
+
+    .item_detail_main_commentbox
+      .comment_content
+        %ul
+          .foom
+            = form_with url: users_path do |form|
+              = form.text_area :text_area
+              .notice_msg
+                %p
+                相手の事を考え丁寧なコメントを心懸けましょう。
+                %br
+                不快な言葉遣いなどは利用制限や退会処分になる事があります。
+              = form.submit 'コメントする'
+      .line
+        %p
+        コメント一覧
+        .comments
+          %p
+          testuser : テストテストテストテストテスト
+          %br
+          テストユーザー : テストテストテストテストテスト
+.appBanner
+  .inner
+    .inner_title
+      %h2
+        だれでもかんたん、人生を変えるフリマアプリ
+    .inner_text
+      %p
+        今すぐ無料ダウンロード！
+    .inner_icon
+      = link_to '#' do
+        %a
+          = image_tag src="/app-store-btn.svg",size:"180x58.33"
+      = link_to '#' do
+        %a
+          = image_tag src="/google-play-btn.svg",size:"180x58.33"
+.item_detail_footer
+  =render 'items/top_page_footer'
+= link_to '#' do
+  .purchaseBtn
+    .purchaseBtn_text
+      %span
+        出品する
+    .purchaseBtn_icon
+      = image_tag src="/icon_camera.png",size:"54x54"
