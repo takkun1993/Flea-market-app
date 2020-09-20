@@ -7,7 +7,20 @@
     .items_register_form
       = form_with model: @user, html: {class: "items_form"}, local: true do |f|
         .form_section
+          %label(for="item_image")
+            出品画像
+          %span.form-group__require
+            必須
+          .image-attend
+            クリックで最大10枚まで貼れます。
+          .clearfix
+            %ul(id="previews")
+              %li.input
+                %label(class="upload-label")
+                  .input-area
+                    %input(class="hidden image_upload" type="file" name="item")/
         .form_section
+          
         .form_section
         .form_section
         .form_section

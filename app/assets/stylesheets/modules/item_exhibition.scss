@@ -53,6 +53,37 @@ body {
 .form_section {
   border-bottom: solid 1px #999999;
   padding: 10px 0;
+  label {
+    font-size: 20px;
+    font-weight: bolder;
+  }
+  .form-group__require {
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-size: 12px;
+    background-color: red;
+    color: white;
+  }
+  .image-attend {
+    margin: 10px;
+    font-size: 12px;
+  }
+  .clearfix {
+    .previwes {
+      display: flex;
+      flex-wrap: wrap;
+      .input {
+        width: 100%;
+        height: 110px;
+        background-color: #3ccace;
+        border: dotted 4px silver;
+        border-radius: 20px;
+        position: relative;
+        
+      }
+    }
+  }
 }
 
 .attentions {
