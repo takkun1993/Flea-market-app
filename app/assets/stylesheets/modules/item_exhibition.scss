@@ -57,6 +57,7 @@ body {
     font-size: 20px;
     font-weight: bolder;
   }
+
   .form-group__require {
     margin: 0 0 0 8px;
     padding: 2px 4px;
@@ -65,10 +66,7 @@ body {
     background-color: red;
     color: white;
   }
-  .image-attend {
-    margin: 10px;
-    font-size: 12px;
-  }
+
   .clearfix {
     .previwes {
       display: flex;
@@ -83,6 +81,44 @@ body {
         
       }
     }
+  }
+
+input {
+  width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height: 48px;
+    margin: 0;
+    outline: none;
+    padding: 0 16px;
+}
+
+  textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height: 150px;
+    margin: 0;
+    outline: none;
+    padding: 0 16px;
+  }
+
+  select {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height: 48px;
+    margin: 0;
+    outline: none;
+    padding: 0 16px;
+  }
+
+  .image-attend {
+    margin: 10px;
+    font-size: 12px;
   }
 }
 

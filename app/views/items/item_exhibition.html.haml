@@ -5,7 +5,7 @@
 
   .items_new_page
     .items_register_form
-      = form_with model: @user, html: {class: "items_form"}, local: true do |f|
+      = form_with model: @item, html: {class: "items_form"}, local: true do |f|
         .form_section
           %label(for="item_image")
             出品画像
@@ -20,11 +20,45 @@
                   .input-area
                     %input(class="hidden image_upload" type="file" name="item")/
         .form_section
-          
+          %label(for="item_name")
+            商品名
+          %span.form-group__require
+            必須
+          %br
+          %input(placeholder="40文字まで" class="item_form" type="text" name="item[name]" id="item-name")/
+          %br/
+          %label(for="item_explanation")
+            商品の説明
+          %span.form-group__require
+            必須
+          %br
+          = f.text_area :content, class: "item_form", placeholder: "商品の説明（必須 1,000文字以内）                                        （色、素材、重さ、定価、注意点など）                                        例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+          %br/
+          %label(for="item_category")
+            カテゴリー
+          %span.form-group__require
+            必須
+          %br
+          = f.select :name, [['---'], ['レディース'], ['メンズ'], ['ベビー・キッズ'], ['インテリア・住まい・小物'], ['本・音楽・ゲーム'], ['おもちゃ・ホビー・グッズ'], ['コスメ・香水・美容'], ['家電・スマホ・カメラ'], ['スポーツ・レジャー'], ['ハンドメイド'], ['チケット'], ['自動車・オートバイ'], ['その他']]
+          %br/
+          %label(for="item_brand")
+            ブランド
+          %span.form-group__require
+            必須
+          %br
+          %input(placeholder="例）シャネル" class="item_form" type="text")/
+          %br/
+          %label(for="item_status")
+            商品の状態
+          %span.form-group__require
+            必須
+          %br
+          = f.select :name, [['選択して下さい'], ['新品、未使用'], ['未使用に近い'], ['目立った傷や汚れなし'], ['やや傷や汚れあり'], ['傷や汚れあり'], ['全体的に状態が悪い']]
         .form_section
         .form_section
         .form_section
         .attentions
           禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律
           により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+
   .footer
