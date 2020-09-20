@@ -1,13 +1,66 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+
+body {
+  height: 900px;
+  margin: 0;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .header {
   background-color: cyan;
   height: 130px;
   width: 100%;
 }
 
-.items-new-page {
+.items_new_page {
   background-color: silver;
 }
 
 .items_register_form {
   display: block;
+}
+
+.items_form {
+  margin: auto;
+  background-color: #ffffff;
+  max-width: 600px;
+  border-radius: 4px;
+  padding: 32px 24px;
+}
+
+.form_section {
+  border-bottom: solid 1px #999999;
+  padding: 10px 0;
+}
+
+.attentions {
+  padding-top: 10px;
+  font-size: 12px;
+}
+
+.footer {
+  padding: 60px 0;
+  background-color: #272727;
 }
