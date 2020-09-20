@@ -165,9 +165,14 @@
           border: 1px solid #3cccae;
         }
 
+          a {
+            text-decoration: none;
+          }
+
           g {
             color: #3CCACE;
             padding-top: 10px;
+            text-decoration: none;
           }
 
           .item_detail_main_itembox_item-detail-comment {
@@ -261,6 +266,10 @@
             padding: 8px 10px;
             border-radius: 5px;
             border: 1px solid black;
+
+            a {
+              color: black;
+            }
 
             li {
               font-size: 14px;
