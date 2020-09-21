@@ -73,6 +73,19 @@
             必須
           = f.select :name, [['選択して下さい'], ['1~2日で発送'], ['2~3日で発送'], ['4~7日で発送']]
         .form_section
+          %label(for="item_price")
+            販売価格
+          %span.form-group__require
+            必須
+          %br/
+          .value_register_form
+            ¥
+          %input(class="value_form" type="number" name="item[price]" id="item_price")/
+          %br/
+          .product_price-fee
+            販売手数料(10%)
+          .product_profit
+            販売利益
         .form_section
         .attentions
           禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律
