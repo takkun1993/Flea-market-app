@@ -43,9 +43,10 @@ body {
 }
 
 .items_form {
-  margin: auto;
+  margin: 0 auto;
   background-color: #ffffff;
   max-width: 600px;
+  width: 100%;
   border-radius: 4px;
   padding: 32px 24px;
 }
@@ -53,6 +54,7 @@ body {
 .form_section {
   border-bottom: solid 1px #999999;
   padding: 10px 0;
+
   label {
     font-size: 20px;
     font-weight: bolder;
@@ -84,7 +86,7 @@ body {
   }
 
 input {
-  width: 100%;
+    width: 100%;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -119,6 +121,15 @@ input {
   .image-attend {
     margin: 10px;
     font-size: 12px;
+  }
+
+  .register_btn {
+    padding: 30px;
+    &__exhibition {
+      background-color: #3ccace;
+      color: #ffffff;
+      border-radius: 16px;
+    }
   }
 }
 
