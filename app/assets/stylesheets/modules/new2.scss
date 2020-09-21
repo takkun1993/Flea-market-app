@@ -11,18 +11,18 @@
 .new_header {
   background-color: hotpink;
 }
-.main {
+.main-profile {
   background-color: whitesmoke;
   height: 100vh;
   width: 100vw;
 }
-.main__member-info{
+.main-profile__member-info {
   background-color: white;
   width: 600px;
   margin: 50px auto;
   padding-bottom: 50px;
 }
-.main__member-info__title{
+.main-profile__member-info__title {
   height: 30px;
   font-size: 20px;
   text-align: center;
@@ -30,50 +30,76 @@
   padding: 15px;
   font-weight: bolder;
 }
-.main__member-info__title__input{
+.main-profile__member-info__title__input {
   height: 100%;
   padding-left: 160px;
 }
-.main__member-info__title__input__content1{
+.main-profile__member-info__title__input__content1 {
   width: 300px;
   height: 100%;
   margin-top: 50px;
+  display: block;
 }
-.form-content{
+.profile-content1 {
   font-size: 16px;
+  margin-top: 20px;
 }
-.form-content-password-info{
+.profile-content2 {
   font-size: 16px;
+  margin-top: 20px;
 }
-.form-content__nickname{
-  cursor: default;
+.profile-content3 {
+  font-size: 16px;
+  margin-top: 20px;
 }
 .form-group__require{
   background-color: turquoise;
   border: solid 1px turquoise;
   color: white;
 }
-.nickname-text{
+.family_name-text{
   margin-bottom: 40px;
   border-radius: 5px;
-  width: 280px;
+  width: 130px;
   height: 40px;
 }
-.e-mail-text{
+.first_name-text{
   margin-bottom: 40px;
   border-radius: 5px;
-  width: 280px;
+  width: 130px;
   height: 40px;
 }
-.password-text{
+.family_name-kana-text{
   margin-bottom: 40px;
   border-radius: 5px;
-  width: 280px;
+  width: 130px;
   height: 40px;
 }
-.btn-next{
-  width: 280px;
+.first_name-kana-text{
+  margin-bottom: 40px;
+  border-radius: 5px;
+  width: 130px;
   height: 40px;
-  background-color: turquoise;
-  color: white;
+}
+.year{
+  margin-bottom: 40px;
+  border-radius: 5px;
+  width: 80px;
+  height: 40px;
+}
+.month{
+  margin-bottom: 40px;
+  border-radius: 5px;
+  width: 80px;
+  height: 40px;
+}
+.day{
+  margin-bottom: 40px;
+  border-radius: 5px;
+  width: 80px;
+  height: 40px;
+}
+.main-profile__member-info__title__input__content2{
+  font-size: 16px;
+  margin-top: 20px;
 }
