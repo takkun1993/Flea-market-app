@@ -14,13 +14,13 @@
           .image-attend
             クリックで最大10枚まで貼れます。
           .clearfix
-            %ul(id="previews")
-              %li.input
-                %label(class="upload-label")
-                  .input__area
-                    %input(class="hidden image_upload" type="file" name="item")/
+            .previews
+              .input
+                = f.label :image, class: 'upload-label' do
+                  .upload-label__area
+                    %input(class="upload-label__area__image" type="file" name="item")/
         .form_section
-          %label(for="item_name")
+          = f.label :text, class: 'item-name' do
             商品名
           %span.form-group__require
             必須
@@ -32,7 +32,7 @@
           %span.form-group__require
             必須
           %br
-          = f.text_area :content, class: "item_form", placeholder: "商品の説明（必須 1,000文字以内）                                        （色、素材、重さ、定価、注意点など）                                        例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+          = f.text_area :content, class: "item_form", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）                                                             例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
           %br/
           %label(for="item_category")
             カテゴリー
