@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   get 'users/index'
   get 'users/new'
-  get 'users/new2'
-  get 'users/new3'
+  get 'users/new_users-info'
+  get 'users/new_users-address'
   get 'users/sign_in'
   get 'items/item_detail'
   get 'items/item_exhibition'
