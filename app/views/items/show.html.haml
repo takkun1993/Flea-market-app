@@ -32,8 +32,8 @@
   .item_detail_main_box
     .item_detail_main_itembox
       .item_detail_main_itembox_name
-        .h1
-        神戸牛ヒレステーキ200g
+        %h1
+          =@item.name
       .item_detail_main_itembox_body
         .item-img
           .more
@@ -43,13 +43,15 @@
               %li
                 = link_to '編集', "/items/item_edit"
               %li
-                = link_to '削除', "/"
+                = link_to '削除', @item,method: :delete
         %ul.item-img2
           %li
             = image_tag src="/beef.jpg",size:"140x87"
       .item_detail_main_itembox_price
         %span
-          ¥10000
+          ¥
+        %span
+          =@item.price
       .item_detail_main_itembox_price-detail
         %span
           税込）送料込み
@@ -58,7 +60,7 @@
           %g
             購入する
       .item_detail_main_itembox_item-detail-comment
-        この商品は、テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト
+        =@item.introduction
       .item_detail_main_itembox_table
         %table
           %tbody
