@@ -174,3 +174,4 @@ Things you may want to cover:
 |security_code|integer|null:false|
 |user|references|null: false,foreign_key:true|
 ### Association
+- belongs_to :user
