@@ -1,0 +1,131 @@
+.content{
+  box-sizing: border-box;
+  background-color: whitesmoke;
+  height: 100%;
+  height: 900px;
+  margin: 0;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.new_header {
+  background-color: hotpink;
+}
+.main-sending {
+  background-color: whitesmoke;
+  height: 100vh;
+  width: 100vw;
+}
+.main-sending__member-info {
+  background-color: white;
+  width: 600px;
+  margin: 50px auto;
+  padding-bottom: 50px;
+}
+.main-sending__member-info__title {
+  height: 30px;
+  font-size: 20px;
+  text-align: center;
+  border-bottom: 1px whitesmoke solid;
+  padding: 15px;
+  font-weight: bolder;
+}
+.main-sending__member-info__title__input {
+  height: 100%;
+  padding-left: 160px;
+}
+.main-sending__member-info__title__input__content1 {
+  width: 300px;
+  height: 100%;
+  margin-top: 50px;
+  display: block;
+}
+.sending-content1 {
+  font-size: 16px;
+}
+.sending-content2 {
+  font-size: 16px;
+}
+.sending-content3 {
+  font-size: 16px;
+}
+.sending-content4 {
+  font-size: 16px;
+}
+.sending-content5 {
+  font-size: 16px;
+}
+.sending-content6 {
+  font-size: 16px;
+}
+.sending-content7 {
+  font-size: 16px;
+}
+.sending-content8 {
+  font-size: 16px;
+}
+.form-group__require{
+  background-color: turquoise;
+  border: solid 1px turquoise;
+  color: white;
+}
+.sending-family_name-text{
+  margin-bottom: 25px;
+  border-radius: 5px;
+  width: 130px;
+  height: 40px;
+}
+.sending-first_name-text{
+  margin-bottom: 25px;
+  border-radius: 5px;
+  width: 130px;
+  height: 40px;
+}
+.sending-family_name-kana-text{
+  margin-bottom: 25px;
+  border-radius: 5px;
+  width: 130px;
+  height: 40px;
+}
+.sending-first_name-kana-text{
+  margin-bottom: 25px;
+  border-radius: 5px;
+  width: 130px;
+  height: 40px;
+}
+.sending-postal-code-text{
+  margin-bottom: 25px;
+  border-radius: 5px;
+  width: 280px;
+  height: 40px;
+}
+.sending-municipalities-text{
+  margin-bottom: 25px;
+  border-radius: 5px;
+  width: 280px;
+  height: 40px;
+}
+.sending-address-text{
+  margin-bottom: 25px;
+  border-radius: 5px;
+  width: 280px;
+  height: 40px;
+}
+.sending-building-text{
+  margin-bottom: 25px;
+  border-radius: 5px;
+  width: 280px;
+  height: 40px;
+}
+.sending-phone_number-text{
+  margin-bottom: 25px;
+  border-radius: 5px;
+  width: 280px;
+  height: 40px;
+}
+.btn-registration{
+  width: 280px;
+  height: 40px;
+  background-color: turquoise;
+  color: white;
+}
