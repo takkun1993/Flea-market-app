@@ -1,0 +1,13 @@
+.content
+  .new_header
+    <ユーザー新規登録/ログイン画面>
+  .main-login
+    .login-contents
+      .login-form
+        = form_with url: users_path do |f|
+          .mail-content
+            = f.text_field :email, class: 'e-mail-text', placeholder: 'メールアドレス'
+          .password-content
+            = f.text_field :password, class: 'password-text', placeholder: 'パスワード'
+          .login-content
+            = f.submit 'ログイン', class: 'login-btn' 

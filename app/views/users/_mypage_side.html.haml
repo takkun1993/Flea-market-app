@@ -1,0 +1,39 @@
+.left-contents
+  %nav.my-page-nav
+    %p
+      マイページ
+    %ul.my-page-lists
+      %li
+        .lists-info
+          = link_to "出品する",items_item_exhibition_path
+        %i.fas.fa-angle-right
+      %li
+        .lists-info
+          = link_to "出品した商品", items_item_exhibition_path
+        %i.fas.fa-angle-right
+      %li
+        .lists-info
+          = link_to "購入した商品",items_item_purchase_path
+        %i.fas.fa-angle-right
+      %li
+        .lists-info
+          = link_to "お問い合わせ", "#"
+        %i.fas.fa-angle-right
+      %li
+        .lists-info
+          = link_to "お知らせ","#"
+        %i.fas.fa-angle-right
+    %p
+      設定
+    %ul.setting-lists
+      %li.list-setting
+        .list-setting__info
+          = link_to new_card_path do
+            .card-branch
+              %span
+                クレジットカード登録
+              %i.fas.fa-angle-right
+      %li.list-setting
+        .list-setting__info
+          = link_to "ログアウト",root_path 
+        %i.fas.fa-angle-right

@@ -1,2 +1,27 @@
-.new_header
-  <ユーザー新規登録/ログイン画面>
+.content
+  .new_header
+    <ユーザー新規登録/ログイン画面>
+  .main
+    .main__member-info
+      %h2.main__member-info__title 会員情報入力
+      .main__member-info__title__input
+        .main__member-info__title__input__content1
+          = form_with url: users_path do |f|
+            .form-content
+              %label.form-content__nickname ニックネーム
+              %span.form-group__require 必須
+              = f.text_field :nickname, class: 'nickname-text', placeholder: '例）亀山武真'
+            .form-content
+              %label.form-content__e-mail メールアドレス
+              %span.form-group__require 必須
+              = f.text_field :email, class: 'e-mail-text', placeholder: 'PC・携帯どちらでも可'
+            .form-content-password-info
+              %label.form-content__password パスワード
+              %span.form-group__require 必須
+              = f.text_field :password, class: 'password-text', placeholder: '7文字以上の半角英数字'
+            .form-content-password-info
+              %label.form-content__password パスワード
+              %span.form-group__require 必須
+              = f.text_field :password, class: 'password-text', placeholder: '7文字以上の半角英数字'
+            .main__member-info__title__input__content2
+              = f.submit '次へ', class: 'btn-next' 
