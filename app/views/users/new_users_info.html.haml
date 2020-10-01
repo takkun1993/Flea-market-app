@@ -1,6 +1,6 @@
 .content
   .new_header
-    <ユーザー新規登録2>
+    =render 'items/top_page_header'
   .main-profile
     .main-profile__member-info
       %h2.main-profile__member-info__title 会員情報入力
@@ -25,4 +25,5 @@
               %br
               = f.date_select :birth_date, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1),with_css_classes: true
             .main-profile__member-info__title__input__content2
-              = f.submit '次へ', class: 'btn-next' 
+              = link_to '/users/new_users_address' do
+                = f.submit '次へ', class: 'btn-next' 
