@@ -1,6 +1,6 @@
 .content
   .new_header
-    <ユーザー新規登録3>
+    =render 'items/top_page_header'
   .main-sending
     .main-sending__member-info
       %h2.main-sending__member-info__title 会員情報入力
@@ -50,4 +50,5 @@
               %br
               = f.text_field :phonenumber, class: 'sending-phone_number-text', placeholder: '例）090-xxxx-xxxx'
             .main-sending__member-info__title__input__content2
-              = f.submit '登録', class: 'btn-registration' 
+              = link_to '/users/index' do
+                = f.submit '登録', class: 'btn-registration' 

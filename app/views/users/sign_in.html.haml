@@ -1,6 +1,6 @@
 .content
   .new_header
-    <ユーザー新規登録/ログイン画面>
+    =render 'items/top_page_header'
   .main-login
     .login-contents
       .login-form
@@ -10,4 +10,5 @@
           .password-content
             = f.text_field :password, class: 'password-text', placeholder: 'パスワード'
           .login-content
-            = f.submit 'ログイン', class: 'login-btn' 
+            = link_to '/users/index' do
+              = f.submit 'ログイン', class: 'login-btn' 
