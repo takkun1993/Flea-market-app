@@ -11,18 +11,18 @@
               %label.profile-content__name お名前
               %span.form-group__require 必須
               %br
-              = f.text_field :name, class: 'family_name-text', placeholder: '例）亀山'
-              = f.text_field :name, class: 'first_name-text', placeholder: '例）武真'
+              = f.text_field :family_name, class: 'family_name-text', placeholder: '例）亀山'
+              = f.text_field :first_name, class: 'first_name-text', placeholder: '例）武真'
             .profile-content2
               %label.profile-content__name-kana お名前カナ
               %span.form-group__require 必須
               %br
-              = f.text_field :name, class: 'family_name-kana-text', placeholder: '例）カメヤマ'
-              = f.text_field :name, class: 'first_name-kana-text', placeholder: '例）タケマサ'
+              = f.text_field :family_name_kana, class: 'family_name-kana-text', placeholder: '例）カメヤマ'
+              = f.text_field :first_name_kana, class: 'first_name-kana-text', placeholder: '例）タケマサ'
             .profile-content3
               %label.profile-content__birth_day 生年月日
               %span.form-group__require 必須
               %br
-              = f.date_select :birth_date, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1),with_css_classes: true
+              = f.date_select :birth_year,:birth_month,:birth_day, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1),with_css_classes: true
             .main-profile__member-info__title__input__content2
               = f.submit '次へ', class: 'btn-next' 

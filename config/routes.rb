@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+  }
   get 'users/index'
   get 'users/new'
   get 'users/new_users-info'
@@ -15,4 +18,5 @@ Rails.application.routes.draw do
   get 'items/shipping_address'
   resources :users, only: [:index, :edit, :update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 end
