@@ -92,10 +92,19 @@
 
   .register_btn {
     padding: 30px;
-    &__exhibition {
+    .register_btn_edit {
       background-color: #3ccace;
       color: #ffffff;
       border-radius: 16px;
+      text-align: center;
+      height: 50px;
+      padding-top: 20px;
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+
     }
   }
 }

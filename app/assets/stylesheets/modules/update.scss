@@ -1,9 +1,9 @@
-.destroy_main {
+.update_main {
   width: 100vw;
   height: 805px;
   background-color: #f8f8f8;
 
-  .destroy_logo_box {
+  .update_logo_box {
     height: 128px;
     display: flex;
     align-items: center;
@@ -14,19 +14,19 @@
     text-decoration: none;
   }
 
-  .destroy_main_box {
+  .update_main_box {
     width: 700px;
     height: 407px;
     background-color: white;
     margin: 0 auto;
   }
 
-  .destroy_main_box_area {
+  .update_main_box_area {
     position: relative;
     height: 357px;
   }
 
-  .destroy_main_box_area_title {
+  .update_main_box_area_title {
     width: 668px;
     height: 34px;
     margin: 0 0;
@@ -43,7 +43,7 @@
     font-weight: 600;
   }
 
-  .destroy_main_box_area_payment_method {
+  .update_main_box_area_payment_method {
     width: 343px;
     height: 46px;
     margin: 0 auto;
@@ -52,13 +52,13 @@
     border-bottom: 1px solid rgb(245, 245, 245);
   }
 
-  .destroy_title {
+  .update_title {
     display: block;
     font-size: 14px;
     justify-content: center;
   }
 
-  .destroy_registration {
+  .update_registration {
     font-size: 14px;
     color: rgb(0, 149, 238);
     justify-content: center;
@@ -71,7 +71,7 @@
     text-align: center;
   }
 
-  .destroy_main_box_area_purchase_area {
+  .update_main_box_area_purchase_area {
     width: 343px;
     height: 118px;
     margin: 0 auto;
@@ -97,13 +97,13 @@
     color: rgb(0, 149, 238);
   }
 
-  .destroy_space {
+  .update_space {
     width: 100vw;
     height: 50px;
     background-color: #f8f8f8;
   }
 
-  .destroy_footer {
+  .update_footer {
     width: 100vw;
     height: 220px;
     background-color: grey;
@@ -140,14 +140,14 @@
     font-size: 12px;
   }
 
-  .destroy_footer_logo_box {
+  .update_footer_logo_box {
     height: 50px;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
   }
 
-  .destroy_footer_logo_box_logo {
+  .update_footer_logo_box_logo {
     width: 200px;
     justify-content: center;
     align-items: center;

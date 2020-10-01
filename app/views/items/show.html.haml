@@ -41,12 +41,12 @@
               = image_tag src="/arrow_top.png"
             %ul.more_lists
               %li
-                = link_to '編集', "/items/item_edit"
+                = link_to '編集', edit_item_path(@item.id),method: :get
               %li
                 = link_to '削除', @item,method: :delete
         %ul.item-img2
           %li
-            = image_tag src="/beef.jpg",size:"140x87"
+            -# = image_tag @item.item_img_id,size:"140x87"
       .item_detail_main_itembox_price
         %span
           ¥
@@ -68,54 +68,54 @@
               %th
                 出品者
               %td
-                あああ
+                =@item.seller_id
             %tr
               %th
                 カテゴリー
               %td
                 = link_to '#' do
                   %b
-                    レディース
+                    =@item.category_id
                 %br/
                 = link_to '#' do
                   %b
-                    トップス
+                    =@item.category_id
                 %br/
                 = link_to '#' do
                   %b
-                    Tシャツ/カットソー(半袖/袖なし)
+                    =@item.category_id
             %tr
               %th
                 ブランド
               %td
-                
+                =@item.brand_id
             %tr
               %th
                 商品のサイズ
               %td
-
+                =@item.size
             %tr
               %th
                 商品の状態
               %td
-                新品/未使用
+                =@item.item_condition
             %tr
               %th
                 配送料の負担
               %td
-                送料込み(消費者負担)
+                =@item.postage_payer
             %tr
               %th
                 発送元の地域
               %td
                 = link_to '#' do
                   %b
-                    北海道
+                    =@item.prefecture_code
             %tr
               %th
                 発送日の目安
               %td
-                1-2日で発送
+                =@item.preparation_day
       .optionalarea
         .optional_likebtn
           %ul

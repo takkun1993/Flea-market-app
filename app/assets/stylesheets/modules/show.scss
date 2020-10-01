@@ -86,7 +86,7 @@
         position: absolute;
 
           .item-img {
-            background-image: url(/beef.jpg);
+            // background-image: url(@item.item_img_id);
             background-size: 100%;
             width: 560px;
             height: 346px;
@@ -108,6 +108,7 @@
 
               a {
                 color: white;
+                background-color: #3CCACE;
               }
 
             }
