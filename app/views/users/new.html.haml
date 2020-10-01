@@ -1,6 +1,6 @@
 .content
   .new_header
-    <ユーザー新規登録/ログイン画面>
+    =render 'items/top_page_header'
   .main
     .main__member-info
       %h2.main__member-info__title 会員情報入力
@@ -24,4 +24,5 @@
               %span.form-group__require 必須
               = f.text_field :password, class: 'password-text', placeholder: '7文字以上の半角英数字'
             .main__member-info__title__input__content2
-              = f.submit '次へ', class: 'btn-next' 
+              = link_to '/users/new_users_info' do
+                = f.submit '次へ', class: 'btn-next' 
