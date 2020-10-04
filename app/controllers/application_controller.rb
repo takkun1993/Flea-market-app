@@ -2,6 +2,10 @@ class ApplicationController < ActionController::Base
 
   before_action :basic_auth, if: :production?
 
+  def set_parents
+    @parents = Category.where(ancestry: nil)
+  end
+
   private
 
   def basic_auth
