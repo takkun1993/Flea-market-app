@@ -1,0 +1,14 @@
+.content
+  .new_header
+    =render 'items/top_page_header'
+  .main-login
+    .login-contents
+      .login-form
+        = form_with url: users_path do |f|
+          .mail-content
+            = f.text_field :email, class: 'e-mail-text', placeholder: 'メールアドレス'
+          .password-content
+            = f.text_field :password, class: 'password-text', placeholder: 'パスワード'
+          .login-content
+            = link_to '/users/index' do
+              = f.submit 'ログイン', class: 'login-btn' 
