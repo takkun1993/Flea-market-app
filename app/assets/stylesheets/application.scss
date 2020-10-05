@@ -2,7 +2,7 @@
 @import "modules/top_page";
 @import "modules/header";
 @import "modules/mypage";
-@import "modules/show";
+@import "modules/item_detail";
 @import "modules/item_exhibition";
 @import "modules/item_purchase";
 @import "modules/new";
@@ -14,6 +14,10 @@
 @import "modules/shipping_address";
 @import "modules/top_page_header";
 @import "modules/top_page_footer";
+@import "modules/new_users_info";
+@import "modules/new_users_address";
+@import "modules/sign_in";
+@import "modules/show";
 @import "modules/edit";
 @import "modules/destroy";
 @import "modules/update";
