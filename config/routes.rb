@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   get 'users/index'
   get 'users/new'
+  get 'users/new_users_info'
+  get 'users/new_users_address'
+  get 'users/sign_in'
+  get 'items/item_detail'
   get 'items/item_exhibition'
   get 'items/item_purchase'
   resources :cards, only: :new
@@ -11,7 +15,7 @@ Rails.application.routes.draw do
   get 'items/shipping_address'
   # post 'items/edit/:id', to: 'items#update'
   patch 'show_item_path', to: 'items#update'
+  get "search" => "items#search"
   resources :users, only: [:index, :edit, :update]
-  resources :items
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
