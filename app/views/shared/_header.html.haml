@@ -15,20 +15,20 @@
       .nav
         %ul.left-items
           %li.left-item1
-            %a.category-btn{href:'#'}
+            %a#category-btn{href:'#'}
               カテゴリー
             %ul.category1
               - @parents.each do |parent|
                 %li.parent__list
                   = link_to "#{parent.name}", class: "parent_category",id: "#{parent.id}"
-                  %ul.category2
-                    - parent.children.each do |child|
-                      %li.child__list
-                        =link_to child.name
-                        %ul.category3
-                          - child.children.each do |grandchild|
-                            %li.grandchild__list
-                              = link_to grandchild.name
+                %ul.category2
+                  - parent.children.each do |child|
+                    %li.child__list
+                      = link_to "#{child.name}"
+                      %ul.category3
+                        - child.children.each do |grandchild|
+                          %li.grandchild__list
+                            = link_to grandchild.name
           .left-item2
             %a{href:'#'}
               ブランド
