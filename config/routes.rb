@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'items/top_page_footer'
   get 'items/payment_method'
   get 'items/shipping_address'
+  resources :items
   # post 'items/edit/:id', to: 'items#update'
   patch 'show_item_path', to: 'items#update'
   get "search" => "items#search"
