@@ -7,8 +7,9 @@
             = image_tag src="/logo.png",size:"140x41"
         .searchBox
           = form_tag(search_path,:method => 'get') do
-            = text_field_tag :search
-            = submit_tag '%i.fas.fa-search', :name => nil
+            = text_field_tag :search,:キーワードから探す
+            = button_tag type: 'submit', class: "searchBtn" do
+              = icon("fas","search") 
           
         -# .searchBtn
         -#   = link_to "#" do
