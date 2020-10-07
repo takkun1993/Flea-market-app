@@ -14,10 +14,7 @@ Rails.application.routes.draw do
   get 'items/payment_method'
   get 'items/shipping_address'
   resources :items
-<<<<<<< HEAD
   # post 'items/edit/:id', to: 'items#update'
-=======
->>>>>>> c11f74cf78d6a93a09876b08cc339ab6f97a2734
   patch 'show_item_path', to: 'items#update'
   get "search" => "items#search"
   # get 'show_item_path', to: 'items#show'
