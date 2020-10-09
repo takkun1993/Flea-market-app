@@ -1,0 +1,51 @@
+%header
+  .users-header
+  .serch-pcheader
+    .headerInner
+      .mainHeader
+        .icon
+          %a{ href: '/'}
+            %img{src:'/assets/furima.png'}
+        .searchBox
+          %form.form{ action: '/items/search', "accept-charset": 'UTF-8', method: 'get'}
+            %input{name: 'utf8', type: 'hidden', value:'✔︎'}
+            %input.searchBox-input{placeholder: 'キーワードから探す', type: 'text', name: 'keyword', id: 'keyword'}
+            %button.search-btn{ name: 'button', type: 'submit'}
+              %i.fas.fa-search
+      .nav
+        %ul.left-items
+          %li.left-item1
+            %a#category-btn{href:'#'}
+              カテゴリー
+            %ul.category1
+              - @parents.each do |parent|
+                %li.parent__list
+                  = link_to "#{parent.name}", class: "parent_category",id: "#{parent.id}"
+                %ul.category2
+                  - parent.children.each do |child|
+                    %li.child__list
+                      = link_to "#{child.name}"
+                      %ul.category3
+                        - child.children.each do |grandchild|
+                          %li.grandchild__list
+                            = link_to grandchild.name
+          .left-item2
+            %a{href:'#'}
+              ブランド
+        %ul.right-items
+          %li.right-item3
+            %a{href:'users.98'}
+              マイページ
+  %nav.bread-crumbs
+    %ul
+      %li
+        %a{href:'/'}
+          furima
+        %i.fa.fa-angle-right
+      %li
+        .breadcrumbs
+          %a{href:'/'}
+            トップページ
+          &rsaquo;
+          %span.current
+            マイページ
