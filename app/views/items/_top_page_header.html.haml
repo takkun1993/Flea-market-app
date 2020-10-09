@@ -3,13 +3,17 @@
     .headerInner
       .mainHeader
         .icon
-          = link_to "#" do
+          = link_to "/" do
             = image_tag src="/logo.png",size:"140x41"
         .searchBox
-          キーワードから探す
-        .searchBtn
-          = link_to "#" do
-            %i.fas.fa-search
+          = form_tag(search_path,:method => 'get') do
+            = text_field_tag :search,:キーワードから探す
+            = button_tag type: 'submit', class: "searchBtn" do
+              = icon("fas","search") 
+          
+        -# .searchBtn
+        -#   = link_to "#" do
+        -#     %i.fas.fa-search
       .nav
         .listsleft
           .listsleft_items1
@@ -20,8 +24,8 @@
                 ブランド
         .listsright
           .listsright_login
-            = link_to "#" do
+            = link_to "/users/sign_in" do
               ログイン
             .listsright_new
-              = link_to "#" do
+              = link_to "/users/new" do
                 新規登録
