@@ -71,8 +71,5 @@ gem 'active_hash'
 gem 'pry-rails'
 gem 'carrierwave'
 gem 'mini_magick'
-<<<<<<< HEAD
 gem 'ancestry'
-=======
 
->>>>>>> master
