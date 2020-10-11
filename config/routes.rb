@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'items/payment_method'
   get 'items/shipping_address'
   resources :items
+    resources :comments, only: [:index, :create]
   # post 'items/edit/:id', to: 'items#update'
   patch 'show_item_path', to: 'items#update'
   get "search" => "items#search"

@@ -36,13 +36,12 @@
           =@item.name
       .item_detail_main_itembox_body
         .item-img
-          .more
-            %span
-              = image_tag src="/arrow_top.png"
-            %ul.more_lists
-              %li
+          %span.more
+            = image_tag src="/arrow_top.png"
+            .more_lists
+              %h3
                 = link_to '編集', edit_item_path(@item.id),method: :get
-              %li
+              %h4
                 = link_to '削除', @item,method: :delete
         %ul.item-img2
           %li
@@ -134,8 +133,8 @@
       .comment_content
         %ul
           .foom
-            = form_with url: users_path do |form|
-              = form.text_area :text_area
+            = form_with(model: [@comment], local: true) do |form|
+              = form.text_area :text, placeholder: "コメントする", rows: "2"
               .notice_msg
                 %p
                 相手の事を考え丁寧なコメントを心懸けましょう。
@@ -146,10 +145,17 @@
         %p
         コメント一覧
         .comments
-          %p
-          testuser : テストテストテストテストテスト
-          %br
-          テストユーザー : テストテストテストテストテスト
+          - if @comments
+            - @comments.each do |comment|
+              %p
+                %strong
+                  = link_to comment.user.nickname, "/users/#{comment.user_id}"
+                  ：
+                = comment.comment
+          -# %p
+          -# testuser : テストテストテストテストテスト
+          -# %br
+          -# テストユーザー : テストテストテストテストテスト
 .appBanner
   .inner
     .inner_title

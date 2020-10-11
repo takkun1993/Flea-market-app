@@ -82,39 +82,48 @@
         width: 620px;
         height: 443px;
         margin-top: 76px;
-        justify-content: center;
-        position: absolute;
-
-          .item-img {
+        // justify-content: center;
+        // position: absolute;
+      }
+        .item-img {
             // background-image: url(@item.item_img_id);
-            background-size: 100%;
-            width: 560px;
-            height: 346px;
-            display: flex;
-            flex-direction: column;
-            justify-content: right;
-            position: absolute;
+          background-size: 100%;
+          width: 560px;
+          height: 346px;
+          display: flex;
+          flex-direction: column;
+          justify-content: right;
+          position: absolute;
 
-            .more {
-              width: 560px;
-              height: 300px;
-              justify-content: right;
-              padding-left: 500px;
-            }
-
+          .more {
+            width: 50px;
+            height: 20px;
+            background-color: #3CCACE;
+          
             .more_lists {
-              width: 560px;
-              justify-content: right;
+              display: block;
+              width: 50px;
+              height: 50px;
 
-              a {
-                color: white;
+              h3 {
                 background-color: #3CCACE;
+                color: white;
               }
 
-            }
+              h4 {
+                background-color: #3CCACE;
+                color: white;
+              }
+              
 
+                a {
+                  color: white;
+                  background-color: #3CCACE;
+                }
+              
+            }
           }
-            
+        }
           .item-img2 {
               display: flex;
               width: 560px;
@@ -134,7 +143,7 @@
                 margin-top: 160px;
             }
           }
-      }
+      
 
         .item_detail_main_itembox_price {
           width: 620px;
@@ -315,7 +324,7 @@
           display: flex
         }
 
-          #text_area {
+          #comment_text {
             display: flex;
             width: 648px;
             height: 104px;

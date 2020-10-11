@@ -13,6 +13,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :postage_type
       t.references :item_img
       t.references :category
+      t.references :comment
       # t.enum :trading_status
       t.references :seller
       t.references :buyer
