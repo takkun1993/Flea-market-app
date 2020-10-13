@@ -6,7 +6,7 @@
       %h2.main-sending__member-info__title 会員情報入力
       .main-sending__member-info__title__input
         .main-sending__member-info__title__input__content1
-          = form_with url: sending_destinations_path do |f|
+          = form_with model: @sending_destination,url:sending_destinations_path,method: :GET,local: true do |f|
             .sending-content1
               %label.sending-content__name お名前
               %span.form-group__require 必須

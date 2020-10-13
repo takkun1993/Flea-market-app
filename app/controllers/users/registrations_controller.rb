@@ -13,14 +13,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(sign_up_params)
       flash.now[:alert] = @user.errors.full_messages
       render :new and return
-    end
+    # end
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
     @profile = @user.build_profiles
     render :new_users_info
   end
 
-  def create_profile
+  def create_profiles
     @user = User.new(session["devise.regist_data"]["user"])
     @profile = Profile.new(profile_params)
     unless @profile.valid?

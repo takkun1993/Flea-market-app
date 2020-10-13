@@ -3,10 +3,10 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
   }
   devise_scope :user do
-    get 'profiles', to: 'users/registrations#new_profiles'
+    get 'profiles', to: 'users/registrations#create_profiles'
     post 'profiles', to: 'users/registrations#create_profiles'
-    get 'sending_destinations', to: 'users/registrations#new_sending_destinations'
-    post 'sending_destinations', to: 'users/registrations#create_sending_destinations'
+    get 'sending_destinations', to: 'users/registrations#create_end'
+    post 'sending_destinations', to: 'users/registrations#create_end'
   end
   get 'users/index'
   get 'users/new'
