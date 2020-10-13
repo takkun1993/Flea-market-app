@@ -1,0 +1,20 @@
+.categories_header
+  =render 'items/top_page_header'
+
+.categories_main
+  .categories_box
+    %h1 カテゴリー一覧
+    %ul.categories
+      - @parents.each do |parent|
+        %li.parents= link_to "#{parent.name}", category_path(parent)
+
+        %ul.categories__children
+          - parent.children.each do |child|
+            %li.children= link_to "#{child.name}", category_path(child)
+
+            %ul.categories__grandchildren
+              - child.children.each do |grandchild|
+                %li= link_to "#{grandchild.name}", category_path(grandchild)
+
+.categories_footer
+  =render 'items/top_page_footer'
