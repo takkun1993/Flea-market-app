@@ -4,28 +4,13 @@
 .bread-crumbs
   %ul
     %li
-      = link_to '#' do
-        FURIMA
-    %li
-      %i.fa.fa-angle-right
-    %li
-      = link_to '#' do
-        レディース
-    %li
-      %i.fa.fa-angle-right
-    %li
-      = link_to '#' do
-        トップス
-    %li
-      %i.fa.fa-angle-right
-    %li
-      = link_to '#' do
-        Tシャツ/カットソー(半袖/袖なし)
-    %li
-      %i.fa.fa-angle-right
-    %li
-      %p
-        神戸牛ヒレステーキ200g
+      -# - if @category.has.parent?
+      -#   - breadcrumb :parent_category
+      -# - elsif @category.has_children?
+      -#   - breadcrumb :child_category
+      -# - else
+      -#   - breadcrumb :grandchild_category
+      -# = breadcrumbs separator: " &rsaquo; ", class: "breadcrumbs-list"
       
 
 .item_detail_main

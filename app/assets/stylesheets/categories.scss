@@ -1,0 +1,66 @@
+// Place all the styles related to the categories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.categories_main {
+  width: 100%;
+  height: 100%;
+  background-color: lightgray;
+  display: block;
+  justify-content: center;
+}
+
+.categories_box {
+  width: 800px;
+  height: 100%;
+  background-color: white;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+h1 {
+  background-color: #3ccace;
+  color: white;
+  text-align: center;
+  font-size: 24px;
+}
+
+ul.categories {
+  text-decoration: none;
+  color: black;
+  margin-left: 20px;
+
+  li.parents {
+    text-decoration: none;
+    color: #3ccace;
+
+    a {
+      text-decoration: none;
+      color: #3ccace;
+    }
+  }
+  ul.categories__children {
+    margin-left: 20px;
+
+    li.children {
+      text-decoration: none;
+      color: black;
+      height: 30px;
+      margin-top: 5px;
+
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    }
+    ul.categories__grandchildren {
+      margin-left: 20px;
+
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+}
