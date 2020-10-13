@@ -9,6 +9,42 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new
   end
   
+  def create
+    @user = User.new(sign_up_params)
+      flash.now[:alert] = @user.errors.full_messages
+      render :new and return
+    end
+    session["devise.regist_data"] = {user: @user.attributes}
+    session["devise.regist_data"][:user]["password"] = params[:user][:password]
+    @profile = @user.build_profiles
+    render :new_users_info
+  end
+
+  def create_profile
+    @user = User.new(session["devise.regist_data"]["user"])
+    @profile = Profile.new(profile_params)
+    unless @profile.valid?
+      flash.now[:alert] = @profile.errors.full_messages
+      render :new_users_info and return
+    end
+    session["devise.regist_data"] = {user: @profile.attributes}
+    @sending_destination = @user.build_sending_destination
+    render :new_users_address
+  end
+
+  def create_end
+    @user = User.new(session["devise.regist_data"]["user"])
+    @profile = Profile.new(session["devise.regist_data"]["user"])
+    @sending_destination = Sending_destination.new(sending_destination_params)
+    unless @sending_destination.valid?
+      flash.now[:alert] = @sending_destination.errors.full_messages
+      render :new_users_info and return
+    end
+    session["devise.regist_data"] = {user: @sending_destination.attributes}
+    @user.save
+    session["devise.regist_data"]["user"].clear
+    sign_in(:user, @user)
+  end
 
   # POST /resource
   # def create

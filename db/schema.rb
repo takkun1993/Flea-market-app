@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_18_145346) do
+ActiveRecord::Schema.define(version: 2020_10_11_031404) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -96,33 +96,33 @@ ActiveRecord::Schema.define(version: 2020_09_18_145346) do
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "first_name"
-    t.string "family_name"
-    t.string "first_name_kana"
-    t.string "familiy_name_kana"
-    t.date "birth_year"
-    t.date "birth_month"
-    t.date "birth_day"
-    t.text "introduction"
-    t.string "avatar"
-    t.bigint "user_id"
+    t.string "first_name", default: "", null: false
+    t.string "family_name", default: "", null: false
+    t.string "first_name_kana", default: "", null: false
+    t.string "familiy_name_kana", default: "", null: false
+    t.date "birth_year", null: false
+    t.date "birth_month", null: false
+    t.date "birth_day", null: false
+    t.text "introduction", null: false
+    t.string "avatar", default: "", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "sending_destinations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "first_name"
-    t.string "family_name"
-    t.string "first_name_kana"
-    t.string "family_name_kana"
-    t.string "post_code"
-    t.integer "prefecture_code"
-    t.string "city"
-    t.string "house_number"
-    t.string "building_name"
-    t.string "phone_number"
-    t.bigint "user_id"
+    t.string "first_name", default: "", null: false
+    t.string "family_name", default: "", null: false
+    t.string "first_name_kana", default: "", null: false
+    t.string "family_name_kana", default: "", null: false
+    t.string "post_code", default: "", null: false
+    t.integer "prefecture_code", null: false
+    t.string "city", default: "", null: false
+    t.string "house_number", default: "", null: false
+    t.string "building_name", default: "", null: false
+    t.string "phone_number", default: "", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_sending_destinations_on_user_id"
@@ -159,11 +159,17 @@ ActiveRecord::Schema.define(version: 2020_09_18_145346) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "nickname"
-    t.string "password"
-    t.string "email"
+    t.string "email", default: "", null: false
+    t.string "nickname", default: "", null: false
+    t.string "password", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

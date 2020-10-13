@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
+  devise_scope :user do
+    get 'profiles', to: 'users/registrations#new_profiles'
+    post 'profiles', to: 'users/registrations#create_profiles'
+    get 'sending_destinations', to: 'users/registrations#new_sending_destinations'
+    post 'sending_destinations', to: 'users/registrations#create_sending_destinations'
+  end
   get 'users/index'
   get 'users/new'
   get 'users/new_users-info'
