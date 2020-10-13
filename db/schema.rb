@@ -99,12 +99,8 @@ ActiveRecord::Schema.define(version: 2020_10_11_031404) do
     t.string "first_name", default: "", null: false
     t.string "family_name", default: "", null: false
     t.string "first_name_kana", default: "", null: false
-    t.string "familiy_name_kana", default: "", null: false
-    t.date "birth_year", null: false
-    t.date "birth_month", null: false
+    t.string "family_name_kana", default: "", null: false
     t.date "birth_day", null: false
-    t.text "introduction", null: false
-    t.string "avatar", default: "", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

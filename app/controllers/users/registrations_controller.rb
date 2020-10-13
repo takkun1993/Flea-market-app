@@ -11,12 +11,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   def create
     @user = User.new(sign_up_params)
+    unless @user.valid?
       flash.now[:alert] = @user.errors.full_messages
       render :new and return
-    # end
+    end
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
-    @profile = @user.build_profiles
+    @profile = @user.build_profile
     render :new_users_info
   end
 
@@ -27,25 +28,36 @@ class Users::RegistrationsController < Devise::RegistrationsController
       flash.now[:alert] = @profile.errors.full_messages
       render :new_users_info and return
     end
-    session["devise.regist_data"] = {user: @profile.attributes}
+    session["devise.profile_data"] = {profile: @profile.attributes}
     @sending_destination = @user.build_sending_destination
     render :new_users_address
   end
 
   def create_end
     @user = User.new(session["devise.regist_data"]["user"])
-    @profile = Profile.new(session["devise.regist_data"]["user"])
-    @sending_destination = Sending_destination.new(sending_destination_params)
+    @profile = Profile.new(session["devise.profile_data"]["profile"])
+    @sending_destination = SendingDestination.new(sending_destination_params)
     unless @sending_destination.valid?
       flash.now[:alert] = @sending_destination.errors.full_messages
       render :new_users_info and return
     end
-    session["devise.regist_data"] = {user: @sending_destination.attributes}
+    @user.build_profile(@profile.attributes)
+    @user.build_sending_destination(@sending_destination.attributes)
     @user.save
-    session["devise.regist_data"]["user"].clear
+    session["devise.regist_data"].clear
     sign_in(:user, @user)
+    redirect_to root_path
   end
 
+  private
+
+  def profile_params
+    params.require(:profile).permit(:first_name, :family_name, :first_name_kana, :family_name_kana, :birth_day)
+  end
+
+  def sending_destination_params
+    params.require(:sending_destination).permit(:first_name, :family_name,:first_name_kana,:family_name_kana,:post_code,:prefecture_code,:city,:house_number,:building_name,:phone_number,:user,)
+  end
   # POST /resource
   # def create
   #   super
