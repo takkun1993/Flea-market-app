@@ -12,7 +12,7 @@ end
 crumb :parent_category do |category|
   category = Category.find(params[:id]).root
   link "#{category.name}", category_path(category)
-  parent :category_index
+  # parent :category_index
 end
 # -----------------------------------------------------------------
 # 子カテゴリーのパンくず
