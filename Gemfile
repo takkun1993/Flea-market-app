@@ -73,4 +73,4 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'ancestry'
 gem "gretel"
-
+gem 'jp_prefecture'
