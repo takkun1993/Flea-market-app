@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2020_09_26_121831) do
     t.integer "postage_type"
     t.bigint "item_img_id"
     t.bigint "category_id"
+    t.bigint "comment_id"
     t.bigint "seller_id"
     t.bigint "buyer_id"
     t.datetime "created_at", precision: 6, null: false
@@ -94,6 +95,7 @@ ActiveRecord::Schema.define(version: 2020_09_26_121831) do
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["comment_id"], name: "index_items_on_comment_id"
     t.index ["item_img_id"], name: "index_items_on_item_img_id"
     t.index ["seller_id"], name: "index_items_on_seller_id"
   end
@@ -111,9 +113,7 @@ ActiveRecord::Schema.define(version: 2020_09_26_121831) do
     t.string "family_name"
     t.string "first_name_kana"
     t.string "familiy_name_kana"
-    t.date "birth_year"
-    t.date "birth_month"
-    t.date "birth_day"
+    t.date "birth_date"
     t.text "introduction"
     t.string "avatar"
     t.bigint "user_id"
