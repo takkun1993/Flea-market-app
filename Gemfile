@@ -74,3 +74,6 @@ gem 'mini_magick'
 gem 'ancestry'
 gem "gretel"
 gem 'jp_prefecture'
+gem "aws-sdk-s3", require: false
+gem "azure-storage", require: false
+gem "google-cloud-storage", "~> 1.8", require: false
