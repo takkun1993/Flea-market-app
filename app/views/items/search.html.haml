@@ -1,0 +1,8 @@
+%p 検索
+= form_tag(search_path,:method => 'get') do
+  = text_field_tag :search
+  = submit_tag 'Search', :name => nil
+%ul
+  -# - @items.each do |item|
+  %li
+    = link_to @items= Item.search(params[:search])

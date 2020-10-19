@@ -19,10 +19,12 @@ ActiveRecord::Schema.define(version: 2020_10_11_031404) do
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "ancestry"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
+    t.index ["name"], name: "index_categories_on_name"
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -55,6 +57,15 @@ ActiveRecord::Schema.define(version: 2020_10_11_031404) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "item_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_item_categories_on_category_id"
+    t.index ["product_id"], name: "index_item_categories_on_product_id"
+  end
+
   create_table "item_imgs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "url"
     t.bigint "item_id"
@@ -76,6 +87,7 @@ ActiveRecord::Schema.define(version: 2020_10_11_031404) do
     t.integer "postage_type"
     t.bigint "item_img_id"
     t.bigint "category_id"
+    t.bigint "comment_id"
     t.bigint "seller_id"
     t.bigint "buyer_id"
     t.datetime "created_at", precision: 6, null: false
@@ -83,6 +95,7 @@ ActiveRecord::Schema.define(version: 2020_10_11_031404) do
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["comment_id"], name: "index_items_on_comment_id"
     t.index ["item_img_id"], name: "index_items_on_item_img_id"
     t.index ["seller_id"], name: "index_items_on_seller_id"
   end

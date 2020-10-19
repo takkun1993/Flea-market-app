@@ -16,3 +16,4 @@ class User < ApplicationRecord
   has_one :sending_destination, dependent: :destroy
   has_one :credit_card, dependent: :destroy
 end
+end

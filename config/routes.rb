@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   end
   get 'users/index'
   get 'users/new'
-  get 'users/new_users-info'
-  get 'users/new_users-address'
+  get 'users/new_users_info'
+  get 'users/new_users_address'
   get 'users/sign_in'
   get 'items/item_detail'
   get 'items/item_exhibition'
@@ -22,7 +22,14 @@ Rails.application.routes.draw do
   get 'items/top_page_footer'
   get 'items/payment_method'
   get 'items/shipping_address'
+  resources :items
+    resources :comments, only: [:index, :create]
+  # post 'items/edit/:id', to: 'items#update'
+  patch 'show_item_path', to: 'items#update'
+  get "search" => "items#search"
+  # get 'show_item_path', to: 'items#show'
   resources :users, only: [:index, :edit, :update]
+  resources :categories
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 end

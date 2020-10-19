@@ -61,9 +61,16 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :production do
-  gem 'unicorn'
+  gem 'unicorn', '5.4.1'
 end
 
 gem "haml-rails", ">= 1.0", '<= 2.0.1'
 gem 'font-awesome-sass'
 gem 'devise'
+gem 'active_hash'
+gem 'pry-rails'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'ancestry'
+gem "gretel"
+

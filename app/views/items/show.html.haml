@@ -1,0 +1,167 @@
+.item_detail_header
+  =render 'items/top_page_header'
+
+.bread-crumbs
+  %ul
+    %li
+      -# - if @category.has.parent?
+      -#   - breadcrumb :parent_category
+      -# - elsif @category.has_children?
+      -#   - breadcrumb :child_category
+      -# - else
+      -#   - breadcrumb :grandchild_category
+      -# = breadcrumbs separator: " &rsaquo; ", class: "breadcrumbs-list"
+      
+
+.item_detail_main
+  .item_detail_main_box
+    .item_detail_main_itembox
+      .item_detail_main_itembox_name
+        %h1
+          =@item.name
+      .item_detail_main_itembox_body
+        .item-img
+          %span.more
+            = image_tag src="/arrow_top.png"
+            .more_lists
+              %h3
+                = link_to '編集', edit_item_path(@item.id),method: :get
+              %h4
+                = link_to '削除', @item,method: :delete
+        %ul.item-img2
+          %li
+            -# = image_tag @item.item_img_id,size:"140x87"
+      .item_detail_main_itembox_price
+        %span
+          ¥
+        %span
+          =@item.price
+      .item_detail_main_itembox_price-detail
+        %span
+          税込）送料込み
+      .item_detail_main_itembox_purchase-btn
+        = link_to '/items/item_purchase' do
+          %g
+            購入する
+      .item_detail_main_itembox_item-detail-comment
+        =@item.introduction
+      .item_detail_main_itembox_table
+        %table
+          %tbody
+            %tr
+              %th
+                出品者
+              %td
+                =@item.seller_id
+            %tr
+              %th
+                カテゴリー
+              %td
+                = link_to '#' do
+                  %b
+                    =@item.category_id
+                %br/
+                = link_to '#' do
+                  %b
+                    =@item.category_id
+                %br/
+                = link_to '#' do
+                  %b
+                    =@item.category_id
+            %tr
+              %th
+                ブランド
+              %td
+                =@item.brand_id
+            %tr
+              %th
+                商品のサイズ
+              %td
+                =@item.size
+            %tr
+              %th
+                商品の状態
+              %td
+                =@item.item_condition
+            %tr
+              %th
+                配送料の負担
+              %td
+                =@item.postage_payer
+            %tr
+              %th
+                発送元の地域
+              %td
+                = link_to '#' do
+                  %b
+                    =@item.prefecture_code
+            %tr
+              %th
+                発送日の目安
+              %td
+                =@item.preparation_day
+      .optionalarea
+        .optional_likebtn
+          %ul
+            %li
+              = link_to '#' do
+                %i.fas.fa-star
+                  お気に入り 1
+        .optional
+          %ul
+            %li
+              = link_to '#' do
+                %i.fa.fa-flag
+                  不適切な商品の通報
+
+    .item_detail_main_commentbox
+      .comment_content
+        %ul
+          .foom
+            = form_with(model: [@comment], local: true) do |form|
+              = form.text_area :text, placeholder: "コメントする", rows: "2"
+              .notice_msg
+                %p
+                相手の事を考え丁寧なコメントを心懸けましょう。
+                %br
+                不快な言葉遣いなどは利用制限や退会処分になる事があります。
+              = form.submit 'コメントする'
+      .line
+        %p
+        コメント一覧
+        .comments
+          - if @comments
+            - @comments.each do |comment|
+              %p
+                %strong
+                  = link_to comment.user.nickname, "/users/#{comment.user_id}"
+                  ：
+                = comment.comment
+          -# %p
+          -# testuser : テストテストテストテストテスト
+          -# %br
+          -# テストユーザー : テストテストテストテストテスト
+.appBanner
+  .inner
+    .inner_title
+      %h2
+        だれでもかんたん、人生を変えるフリマアプリ
+    .inner_text
+      %p
+        今すぐ無料ダウンロード！
+    .inner_icon
+      = link_to '#' do
+        %a
+          = image_tag src="/app-store-btn.svg",size:"180x58.33"
+      = link_to '#' do
+        %a
+          = image_tag src="/google-play-btn.svg",size:"180x58.33"
+.item_detail_footer
+  =render 'items/top_page_footer'
+= link_to '/items/item_exhibition' do
+  .purchaseBtn
+    .purchaseBtn_text
+      %span
+        出品する
+    .purchaseBtn_icon
+      = image_tag src="/icon_camera.png",size:"54x54"

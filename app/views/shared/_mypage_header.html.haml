@@ -10,6 +10,9 @@
           %form.form{ action: '/items/search', "accept-charset": 'UTF-8', method: 'get'}
             %input{name: 'utf8', type: 'hidden', value:'✔︎'}
             %input.searchBox-input{placeholder: 'キーワードから探す', type: 'text', name: 'keyword', id: 'keyword'}
+              -# = form_tag(search_path,:method => 'get') do
+              -#   = text_field_tag :search
+              -#   = submit_tag 'Search', :name => nil
             %button.search-btn{ name: 'button', type: 'submit'}
               %i.fas.fa-search
       .nav
@@ -762,13 +765,8 @@
   %nav.bread-crumbs
     %ul
       %li
-        %a{href:'/'}
-          furima
-        %i.fa.fa-angle-right
-      %li
         .breadcrumbs
-          %a{href:'/'}
-            トップページ
-          &rsaquo;
-          %span.current
-            マイページ
+          -# config/breadcrumbs.rbに定義したmypageを呼び出し
+          - breadcrumb :mypage
+          -# 下記を記述した箇所にパンくずリストが表示される。
+          = breadcrumbs pretext: "You are here:",separator: " &rsaquo; "
