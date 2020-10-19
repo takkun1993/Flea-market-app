@@ -1,53 +1,54 @@
 .content
   .new_header
-    <ユーザー新規登録3>
+    =render 'items/top_page_header'
   .main-sending
     .main-sending__member-info
       %h2.main-sending__member-info__title 会員情報入力
       .main-sending__member-info__title__input
         .main-sending__member-info__title__input__content1
-          = form_with model: @sending_destination,url:sending_destinations_path,local: true do |f|
+          = form_with url: users_path do |f|
             .sending-content1
               %label.sending-content__name お名前
               %span.form-group__require 必須
               %br
-              = f.text_field :family_name, class: 'sending-family_name-text', placeholder: '例）亀山'
-              = f.text_field :first_name, class: 'sending-first_name-text', placeholder: '例）武真'
+              = f.text_field :name, class: 'sending-family_name-text', placeholder: '例）亀山'
+              = f.text_field :name, class: 'sending-first_name-text', placeholder: '例）武真'
             .sending-content2
               %label.sending-content__name-kana お名前カナ
               %span.form-group__require 必須
               %br
-              = f.text_field :family_name_kana, class: 'sending-family_name-kana-text', placeholder: '例）カメヤマ'
-              = f.text_field :first_name_kana, class: 'sending-first_name-kana-text', placeholder: '例）タケマサ'
+              = f.text_field :name, class: 'sending-family_name-kana-text', placeholder: '例）カメヤマ'
+              = f.text_field :name, class: 'sending-first_name-kana-text', placeholder: '例）タケマサ'
             .sending-content3
               %label.sending-content__postal-code 郵便番号
               %span.form-group__require 必須
               %br
-              = f.text_field :post_code, class: 'sending-postal-code-text', placeholder: '例）810-0801'
+              = f.text_field :postalcode, class: 'sending-postal-code-text', placeholder: '例）810-0801'
             .sending-content4
               %label.sending-content__prefectures 都道府県
               %span.form-group__require 必須
               %br
-              = f.text_field :prefecture_code, class: 'sending-municipalities-text', placeholder: '例）大阪府'
+              = f.text_field :municipalitiess, class: 'sending-municipalities-text', placeholder: '例）大阪府'
             .sending-content5
               %label.sending-content__municipalities 市町村
               %span.form-group__require 必須
               %br
-              = f.text_field :city, class: 'sending-municipalities-text', placeholder: '例）大阪市'
+              = f.text_field :municipalitiess, class: 'sending-municipalities-text', placeholder: '例）大阪市'
             .sending-content6
               %label.sending-content__address 番地
               %span.form-group__require 必須
               %br
-              = f.text_field :house_number, class: 'sending-address-text', placeholder: '例）博多区中洲5丁目4-18'
+              = f.text_field :address, class: 'sending-address-text', placeholder: '例）博多区中洲5丁目4-18'
             .sending-content7
               %label.sending-content__building 建物名
               %span.form-group__optional 任意
               %br
-              = f.text_field :building_name, class: 'sending-building-text', placeholder: '例）吉本ビル'
+              = f.text_field :building, class: 'sending-building-text', placeholder: '例）吉本ビル'
             .sending-content8
               %label.sending-content__phone-number 電話番号
               %span.form-group__optional 任意
               %br
-              = f.text_field :phone_number, class: 'sending-phone_number-text', placeholder: '例）090-xxxx-xxxx'
+              = f.text_field :phonenumber, class: 'sending-phone_number-text', placeholder: '例）090-xxxx-xxxx'
             .main-sending__member-info__title__input__content2
-              = f.submit '登録', class: 'btn-registration' 
+              = link_to '/users/index' do
+                = f.submit '登録', class: 'btn-registration' 

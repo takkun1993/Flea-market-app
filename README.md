@@ -1,28 +1,16 @@
 # README
-
 This README would normally document whatever steps are necessary to get the
 application up and running.
-
 Things you may want to cover:
-
 * Ruby version
-
 * System dependencies
-
 * Configuration
-
 * Database creation
-
 * Database initialization
-
 * How to run the test suite
-
 * Services (job queues, cache servers, search engines, etc.)
-
 * Deployment instructions
-
 * ...
-
 # FLEA-MARKET-APP DB設計
 ## usersテーブル
 |Column|Type|Options|
@@ -30,7 +18,6 @@ Things you may want to cover:
 |nickname|srting|null:false|
 |password|string|null:false|
 |email|string|null:false,unique:true,index:true|
-
 ### Association
 - has_many :comments, dependent: :destroy
 - has_many :favorites, dependent: :destroy
@@ -43,26 +30,19 @@ Things you may want to cover:
 - has_one :sns_authentication, dependent: :destroy
 - has_one :sending_destination, dependent: :destroy
 - has_one :credit_card, dependent: :destroy
-
-
 ## profilesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |first_name|string|null:false|
 |family_name|string|null:false|
 |first_name_kana|string|null:false|
-|family_name_kana|string|null:false|
-|birth_year|date|null:false|
-|birth_month|date|null:false|
-|birth_day|date|null:false|
+|familiy_name_kana|string|null:false|
+|birth_date|date|null:false|
 |introduction|text|
 |avatar|string|
-|user|references|nullfalse,foreign_key:true|
-
+|user|references|null:false,foreign_key:true|
 ### Association
 - belongs_to :user
-
-
 ## sending_destinationsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -77,12 +57,9 @@ Things you may want to cover:
 |building_name|string|
 |phone_number|string|unique:true|
 |user|references|null:false,foreign_key:true|
-
 ### Association
 - belongs_to :user
 - Gem：jp_prefectureを使用して都道府県コードを取得
-
-
 ## sns_authenticationsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -90,31 +67,22 @@ Things you may want to cover:
 |uid|string|null:false,unique:true|
 |token|text|
 |user|references|null:false,foreign_key:true|
-
 ### Association
 - belongs_to :user
-
-
 ## pointsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|point|integer|
+|point|integer|null:false|
 |user|references|null:false,foreign_key:true|
-
 ### Association
 - belongs_to :user
-
-
 ## todo_listsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |list|text|null:false|
 |user|references|null:false,foreign_key:true|
-
 ### Association
 - belongs_to :user
-
-
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -133,7 +101,6 @@ Things you may want to cover:
 |trading_status|enum|null:false|
 |seller|references|null:false,foreign_key:true|
 |buyer|references|foreign_key:true|
-
 ### Association
 - has_many :comments, dependent: :destroy
 - has_many :favorites
@@ -149,19 +116,14 @@ Things you may want to cover:
 - belongs_to :seller, class_name: "User"
 - belongs_to :buyer, class_name: "User"
 - Gem：jp_prefectureを使用して都道府県コードを取得
-
-
 ## favoritesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user|references|null:false,foreign_key:true|
 |item|references|null:false,foreign_key:true|
-
 ### Association
 - belongs_to :user
 - belongs_to :item
-
-
 ## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -169,12 +131,50 @@ Things you may want to cover:
 |user|references|null:false,foreign_key:true|
 |item|references|null:false,foreign_key:true|
 |created_at|timestamp|null:false|
-
 ### Association
 - belongs_to :user
 - belongs_to :item
-
-
+## user_evaluationsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|review|text|null:false|
+|user|references|null:false,foreign_key:true|
+|item|references|null:false,foreign_key:true|
+|evaluation|references|null:false,foreign_key:true|
+### Association
+- belongs_to_active_hash :evaluation
+- belongs_to :user
+- belongs_to :item
+## item_imgsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|url|string|null:false|
+|item|references|null:false,foreign_key:true|
+### Association
+- belongs_to :item
+## categoriesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null:false|
+|ancestry|string|null:false|
+### Association
+- has_many :items
+## brandsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null:false|
+### Association
+- has_many :items
+## credit_cards(Pay.jp)テーブル
+|Column|Type|Options|
+|------|----|-------|
+|card_number|integer|null:false,unique:true|
+|expiration_year|integer|null:false|
+|expiration_month|integer|null:false|
+|security_code|integer|null:false|
+|user|references|null: false,foreign_key:true|
+### Association
+- belongs_to :user 
 ## user_evaluationsテーブル
 |Column|Type|Options|
 |------|----|-------|
