@@ -4,13 +4,14 @@
 .bread-crumbs
   %ul
     %li
-      -# - if @category.has.parent?
-      -#   - breadcrumb :parent_category
-      -# - elsif @category.has_children?
-      -#   - breadcrumb :child_category
-      -# - else
-      -#   - breadcrumb :grandchild_category
-      -# = breadcrumbs separator: " &rsaquo; ", class: "breadcrumbs-list"
+      .breadcrumbs
+        -# - if @category.has.parent?
+        - breadcrumb :parent_category
+        -# - elsif @category.has_children?
+        - breadcrumb :child_category
+        -# - else
+        - breadcrumb :grandchild_category
+        = breadcrumbs separator: " &rsaquo; ", class: "breadcrumbs-list"
       
 
 .item_detail_main

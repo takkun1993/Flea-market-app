@@ -3,7 +3,8 @@
 
 .categories_main
   .categories_box
-    %h1 カテゴリー一覧
+    .categories_box_title
+      カテゴリー一覧
     %ul.categories
       - @parents.each do |parent|
         %li.parents= link_to "#{parent.name}", category_path(parent)
