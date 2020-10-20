@@ -62,4 +62,5 @@ Rails.application.configure do
 
   config.cache_classes = false
   config.reload_classes_only_on_change = false
+  config.active_storage.service = :local
 end

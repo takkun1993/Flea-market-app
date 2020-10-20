@@ -1,10 +1,8 @@
 class ItemsController < ApplicationController
-  def index
-    @category_parent_array = Category.where(ancestry: nil)
-  end
 
-  def new
-    @category_parent_array = Category.where(ancestry: nil)
+  def index
+    @items_category = Item.where("buyer_id IS NULL AND trading_status = 0 AND category_id < 200").order(created_at: "DESC")
+    @items_brand = Item.where("buyer_id IS NULL AND  trading_status = 0 AND brand_id = 1").order(created_at: "DESC")
   end
 
   def get_category_children
@@ -25,29 +23,55 @@ class ItemsController < ApplicationController
     end
     @items = Item.all
   end
+
   def new
     @item = Item.new
-    @item_img = @item.item_imgs.build
+    @item.item_imgs_id.new
+    @category_parent = Category.where(ancestry: nil)
+      # 親カテゴリーが選択された後に動くアクション
+    def get_category_child
+      @category_child = Category.find("#{params[:parent_id]}").children
+      render json: @category_child
+      #親カテゴリーに紐付く子カテゴリーを取得
+    end
+      # 子カテゴリーが選択された後に動くアクション
+    def get_category_grandchild
+      @category_grandchild = Category.find("#{params[:child_id]}").children
+      render json: @category_grandchild
+      #子カテゴリーに紐付く孫カテゴリーの配列を取得
+    end
   end
+  
   def create
-    Item.create(item_params)
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to  post_done_items_path
+    else
+      @item.images.new
+      render :new
+    end
   end
+
   def destroy
     item = Item.find_by(id: params[:id])
     item.destroy
   end
+
   def edit
     @item = Item.find(params[:id])
   end
+
   def update
     @item = Item.find(params[:id])
     @item.update(item_params)
   end
+
   def show
     @item = Item.find(params[:id])
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
   end
+
   def search
     sort = params[:sort] || "created_at DESC"
     @keyword = params[:keyword]
@@ -64,8 +88,9 @@ class ItemsController < ApplicationController
       @items = Item.order(sort)
     end
   end
+  
   private
   def item_params
-    params.permit(:name, :introduction, :price, :brand_id, :item_condition, :postage_payer, :prefecuture_type, :item_img_id, :ca_code, :size, :preparation_day, :postagetegory_id, :seller_id, :buyer_id)
+    params.require(:item).permit(:name, :introduction, :price, :prefecture_code, :brand_id, :pref_id, :size_id, :item_condition_id, :postage_payer_id, :preparation_day_id, :postage_type_id, :category_id, :trading_status, item_imgs_attributes: [:url, :id]).merge(seller_id: current_user.id)
   end
 end
