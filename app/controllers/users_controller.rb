@@ -6,4 +6,6 @@ class UsersController < ApplicationController
   end
   def new_users_address
   end
+  def sign_in
+  end
 end

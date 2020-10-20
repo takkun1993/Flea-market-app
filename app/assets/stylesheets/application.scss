@@ -3,7 +3,7 @@
 @import "modules/header";
 @import "modules/mypage";
 @import "modules/item_detail";
-@import "modules/item_exhibition";
+@import "modules/item_sell";
 @import "modules/item_purchase";
 @import "modules/new";
 @import "modules/cards-header";
@@ -28,3 +28,5 @@
 @import "modules/edit";
 @import "modules/destroy";
 @import "modules/update";
+@import "categories";
+@import "categories/show";
