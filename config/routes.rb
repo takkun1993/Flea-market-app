@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get 'users/new_users_address'
   get 'users/sign_in'
   get 'items/item_detail'
-  get 'items/item_exhibition'
   get 'items/item_purchase'
   resources :cards, only: :new
   root 'items#index'
