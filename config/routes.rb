@@ -9,9 +9,9 @@ Rails.application.routes.draw do
     post 'sending_destinations', to: 'users/registrations#create_end'
   end
   get 'users/index'
-  get 'users/new'
-  get 'users/new_users_info'
-  get 'users/new_users_address'
+  get 'users/registrations/new'
+  get 'users/registrations/new_users_info'
+  get 'users/registrations/new_users_address'
   get 'users/sign_in'
   get 'items/item_detail'
   get 'items/item_exhibition'
