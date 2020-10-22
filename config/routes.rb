@@ -8,11 +8,11 @@ Rails.application.routes.draw do
     get 'sending_destinations', to: 'users/registrations#create_end'
     post 'sending_destinations', to: 'users/registrations#create_end'
   end
-  get 'users/index'
-  get 'users/registrations/new'
-  get 'users/registrations/new_users_info'
-  get 'users/registrations/new_users_address'
-  get 'users/sign_in'
+  # get 'users/index'
+  # get 'users/registrations/new'
+  # get 'users/registrations/new_users_address'
+  # get 'users/registrations/new_users_info'
+  # get 'users/sign_in'
   get 'items/item_detail'
   get 'items/item_purchase'
   resources :cards, only: :new
