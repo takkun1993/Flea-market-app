@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @item.item_imgs_id.new
+    @item.item_imgs.new
     @category_parent = Category.where(ancestry: nil)
       # 親カテゴリーが選択された後に動くアクション
     def get_category_child
@@ -42,12 +42,21 @@ class ItemsController < ApplicationController
     end
   end
   
+  # def create
+  #   @item = Item.new(item_params)
+  #   if @item.save
+  #     redirect_to  post_done_items_path
+  #   else
+  #     @item.item_imgs.new
+  #     render :new
+  #   end
+  # end
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to  post_done_items_path
+      item = Item.find(@item.id)
+      redirect_to root_path
     else
-      @item.images.new
       render :new
     end
   end
@@ -91,6 +100,7 @@ class ItemsController < ApplicationController
   
   private
   def item_params
-    params.require(:item).permit(:name, :introduction, :price, :prefecture_code, :brand_id, :pref_id, :size_id, :item_condition_id, :postage_payer_id, :preparation_day_id, :postage_type_id, :category_id, :trading_status, item_imgs_attributes: [:url, :id]).merge(seller_id: current_user.id)
+    params.require(:item).permit(:name, :introduction, :price, :prefecture_code, :brand_id, :size, :item_condition, :postage_payer, :preparation_day, :postage_type, :category_id, :comment_id, item_imgs_attributes: [:url, :id]).merge(seller_id: current_user)
+    # params.require(:item).permit(:name, :introduction, :price, :prefecture_code, :brand_id, :pref_id, :size_id, :item_condition_id, :postage_payer_id, :preparation_day_id, :postage_type_id, :category_id, :trading_status, item_imgs_attributes: [:url, :id]).merge(seller_id: current_user.id)
   end
 end
