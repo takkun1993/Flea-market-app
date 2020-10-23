@@ -72,6 +72,9 @@ gem 'pry-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'ancestry'
+gem 'payjp'
+gem 'dotenv-rails'
+
 gem "gretel"
 gem 'jp_prefecture'
 gem "aws-sdk-s3", require: false
