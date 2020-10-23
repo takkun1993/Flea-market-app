@@ -18,7 +18,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
     @profile = @user.build_profile
-    render :new_users_info
+    render action: :new_users_info
+    # redirect_to profiles_path
+    # binding.pry
+  end
+
+  def new_users_info
   end
 
   def create_profiles
@@ -31,6 +36,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session["devise.profile_data"] = {profile: @profile.attributes}
     @sending_destination = @user.build_sending_destination
     render :new_users_address
+  end
+
+  def new_users_address
   end
 
   def create_end
@@ -52,11 +60,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def profile_params
-    params.require(:profile).permit(:first_name, :family_name, :first_name_kana, :family_name_kana, :birth_day)
+    params.permit(:first_name, :family_name, :first_name_kana, :family_name_kana, :birth_day)
   end
 
   def sending_destination_params
-    params.require(:sending_destination).permit(:first_name, :family_name,:first_name_kana,:family_name_kana,:post_code,:prefecture_code,:city,:house_number,:building_name,:phone_number,:user,)
+    params.permit(:first_name, :family_name,:first_name_kana,:family_name_kana,:post_code,:prefecture_code,:city,:house_number,:building_name,:phone_number,:user,)
   end
   # POST /resource
   # def create
