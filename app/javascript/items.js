@@ -29,7 +29,8 @@
 //   });
 // });
 
-$(document).on('turbolinks:load', ()=> {
+document.addEventListener('turbolinks:load', function () {
+  console.log("ok")
   // 画像用のinputを生成する関数
   const buildFileField = (index)=> {
     const html = `<div data-index="${index}" class="js-file_group">
@@ -55,6 +56,7 @@ $(document).on('turbolinks:load', ()=> {
   $('.hidden-destroy').hide();
 
   $('#image-box').on('change', '.js-file', function(e) {
+  
     const targetIndex = $(this).parent().data('index');
     // ファイルのブラウザ上でのURLを取得する
     const file = e.target.files[0];

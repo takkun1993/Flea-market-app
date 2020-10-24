@@ -48,38 +48,55 @@
     #image-box {
       width: 100%;
       height: 100%;
-      background-color: #3CCACE;
-      border: dotted 4px silver;
-      border-radius: 20px;
+      // background-color: #3CCACE;
+      // border: dotted 4px silver;
+      // border-radius: 20px;
       position: relative;
       display: flex;
-      color: #3CCACE;
+      // color: #3CCACE;
     }
-    .js-file_group {
-      width: 100%;
-      height: 100%;
-      // display: none;
-    }
+
     #previews {
       // height: 100%;
       // width: 100%;
+      display: flex;
       position: absolute;
     }
-    .js-file {
-      width: 100%;
-      height: 100%;
-      background-color: #3CCACE;
-      border: dotted 4px silver;
-      border-radius: 20px;
+
+    .js-file_group {
+      display: flex;
+      flex: 1 1 0%;
+      height: 110px;
+      // background-color: #3CCACE;
+      // border: dotted 4px silver;
+      // border-radius: 20px;
       position: relative;
-      color: #3CCACE;
+      // color: #3CCACE;
     }
+    
+    // .js-file {
+      
+    // }
+
+    // .image_area_set {
+      
+    // }
+
+    
     // input {
     //   display: none;
     // }
-    // item_item_imgs_attributes_0_src.js-file {
-    //   display: none;
-    // }
+    #item_item_imgs_attributes_0_src.js-file {
+      display: none;
+      width: 265px;
+      height: 27px;
+    }
+    .Form__icon {
+      color: #3ccace;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+    }
     .upload-label {
       display: block;
       float: left;
