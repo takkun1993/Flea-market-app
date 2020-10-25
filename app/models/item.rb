@@ -6,10 +6,11 @@ class Item < ApplicationRecord
   has_many :favorites
   has_many :item_imgs, dependent: :destroy
   accepts_nested_attributes_for   :item_imgs, allow_destroy: true
-  mount_uploader :src, ImageUploader
-  belongs_to :item, optional: true
-
-  validates :src, presence: true
+  # mount_uploader :src, ImageUploader
+  # belongs_to :item, optional: true
+  # accepts_nested_attributes_for :categories
+  # accepts_nested_attributes_for :brands
+  # validates :src, presence: true
   has_one :user_evaluation
   belongs_to :category
   # belongs_to_active_hash :size
@@ -18,8 +19,8 @@ class Item < ApplicationRecord
   # belongs_to_active_hash :preparation_day
   # belongs_to_active_hash :postage_type
   belongs_to :brand
-  belongs_to :seller, class_name: "User"
-  belongs_to :buyer, class_name: "User"
+  # belongs_to :seller, class_name: "User"
+  # belongs_to :buyer, class_name: "User"
   def self.search(search)
     return Item.all unless search
     Item.where(['name LIKE (?)', "%#{search}%"])
