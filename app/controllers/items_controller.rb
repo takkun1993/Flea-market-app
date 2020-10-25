@@ -53,8 +53,9 @@ class ItemsController < ApplicationController
   # end
   def create
     @item = Item.new(item_params)
+    # binding.pry
     if @item.save
-      redirect_to root_path
+      redirect_to @item
     else
       render :new
     end
@@ -99,7 +100,7 @@ class ItemsController < ApplicationController
   
   private
   def item_params
-    params.require(:item).permit(:name, :introduction, :price, :prefecture_code, :brand_id, :size, :item_condition, :postage_payer, :preparation_day, :postage_type, :category_id, :comment_id, item_imgs_attributes: [:url, :id]).merge(seller_id: 1)
+    params.require(:item).permit( :name, :introduction, :price, :prefecture_code, :brand_id, :size, :item_condition, :postage_payer, :preparation_day, :postage_type, :category_id, :comment_id, item_imgs_attributes: [:src, :id]).merge(seller_id: current_user.id, user_id: current_user.id)
     # params.require(:item).permit(:name, :introduction, :price, :prefecture_code, :brand_id, :pref_id, :size_id, :item_condition_id, :postage_payer_id, :preparation_day_id, :postage_type_id, :category_id, :trading_status, item_imgs_attributes: [:url, :id]).merge(seller_id: current_user.id)
   end
 end

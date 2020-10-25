@@ -86,7 +86,7 @@
         // position: absolute;
       }
         .item-img {
-            // background-image: url(@item.item_img_id);
+          background-image: url(@item);
           background-size: 100%;
           width: 560px;
           height: 346px;

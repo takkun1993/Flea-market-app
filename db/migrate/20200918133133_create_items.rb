@@ -11,7 +11,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :size
       t.integer :preparation_day
       t.integer :postage_type
-      t.references :src
+      t.references :item_img
       t.references :category
       t.references :comment
       # t.enum :trading_status
