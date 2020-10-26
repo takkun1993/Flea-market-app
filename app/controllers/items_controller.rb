@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   def index
+    @items = Item.all
     @category_parent_array = Category.where(ancestry: nil)
   end
 
