@@ -118,51 +118,91 @@
             %h3.title
               新規投稿商品
         .productLists
+
           .productList
-            = link_to '/items/item_detail' do
-              %figure.productList-img
-                = image_tag src="/beef.jpeg", class: 'image__category'
-              .productList-body
-                %h3.product-name
-                  -# test
-                .details
-                  %ul
-                    %li
-                      -# 777円
-                    %li
-                      %i.fa.fa-star
-                  %p
-                    (税込)
+            - if @items
+              - @items.each do |item|
+                = link_to item_path(item.id) do
+                  .item
+                    .gradient
+                    .image
+                      - item.images.first(1).each do |image|
+                        = image_tag image, class: "productList-img"
+                      .price
+                        ¥
+                        = item.price
+                    .detail
+                      = item.name
+            -# = link_to '/items/item_detail' do
+            -#   %figure.productList-img
+            -#     = image_tag src="/beef.jpeg", class: 'image__category'
+            -#   .productList-body
+            -#     %h3.product-name
+            -#       tesrrr
+            -#     .details
+            -#       %ul
+            -#         %li
+            -#           777円
+            -#         %li
+            -#           %i.fa.fa-star
+            -#       %p
+            -#         (税込)
           .productList
-            = link_to '/items/item_detail' do
-              %figure.productList-img
-                = image_tag src="/beef.jpeg", class: 'image__category'
-              .productList-body
-                %h3.product-name
-                  test
-                .details
-                  %ul
-                    %li
-                      190円
-                    %li
-                      %i.fa.fa-star
-                  %p
-                    (税込)
+            - if @items
+              - @items.each do |item|
+                = link_to item_path(item.id) do
+                  .item
+                    .gradient
+                    .image
+                      - item.images.first(1).each do |image|
+                        = image_tag image, class: "productList-img"
+                      .price
+                        ¥
+                        = item.price
+                    .detail
+                      = item.name
+            -# = link_to '/items/item_detail' do
+            -#   %figure.productList-img
+            -#     = image_tag src="/beef.jpeg", class: 'image__category'
+            -#   .productList-body
+            -#     %h3.product-name
+            -#       test
+            -#     .details
+            -#       %ul
+            -#         %li
+            -#           190円
+            -#         %li
+            -#           %i.fa.fa-star
+            -#       %p
+            -#         (税込)
           .productList
-            = link_to '/items/item_detail' do
-              %figure.productList-img
-                = image_tag src="/beef.jpeg", class: 'image__category'
-              .productList-body
-                %h3.product-name
-                  test
-                .details
-                  %ul
-                    %li
-                      1000円
-                    %li
-                      %i.fa.fa-star
-                  %p
-                    (税込)
+            - if @items
+              - @items.each do |item|
+                = link_to item_path(item.id) do
+                  .item
+                    .gradient
+                    .image
+                      - item.images.first(1).each do |image|
+                        = image_tag image, class: "productList-img"
+                      .price
+                        ¥
+                        = item.price
+                    .detail
+                      = item.name
+            -# = link_to '/items/item_detail' do
+            -#   %figure.productList-img
+            -#     = image_tag src="/beef.jpeg", class: 'image__category'
+            -#   .productList-body
+            -#     %h3.product-name
+            -#       test
+            -#     .details
+            -#       %ul
+            -#         %li
+            -#           1000円
+            -#         %li
+            -#           %i.fa.fa-star
+            -#       %p
+            -#         (税込)
 
     .pickup-brand
       %h2.head
