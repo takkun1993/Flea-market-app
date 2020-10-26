@@ -5,11 +5,11 @@
     %ul.my-page-lists
       %li
         .lists-info
-          = link_to "出品する",items_item_exhibition_path
+          = link_to "出品する", new_item_path
         %i.fas.fa-angle-right
       %li
         .lists-info
-          = link_to "出品した商品", items_item_exhibition_path
+          = link_to "出品した商品", new_item_path
         %i.fas.fa-angle-right
       %li
         .lists-info
@@ -35,5 +35,5 @@
               %i.fas.fa-angle-right
       %li.list-setting
         .list-setting__info
-          = link_to "ログアウト",root_path 
+          = link_to "ログアウト", destroy_user_session_path, method: :delete
         %i.fas.fa-angle-right

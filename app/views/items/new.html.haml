@@ -1,0 +1,118 @@
+.header
+  =render 'items/top_page_header'
+
+  .items_new_page
+    .items_register_form
+      = form_with model: @item, html: {class: "items_form"}, local: true do |f|
+        .form_section
+          %label(for="item_img")
+            出品画像
+          %span.form-group__require
+            必須
+          .image-attend
+            クリックで最大10枚まで貼れます。
+          .clearfix
+            .previews_box
+              #image-box
+                #previews
+                  - if @item.persisted?
+                    - @item.item_imgs.each_with_index do |image, i|
+                      = f.label :item_imgs_attributes_0_src, data: { index: i }, width: "100", height: '100'
+                = f.fields_for :item_imgs do |i|
+                  .js-file_group{data: {index:i.index }}
+                    = i.file_field :src, class: 'js-file'
+                    = f.label :item_imgs_attributes_0_src, class: 'Form__inputImage' do
+                      = icon('fas', 'camera', class: 'Form__icon')
+                    %br/
+                    %span.js-remove 削除
+                    
+                    -# = f.file_field :camera, class: 'Hidden'
+                    %br/
+                    -# %span.js-remove 削除
+              
+                  -#   - @item.item_imgs.each_with_index do |image, i|
+                  -#     = f.label :item_imgs_attributes_0_src, class:'image-box', data: { index: i }, width: "100", height: '100'
+                  -# = f.fields_for :item_imgs do |i|
+                  -#   .js-file_group{data: {index:i.index }}
+                  -#     = i.file_field :src, class: 'js-file'
+                  -#     %br/
+                  -#     %span.js-remove 削除
+        .form_section
+          %label(for="name")
+            商品名
+          %span.form-group__require
+            必須
+          %br
+            = f.text_field :name, placeholder: "40文字まで", value: "", class: "input-default"
+          %br/
+          %label(for="introduction")
+            商品の説明
+          %span.form-group__require
+            必須
+          %br
+          = f.text_area :introduction, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）                                                             例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", value: "", class: "input-default"
+          %br/
+          %label(for="category_id")
+            カテゴリー
+          %span.form-group__require
+            必須
+          %br
+          = f.select :category_id, [['---',1], ['レディース',2], ['メンズ',3], ['ベビー・キッズ',4], ['インテリア・住まい・小物',5], ['本・音楽・ゲーム',6], ['おもちゃ・ホビー・グッズ',7], ['コスメ・香水・美容',8], ['家電・スマホ・カメラ',9], ['スポーツ・レジャー',10], ['ハンドメイド',11], ['チケット',12], ['自動車・オートバイ',13], ['その他',14]]
+          %br/
+          %label(for="brand_id")
+            ブランド
+          %span.form-group__require
+            必須
+          %br
+          = f.text_field :brand_id, placeholder: "例）シャネル", value: "", class: "input-default"
+          %br/
+          %label(for="item_condition")
+            商品の状態
+          %span.form-group__require
+            必須
+          %br
+          = f.select :item_condition, [['選択して下さい',1], ['新品、未使用',2], ['未使用に近い',3], ['目立った傷や汚れなし',4], ['やや傷や汚れあり',5], ['傷や汚れあり',6], ['全体的に状態が悪い',7]]
+        .form_section
+          %label(for="postage_payer")
+            配送料の負担
+          %span.form-group__require
+            必須
+          %br
+          = f.select :postage_payer, [['選択してください',1], ['送料込み(出品者負担)',2], ['着払い(購入者負担)',3]]
+          %label(for="prefecture_code")
+            発送元の地域
+          %span.form-group__require
+            必須
+          %br
+          = f.select :prefecture_code, [['選択してください',1], ['北海道',2], ['青森県',3], ['岩手県',4], ['宮城県',5], ['秋田県',6], ['山形県',7], ['福島県',8], ['茨城県',9], ['栃木県',10], ['群馬県',11], ['埼玉県',12], ['千葉県',13], ['東京都',14], ['神奈川県',15], ['新潟県',16], ['富山県',17], ['石川県',18], ['福井県',19], ['山梨県',20], ['長野県',21], ['岐阜県',22], ['静岡県',23], ['愛知県',24], ['三重県',25], ['滋賀県',26], ['京都府',27], ['大阪府',28], ['兵庫県',29], ['奈良県',30], ['和歌山県',31], ['鳥取県',32], ['島根県',33], ['岡山県',34], ['広島県',35], ['山口県',36], ['徳島県',37], ['香川県',38], ['愛媛県',39], ['高知県',40], ['福岡県',41], ['佐賀県',42], ['長崎県',43], ['熊本県',44], ['大分県',45], ['宮崎県',46], ['鹿児島県',47], ['沖縄県',48]]
+          %label(for="preparation_day")
+            発送までの日数
+          %span.form-group__require
+            必須
+          = f.select :preparation_day, [['選択して下さい',1], ['1~2日で発送',2], ['2~3日で発送',3], ['4~7日で発送',4]]
+        .form_section
+          %label(for="price")
+            販売価格
+          %span.form-group__require
+            必須
+          %br
+          .value_register_form
+            ¥
+          = f.text_field :price, placeholder: "1000", value: "", class: "input-default"
+          -# %input(class="value_form" type="number" name="item[price]" id="item_price")/
+          %br/
+          .product_price-fee
+            販売手数料(10%)
+          .product_profit
+            販売利益
+        .form_section
+          .register_btn
+            -# .register_btn__exhibition
+            -#   = link_to '出品する', item_path(@item.id)
+            %input(type="submit" name="commit" value="出品する" class="register_btn__exhibition")/
+        .attentions
+          禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律
+          により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+
+.footer
+  =render 'items/top_page_footer'
