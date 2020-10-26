@@ -2,6 +2,7 @@ class Category < ApplicationRecord
   has_ancestry
   has_many :item_categories, dependent: :destroy
   has_many :items, through: :item_categories
+  
   def set_items
     # 親カテゴリーの場合
     if self.root?
