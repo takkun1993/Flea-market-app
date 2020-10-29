@@ -23,8 +23,14 @@ Rails.application.routes.draw do
   get 'items/top_page_footer'
   get 'items/payment_method'
   get 'items/shipping_address'
-  resources :items
-    resources :comments, only: [:index, :create]
+  resources :items do
+      #Ajaxで動くアクションのルートを作成
+      collection do
+        get 'category_children', defaults: { format: 'json' }
+        get 'category_grandchildren', defaults: { format: 'json' }
+      end
+    end
+  resources :comments, only: [:index, :create]
   # post 'items/edit/:id', to: 'items#update'
   patch 'show_item_path', to: 'items#update'
   get "search" => "items#search"
@@ -32,5 +38,4 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :edit, :update]
   resources :categories
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
-end
+  end
