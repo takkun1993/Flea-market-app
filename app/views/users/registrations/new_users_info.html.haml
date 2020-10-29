@@ -26,3 +26,5 @@
               = f.date_select :birth_day, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1),with_css_classes: true
             .main-profile__member-info__title__input__content2
               = f.submit '次へ', class: 'btn-next' 
+  .new_footer
+    =render 'items/top_page_footer'
