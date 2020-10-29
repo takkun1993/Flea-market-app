@@ -126,8 +126,8 @@
                   .item
                     .gradient
                     .image
-                      - item.images.first(1).each do |image|
-                        = image_tag image, class: "productList-img"
+                      - item.item_imgs.each do |i|
+                        = image_tag item.item_imgs[0].src.url, class: "productList-img" 
                       .price
                         ¥
                         = item.price
@@ -154,8 +154,8 @@
                   .item
                     .gradient
                     .image
-                      - item.images.first(1).each do |image|
-                        = image_tag image, class: "productList-img"
+                      - item.item_imgs.each do |i|
+                        = image_tag item.item_imgs[0].src.url, class: "productList-img"
                       .price
                         ¥
                         = item.price
@@ -182,8 +182,8 @@
                   .item
                     .gradient
                     .image
-                      - item.images.first(1).each do |image|
-                        = image_tag image, class: "productList-img"
+                      - item.item_imgs.each do |i|
+                        = image_tag item.item_imgs[0].src.url, class: "productList-img"
                       .price
                         ¥
                         = item.price
