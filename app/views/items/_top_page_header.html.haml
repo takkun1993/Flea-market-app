@@ -23,9 +23,16 @@
               = link_to "#" do
                 ブランド
         .listsright
-          .listsright_login
-            = link_to "users/sign_in" do
-              ログイン
-            .listsright_new
-              = link_to "users/sign_up" do
-                新規登録
+          - if user_signed_in?
+            .listsright_logout
+              = link_to "ログアウト", destroy_user_session_path, method: :delete
+              .listsright_mypage
+                = link_to "users/index" do
+                  マイページ
+          -else
+            .listsright_login
+              = link_to "users/sign_in" do
+                ログイン
+              .listsright_new
+                = link_to "users/sign_up" do
+                  新規登録

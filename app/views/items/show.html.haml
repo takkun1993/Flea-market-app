@@ -22,6 +22,7 @@
           =@item.name
       .item_detail_main_itembox_body
         .item-img
+          = image_tag @item.item_imgs[0].src.url,size:"620x346"
           %span.more
             = image_tag src="/arrow_top.png"
             .more_lists
@@ -29,9 +30,12 @@
                 = link_to '編集', edit_item_path(@item.id),method: :get
               %h4
                 = link_to '削除', @item,method: :delete
-        %ul.item-img2
-          %li
-            = image_tag @item,size:"140x87"
+        .item-img2
+          - @item.item_imgs.each do |i|
+            = image_tag src, class: "productList-img"
+          -# %li
+          -#   = image_tag @item.item_imgs[0].src.url,size:"140x87"
+          -#   = image_tag @item.item_imgs[1].src.url,size:"140x87"
       .item_detail_main_itembox_price
         %span
           ¥
@@ -53,54 +57,54 @@
               %th
                 出品者
               %td
-                =@item.seller_id
+                =@item.user.nickname
             %tr
               %th
                 カテゴリー
               %td
                 = link_to '#' do
                   %b
-                    =@item.category_id
+                    =@item.category.name
                 %br/
                 = link_to '#' do
                   %b
-                    =@item.category_id
+                    =@item.category.name
                 %br/
                 = link_to '#' do
                   %b
-                    =@item.category_id
+                    =@item.category.name
             %tr
               %th
                 ブランド
               %td
-                =@item.brand_id
+                =@item.brand.name
             %tr
               %th
-                商品のサイズ
+                商品のサイズ : g
               %td
                 =@item.size
             %tr
               %th
                 商品の状態
               %td
-                =@item.item_condition
+                =@item.item_condition.name
             %tr
               %th
                 配送料の負担
               %td
-                =@item.postage_payer
+                =@item.postage_payer.name
             %tr
               %th
                 発送元の地域
               %td
                 = link_to '#' do
                   %b
-                    =@item.prefecture_code
+                    =@item.prefecture_code.name
             %tr
               %th
                 発送日の目安
               %td
-                =@item.preparation_day
+                =@item.preparation_day.name
       .optionalarea
         .optional_likebtn
           %ul
