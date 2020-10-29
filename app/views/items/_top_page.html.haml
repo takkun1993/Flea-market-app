@@ -118,87 +118,33 @@
             %h3.title
               新規投稿商品
         .productLists
-
           .productList
             - if @items
               - @items.each do |item|
                 = link_to item_path(item.id) do
-                  .item
-                    .gradient
-                    .image
-                      - item.images.first(1).each do |image|
-                        = image_tag image, class: "productList-img"
-                      .price
-                        ¥
-                        = item.price
-                    .detail
+                  %figure.ProductList-img
+                    - item.item_imgs.each_with_index do |image, i|
+                      = image_tag "#{image.src}", class: "image__category"
+                  .productList-body
+                    %h3.product-name
                       = item.name
+                    .details
+                      %ul
+                        %li
+                          %i.fa.fa-star
+                      %p
+                        (税込)
+                        = item.price
             -# = link_to '/items/item_detail' do
             -#   %figure.productList-img
             -#     = image_tag src="/beef.jpeg", class: 'image__category'
             -#   .productList-body
             -#     %h3.product-name
-            -#       tesrrr
+            -#       tesrrr  商品の名前
             -#     .details
             -#       %ul
             -#         %li
-            -#           777円
-            -#         %li
-            -#           %i.fa.fa-star
-            -#       %p
-            -#         (税込)
-          .productList
-            - if @items
-              - @items.each do |item|
-                = link_to item_path(item.id) do
-                  .item
-                    .gradient
-                    .image
-                      - item.images.first(1).each do |image|
-                        = image_tag image, class: "productList-img"
-                      .price
-                        ¥
-                        = item.price
-                    .detail
-                      = item.name
-            -# = link_to '/items/item_detail' do
-            -#   %figure.productList-img
-            -#     = image_tag src="/beef.jpeg", class: 'image__category'
-            -#   .productList-body
-            -#     %h3.product-name
-            -#       test
-            -#     .details
-            -#       %ul
-            -#         %li
-            -#           190円
-            -#         %li
-            -#           %i.fa.fa-star
-            -#       %p
-            -#         (税込)
-          .productList
-            - if @items
-              - @items.each do |item|
-                = link_to item_path(item.id) do
-                  .item
-                    .gradient
-                    .image
-                      - item.images.first(1).each do |image|
-                        = image_tag image, class: "productList-img"
-                      .price
-                        ¥
-                        = item.price
-                    .detail
-                      = item.name
-            -# = link_to '/items/item_detail' do
-            -#   %figure.productList-img
-            -#     = image_tag src="/beef.jpeg", class: 'image__category'
-            -#   .productList-body
-            -#     %h3.product-name
-            -#       test
-            -#     .details
-            -#       %ul
-            -#         %li
-            -#           1000円
+            -#           777円（値段）
             -#         %li
             -#           %i.fa.fa-star
             -#       %p
@@ -213,51 +159,38 @@
             %h3.title
               アーカイバ
         .productLists
+
           .productList
-            = link_to '#' do
-              %figure.productList-img
-                = image_tag src="/beef.jpeg", class:"image__category" 
-              .produ.productList-body
-                %h3.product-name
-                  パンダ
-                .details
-                  %ul
-                    %li
-                      800円
-                    %li
-                      %i.fa.fa-star
-                  %p
-                    (税込)
-          .productList
-            = link_to '#' do
-              %figure.productList-img
-                = image_tag src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR0cEqrbWzpZZjQCllmGPJ9JOYiaHXPUapk9seutMlTMy9kce7a&usqp=CAU", class:"image__category"
-              .produ.productList-body
-                %h3.product-name
-                  パンダ
-                .details
-                  %ul
-                    %li
-                      800円
-                    %li
-                      %i.fa.fa-star
-                  %p
-                    (税込)
-          .productList
-            = link_to '#' do
-              %figure.productList-img
-                = image_tag src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR0cEqrbWzpZZjQCllmGPJ9JOYiaHXPUapk9seutMlTMy9kce7a&usqp=CAU", class:"image__category"
-              .produ.productList-body
-                %h3.product-name
-                  パンダ
-                .details
-                  %ul
-                    %li
-                      800円
-                    %li
-                      %i.fa.fa-star
-                  %p
-                    (税込)
+            - if @items
+              - @items.each do |item|
+                = link_to item_path(item.id) do
+                  %figure.productList-img
+                    - item.item_imgs.each_with_index do |image, i|
+                      = image_tag "#{image.src}", class: "image__category"
+                  .produ.productList-body
+                    %h3.product-name
+                      = item.name
+                    .details
+                      %ul
+                        %li
+                          %i.fa.fa-star
+                      %p
+                        (税込)
+                        = item.price
+            -# = link_to '#' do
+            -#   %figure.productList-img
+            -#     = image_tag src="/beef.jpeg", class:"image__category"
+            -#   .produ.productList-body
+            -#     %h3.product-name
+            -#       パンダ
+            -#     .details
+            -#       %ul
+            -#         %li
+            -#           800円
+            -#         %li
+            -#           %i.fa.fa-star
+            -#       %p
+            -#         (税込)
 
 %aside.appBanner__top
   .inner
