@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_28_085757) do
+ActiveRecord::Schema.define(version: 2020_10_22_065036) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -119,9 +119,9 @@ ActiveRecord::Schema.define(version: 2020_10_28_085757) do
     t.bigint "comment_id"
     t.bigint "seller_id"
     t.bigint "buyer_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["category_id"], name: "index_items_on_category_id"
@@ -213,5 +213,4 @@ ActiveRecord::Schema.define(version: 2020_10_28_085757) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "item_imgs", "items"
-  add_foreign_key "items", "users"
 end

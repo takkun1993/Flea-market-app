@@ -5,11 +5,11 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.text :introduction
       t.integer :price
       t.references :brand
-      t.integer :item_condition
-      t.integer :postage_payer
-      t.integer :prefecture_code
+      t.integer :item_condition_id
+      t.integer :postage_payer_id
+      t.integer :prefecture_code_id
       t.integer :size
-      t.integer :preparation_day
+      t.integer :preparation_day_id
       t.integer :postage_type
       t.references :item_img
       t.references :category
@@ -17,6 +17,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       # t.enum :trading_status
       t.references :seller
       t.references :buyer
+      t.references :user
       t.timestamps
     end
   end
