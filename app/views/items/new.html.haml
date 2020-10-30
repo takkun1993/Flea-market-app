@@ -57,7 +57,7 @@
           %span.form-group__require
             必須
           %br
-          = f.collection_select :category_id, Category.roots, :id,:name, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+          = f.collection_select :category_id, Category.roots, :id,:name, {include_blank: "---"}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
           %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
           %br/
           %br

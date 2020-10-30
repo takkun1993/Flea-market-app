@@ -34,8 +34,8 @@ $(function(){
   }
   // 親カテゴリー選択後のイベント
   $('#parent_category').on('change', function(){
+    console.log("parentCategory")
     var parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーの名前を取得
-    console.log(parentCategory)
     if (parentCategory != "---"){ //親カテゴリーが初期値でないことを確認
       $.ajax({
         url: 'category_children',
@@ -44,7 +44,6 @@ $(function(){
         dataType: 'json'
       })
       .done(function(children){
-        console.log(children)
         $('#children_wrapper').remove(); //親が変更された時、子以下を削除するする
         $('#grandchildren_wrapper').remove();
         $('#size_wrapper').remove();
