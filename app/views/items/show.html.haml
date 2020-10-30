@@ -32,7 +32,7 @@
                 = link_to '削除', @item,method: :delete
         .item-img2
           - @item.item_imgs.each do |i|
-            = image_tag @item.item_imgs[0].src.url, class: "itemList-img",size:"140x87"
+            = image_tag i.src.url, class: "itemList-img",size:"140x87"
           -# %li
           -#   = image_tag @item.item_imgs[0].src.url,size:"140x87"
           -#   = image_tag @item.item_imgs[1].src.url,size:"140x87"
@@ -124,7 +124,7 @@
         %ul
           .foom
             = form_with(model: [@comment], local: true) do |form|
-              = form.text_area :text, placeholder: "コメントする", rows: "2"
+              = form.text_area :comment, placeholder: "コメントする", rows: "2"
               .notice_msg
                 %p
                 相手の事を考え丁寧なコメントを心懸けましょう。
