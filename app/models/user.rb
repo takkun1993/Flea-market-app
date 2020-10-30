@@ -5,7 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 
-  validates :nickname ,presence: true, length: { maximum: 20}
+  validates :nickname ,presence: true, length: { maximum: 8}
+  validates :email ,presence: true
+  validates :password,presence: true, length: { maximum: 10}
+  validates :encrypted_password ,presence: true, length: { maximum: 10}
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :todo_lists
