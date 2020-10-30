@@ -7,6 +7,7 @@
       .main__member-info__title__input
         .main__member-info__title__input__content1
           = form_with model: @user, url: user_registration_path,local: true do |f|
+            = render 'devise/shared/error_messages', model: f.object 
             .form-content
               %label.form-content__nickname ニックネーム
               %span.form-group__require 必須
