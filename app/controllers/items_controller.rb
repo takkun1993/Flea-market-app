@@ -41,7 +41,7 @@ class ItemsController < ApplicationController
   def category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     # @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
-    @category_children = Category.find_by("#{params[:parent_id]}", ancestry: nil).children
+    @category_children = Category.find_by("#{params[:parent_id]}").children
   end
 
   # 子カテゴリーが選択された後に動くアクション
