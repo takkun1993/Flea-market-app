@@ -34,13 +34,13 @@ $(function(){
   }
   // 親カテゴリー選択後のイベント
   $('#parent_category').on('change', function(){
-    console.log("ok")
-    var parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーの名前を取得
+    const parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーの名前を取得
+    console.log(parentCategory)
     if (parentCategory != "---"){ //親カテゴリーが初期値でないことを確認
       $.ajax({
         url: 'category_children',
         type: 'GET',
-        data: { parent_name: parentCategory },
+        data: { parent_id: parentCategory },
         dataType: 'json'
       })
       .done(function(children){
@@ -54,7 +54,8 @@ $(function(){
         });
         appendChidrenBox(insertHTML);
       })
-      .fail(function(){
+      .fail(function(children){
+        console.log(childeren)
         alert('カテゴリー取得に失敗しました');
       })
     }else{
