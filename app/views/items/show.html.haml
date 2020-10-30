@@ -24,12 +24,14 @@
         .item-img
           = image_tag @item.item_imgs[0].src.url,size:"620x346"
           %span.more
-            = image_tag src="/arrow_top.png"
-            .more_lists
-              %h3
-                = link_to '編集', edit_item_path(@item.id),method: :get
-              %h4
-                = link_to '削除', @item,method: :delete
+            - if current_user.id == @item.seller_id
+              = image_tag src="/arrow_top.png"
+              .more_lists
+                %h3
+                  = link_to '編集', edit_item_path(@item.id),method: :get
+                %h4
+                  = link_to '削除', @item,method: :delete
+            - else
         .item-img2
           - @item.item_imgs.each do |i|
             = image_tag i.src.url, class: "itemList-img",size:"140x87"
@@ -45,9 +47,13 @@
         %span
           税込）送料込み
       .item_detail_main_itembox_purchase-btn
-        = link_to '/items/item_purchase' do
+        - if current_user.id == @item.seller_id
           %g
-            購入する
+            出品者のため購入出来ません
+        - else
+          = link_to '/items/item_purchase' do
+            %g
+              購入する
       .item_detail_main_itembox_item-detail-comment
         =@item.introduction
       .item_detail_main_itembox_table
