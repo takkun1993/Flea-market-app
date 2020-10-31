@@ -38,4 +38,10 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :edit, :update]
   resources :categories
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :cards, only: [:new, :show, :destroy] do
+    collection do
+      post 'pay', to: 'cards#pay'
+    end
   end
+
+end
