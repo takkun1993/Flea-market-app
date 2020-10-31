@@ -15,9 +15,11 @@ class Item < ApplicationRecord
   has_one :user_evaluation
   belongs_to :category
   # belongs_to_active_hash :size
-  # belongs_to_active_hash :item_condition
-  # belongs_to_active_hash :postage_payer
-  # belongs_to_active_hash :preparation_day
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture_code
+  belongs_to_active_hash :item_condition
+  belongs_to_active_hash :postage_payer
+  belongs_to_active_hash :preparation_day
   # belongs_to_active_hash :postage_type
   belongs_to :brand
   # belongs_to :seller, class_name: "User"

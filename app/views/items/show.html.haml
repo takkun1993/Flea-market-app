@@ -22,16 +22,22 @@
           =@item.name
       .item_detail_main_itembox_body
         .item-img
+          = image_tag @item.item_imgs[0].src.url,size:"620x346"
           %span.more
-            = image_tag src="/arrow_top.png"
-            .more_lists
-              %h3
-                = link_to '編集', edit_item_path(@item.id),method: :get
-              %h4
-                = link_to '削除', @item,method: :delete
-        %ul.item-img2
-          %li
-            = image_tag @item,size:"140x87"
+            - if current_user.id == @item.seller_id
+              = image_tag src="/arrow_top.png"
+              .more_lists
+                %h3
+                  = link_to '編集', edit_item_path(@item.id),method: :get
+                %h4
+                  = link_to '削除', @item,method: :delete
+            - else
+        .item-img2
+          - @item.item_imgs.each do |i|
+            = image_tag i.src.url, class: "itemList-img",size:"140x87"
+          -# %li
+          -#   = image_tag @item.item_imgs[0].src.url,size:"140x87"
+          -#   = image_tag @item.item_imgs[1].src.url,size:"140x87"
       .item_detail_main_itembox_price
         %span
           ¥
@@ -41,9 +47,13 @@
         %span
           税込）送料込み
       .item_detail_main_itembox_purchase-btn
-        = link_to '/items/item_purchase' do
+        - if current_user.id == @item.seller_id
           %g
-            購入する
+            出品者のため購入出来ません
+        - else
+          = link_to '/items/item_purchase' do
+            %g
+              購入する
       .item_detail_main_itembox_item-detail-comment
         =@item.introduction
       .item_detail_main_itembox_table
@@ -53,54 +63,54 @@
               %th
                 出品者
               %td
-                =@item.seller_id
+                =@item.user.nickname
             %tr
               %th
                 カテゴリー
               %td
                 = link_to '#' do
                   %b
-                    =@item.category_id
+                    =@item.category.name
                 %br/
                 = link_to '#' do
                   %b
-                    =@item.category_id
+                    =@item.category.name
                 %br/
                 = link_to '#' do
                   %b
-                    =@item.category_id
+                    =@item.category.name
             %tr
               %th
                 ブランド
               %td
-                =@item.brand_id
+                =@item.brand.name
             %tr
               %th
-                商品のサイズ
+                商品のサイズ : g
               %td
                 =@item.size
             %tr
               %th
                 商品の状態
               %td
-                =@item.item_condition
+                =@item.item_condition.name
             %tr
               %th
                 配送料の負担
               %td
-                =@item.postage_payer
+                =@item.postage_payer.name
             %tr
               %th
                 発送元の地域
               %td
                 = link_to '#' do
                   %b
-                    =@item.prefecture_code
+                    =@item.prefecture_code.name
             %tr
               %th
                 発送日の目安
               %td
-                =@item.preparation_day
+                =@item.preparation_day.name
       .optionalarea
         .optional_likebtn
           %ul
@@ -120,7 +130,7 @@
         %ul
           .foom
             = form_with(model: [@comment], local: true) do |form|
-              = form.text_area :text, placeholder: "コメントする", rows: "2"
+              = form.text_area :comment, placeholder: "コメントする", rows: "2"
               .notice_msg
                 %p
                 相手の事を考え丁寧なコメントを心懸けましょう。

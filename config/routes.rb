@@ -23,8 +23,14 @@ Rails.application.routes.draw do
   get 'items/top_page_footer'
   get 'items/payment_method'
   get 'items/shipping_address'
-  resources :items
-    resources :comments, only: [:index, :create]
+  resources :items do
+      #Ajaxで動くアクションのルートを作成
+      collection do
+        get 'category_children', defaults: { format: 'json' }
+        get 'category_grandchildren', defaults: { format: 'json' }
+      end
+    end
+  resources :comments, only: [:index, :create]
   # post 'items/edit/:id', to: 'items#update'
   patch 'show_item_path', to: 'items#update'
   get "search" => "items#search"

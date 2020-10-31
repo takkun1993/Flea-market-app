@@ -6,7 +6,8 @@
       %h2.main-profile__member-info__title 会員情報入力
       .main-profile__member-info__title__input
         .main-profile__member-info__title__input__content1
-          = form_with url: profiles_path,local: true do |f|
+          = form_with model: @profile, url: profiles_path,local: true do |f|
+            = render 'devise/shared/error_messages', model: f.object
             .profile-content1
               %label.profile-content__name お名前
               %span.form-group__require 必須
@@ -26,3 +27,5 @@
               = f.date_select :birth_day, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1),with_css_classes: true
             .main-profile__member-info__title__input__content2
               = f.submit '次へ', class: 'btn-next' 
+  .new_footer
+    =render 'items/top_page_footer'

@@ -6,41 +6,48 @@ class ItemsController < ApplicationController
     @items_brand = Item.where("buyer_id IS NULL AND  trading_status = 0 AND brand_id = 1").order(created_at: "DESC")
   end
 
-  def get_category_children
-    respond_to do |format|
-      format.html
-      format.json do
-        @children = Category.find(params[:parent_id]).children
-      end
-    end
-  end
+  # def get_category_children
+  #   respond_to do |format|
+  #     format.html
+  #     format.json do
+  #       @children = Category.find(params[:parent_id]).children
+  #     end
+  #   end
+  # end
 
-  def get_category_grandchildren
-    respond_to do |format|
-      format.html
-      format.json do
-        @grandchildren = Category.find("#{params[:child_id]}").children
-      end
-    end
-    @items = Item.all
-  end
+  # def get_category_grandchildren
+  #   respond_to do |format|
+  #     format.html
+  #     format.json do
+  #       @grandchildren = Category.find("#{params[:child_id]}").children
+  #     end
+  #   end
+  #   @items = Item.all
+  # end
 
   def new
     @item = Item.new
     @item.item_imgs.new
-    @category_parent = Category.where(ancestry: nil)
-      # 親カテゴリーが選択された後に動くアクション
-    def get_category_child
-      @category_child = Category.find("#{params[:parent_id]}").children
-      render json: @category_child
-      #親カテゴリーに紐付く子カテゴリーを取得
+    #セレクトボックスの初期値設定
+    @category_parent_array = ["---"]
+    #データベースから、親カテゴリーのみ抽出し、配列化
+    Category.where(ancestry: nil).each do |parent|
+    @category_parent_array << parent.name
     end
-      # 子カテゴリーが選択された後に動くアクション
-    def get_category_grandchild
-      @category_grandchild = Category.find("#{params[:child_id]}").children
-      render json: @category_grandchild
-      #子カテゴリーに紐付く孫カテゴリーの配列を取得
-    end
+  end
+    
+  # 以下全て、formatはjsonのみ
+  # 親カテゴリーが選択された後に動くアクション
+  def category_children
+    #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
+    # @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+    @category_children = Category.find_by("#{params[:parent_id]}").children
+  end
+
+  # 子カテゴリーが選択された後に動くアクション
+  def category_grandchildren
+    #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
   
   # def create
@@ -101,7 +108,7 @@ class ItemsController < ApplicationController
   
   private
   def item_params
-    params.require(:item).permit( :name, :introduction, :price, :prefecture_code, :brand_id, :size, :item_condition, :postage_payer, :preparation_day, :postage_type, :category_id, :comment_id, item_imgs_attributes: [:src, :id]).merge(seller_id: current_user.id, user_id: current_user.id)
+    params.require(:item).permit( :name, :introduction, :price, :prefecture_code_id, :brand_id, :size, :item_condition_id, :postage_payer_id, :preparation_day_id, :postage_type_id, :category_id, :comment_id, item_imgs_attributes: [:src, :id]).merge(seller_id: current_user.id, user_id: current_user.id)
     # params.require(:item).permit(:name, :introduction, :price, :prefecture_code, :brand_id, :pref_id, :size_id, :item_condition_id, :postage_payer_id, :preparation_day_id, :postage_type_id, :category_id, :trading_status, item_imgs_attributes: [:url, :id]).merge(seller_id: current_user.id)
   end
 end

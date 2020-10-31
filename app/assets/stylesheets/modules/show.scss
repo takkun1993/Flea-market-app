@@ -78,27 +78,27 @@
       }
 
       .item_detail_main_itembox_body {
-        display: flex;
+        display: block;
         width: 620px;
         height: 443px;
         margin-top: 76px;
         // justify-content: center;
         // position: absolute;
-      }
+      
         .item-img {
-          background-image: url(@item);
-          background-size: 100%;
-          width: 560px;
+          // background-image: url(@item);
+          // background-size: 100%;
+          width: 100%;
           height: 346px;
           display: flex;
           flex-direction: column;
           justify-content: right;
-          position: absolute;
+          position: relative;
 
           .more {
             width: 50px;
             height: 20px;
-            background-color: #3CCACE;
+            position: absolute;
           
             .more_lists {
               display: block;
@@ -116,34 +116,26 @@
               }
               
 
-                a {
-                  color: white;
-                  background-color: #3CCACE;
-                }
+              a {
+                color: white;
+                background-color: #3CCACE;
+              }
               
             }
           }
         }
-          .item-img2 {
-              display: flex;
-              width: 560px;
-              height: 87px;
-              justify-content: center;
-              position: relative;
-              margin-top: 190px;
-              
+        .item-img2 {
+          display: flex;
+          width: 100%;
+          height: 87px;
+          justify-content: center;
+          // margin-top: 190px;
 
-            li {
-                display: flex;
-                flex-direction: column;
-                width: 140px;
-                height: 87px;
-                align-items: center;
-                position: absolute;
-                margin-top: 160px;
-            }
+          .itemList-img {
+            display: flex;
           }
-      
+        }
+      }
 
         .item_detail_main_itembox_price {
           width: 620px;
@@ -169,7 +161,7 @@
         }
 
         .item_detail_main_itembox_purchase-btn {
-          width: 200px;
+          width: 250px;
           height: 0px;
           display: block;
           position: absolute;
@@ -324,7 +316,7 @@
           display: flex
         }
 
-          #comment_text {
+          #comment_comment {
             display: flex;
             width: 648px;
             height: 104px;

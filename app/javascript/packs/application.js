@@ -12,6 +12,7 @@ require("../category-ajax")
 require("../items")
 require("../payjp")
 
+require("../category")
 //= require jquery_ujs
 //= require_tree .
 
