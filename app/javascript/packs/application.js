@@ -10,6 +10,7 @@ require("channels")
 require("jquery")
 require("../category-ajax")
 require("../items")
+require("../payjp")
 
 //= require jquery_ujs
 //= require_tree .
