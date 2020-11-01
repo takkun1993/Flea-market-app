@@ -35,14 +35,15 @@ document.addEventListener('turbolinks:load', function () {
     const html = `<div data-index="${index}" class="js-file_group">
                     <input class="js-file" type="file"
                     name="item[item_imgs_attributes][${index}][src]"
-                    id="item_imgs_attributes_${index}_src"><br>
-                    <div class="js-remove">削除</div>
+                    id="item_imgs_attributes_${index}_src">
                   </div>`;
     return html;
   }
   // プレビュー用のimgタグを生成する関数
   const buildImg = (index, url)=> {
-    const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
+    const html = `<img data-index="${index}" src="${url}" width="100px" height="100px"><br>
+                  <i class="fas fa-camera"></i>
+                  <div class="js-remove">削除</div>`;
     return html;
   }
 
@@ -87,4 +88,13 @@ document.addEventListener('turbolinks:load', function () {
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   });
+
+  // $('#FileField').on('change'{
+  //   const FileField = $(index:i.index);
+  //   if (fas fa-camera) fas fa-camera.prop('click');
+  // });
 });
+
+// ファイルフィールドが変化した時というイベントを設定
+// ファイルフィールドのカスタムデータ属性をJSで取得
+// カメラアイコンをクリックした時に該当するファイルフィールドが選択されたようにする
