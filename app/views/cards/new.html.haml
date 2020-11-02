@@ -1,38 +1,27 @@
--# = render "card-make-header"
--# = render "card-make"
-.header_card
-  .header__logo
-    = link_to '/' do
-      =image_tag "/assets/furima.png", width:"220", height:"70"
-  .title
-    .title__contents
+=render 'items/top_page_header'
+.credit_cards-new
+  .credit_cards-new__wrapper
+    .credit_cards-new__wrapper__title
       クレジット入力画面
-  .main-form
-    .main-form__frame
+    .credit_cards-new__wrapper__form
       = form_tag(pay_cards_path, method: :post, id: 'charge-form', name: "inputForm" ) do
-        .form-group
+        .credit_cards-new__wrapper__form__cardnumber
           %label カード番号
-          %span.form-group__require 必須
+          %span 必須
           = text_field_tag "number", "", class: "number", placeholder: "半角数字のみ", maxlength: "16", type: "text", id: "card_number"
-          %ul.signup-card-list
-            %li
-              = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?238737266", width:"49px",height:"20px"
-            %li 
-              = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?238737266", width:"34px",height:"20px"
-            %li
-              = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?238737266",width:"30px",height:"20px"
-            %li 
-              = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?238737266",width:"32px",height:"20px"
-            %li 
-              = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?238737266",width:"21px",height:"20px"
-            %li 
-              = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?238737266",width:"32px",height:"20px"
-            %li
-              = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/discover.svg?238737266",width:"32px",height:"20px"
-        .form-group
           %br
+        .credit_cards-new__wrapper__form__logos
+          = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?238737266", width:"49px",height:"20px" 
+          = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?238737266", width:"34px",height:"20px"
+          = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?238737266",width:"30px",height:"20px" 
+          = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?238737266",width:"32px",height:"20px" 
+          = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?238737266",width:"21px",height:"20px" 
+          = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?238737266",width:"32px",height:"20px"
+          = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/discover.svg?238737266",width:"32px",height:"20px"
+        .credit_cards-new__wrapper__form__expiration-desc
           %label 有効期限
-          .require 必須/月
+          %span 必須
+        .credit_cards-new__wrapper__form__expiration-date
           %select#exp_month{name: "exp_month", type: "text"}
             %option{value: ""} --
             %option{value: "1"}01
@@ -47,7 +36,7 @@
             %option{value: "10"}10
             %option{value: "11"}11
             %option{value: "12"}12
-          %span 年
+          %p 月
           %select#exp_year{name: "exp_year", type: "text"}
             %option{value: ""} --
             %option{value: "2019"}19
@@ -61,19 +50,67 @@
             %option{value: "2027"}27
             %option{value: "2028"}28
             %option{value: "2029"}29
-          %span 
-        .form-group      
-          %br
-          %br
+          %p 年
+          %br 
+        .credit_cards-new__wrapper__form__cvc
           %label セキュリティコード
-          .form-group__require 必須
-          = text_field_tag "cvc", "", class: "form-group__input", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
-          %br
-        .form-group__add
-        .form-group__add__question?
-        %p.form-group__text--right--blue
-          カードの裏面の番号とは?
-        .form-group
+          %span 必須
+          = text_field_tag "cvc", "", class: "form-group__input", placeholder: "カード背面3桁または4桁の番号", maxlength: "4", id: "cvc"
           #card_token
-          %br
+        .credit_cards-new__wrapper__form__submit
           = submit_tag "登録する", id: "token_submit", class:'btn--red'
+.wrapper
+  .app_banner__banner
+    %section.app_banner__banner__image
+    .app_banner__banner__inner
+      %h2.app_banner__banner__inner--title
+        だれでも簡単、人生を変えるフリマアプリ
+      %p.app_banner__banner__inner--text
+        今すぐ無料ダウンロード
+      .app_banner__banner__inner--icon
+        = link_to "#", class: "app_banner__banner__inner--icon" do
+          = image_tag "/app-store.svg",class: "appBtn"
+        = link_to "#", class: "app_banner__banner__inner--icon" do
+          = image_tag "/google-play.svg",class: "googleBtn"
+  .footer
+    .contents
+      .content_main
+        .content_head
+        %h2
+          FURIMAについて
+          %ul
+            %li
+              = link_to "会社概要（運営会社）","#"
+            %li
+              = link_to "プライバシーポリシー","#"
+            %li
+              = link_to "FURIMA利用規約","#"
+            %li
+              = link_to "ポイントに関する特約","#"
+      .content_main
+        .content_head
+        %h2
+          FURIMAを見る
+          %ul
+            %li
+              = link_to "カテゴリー一覧","#"
+            %li
+              = link_to "ブランド一覧"
+      .content_main
+        .content_head
+        %h2
+          ヘルプ＆ガイド
+          %ul
+            %li
+              = link_to "FURIMAガイド","#"
+            %li
+              = link_to "FURIMAロゴ利用ガイドライン","#"
+            %li
+              = link_to "お知らせ","#"
+    .footer_logo
+      = link_to '#' do
+        %p
+          = image_tag src="/logo-white.png",size:"185x49"
+          .footer_company_name
+            %h3
+              © FURIMA, Inc.
