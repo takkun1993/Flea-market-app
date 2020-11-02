@@ -35,7 +35,13 @@ Rails.application.routes.draw do
   patch 'show_item_path', to: 'items#update'
   get "search" => "items#search"
   # get 'show_item_path', to: 'items#show'
-  resources :users, only: [:index, :edit, :update]
+  # resources :users, only: [:index, :edit, :update]
+  resources :users, only: [:index, :edit, :update] do
+    collection do
+      get :complete
+    end
+  end
+  
   resources :categories
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :cards, only: [:new, :show, :destroy] do
