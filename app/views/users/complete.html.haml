@@ -1,0 +1,69 @@
+=render 'items/top_page_header'
+.users-complete
+  .users-complete__wrapper
+    .users-complete__wrapper__nav
+      ユーザー登録が完了しました。
+    .users-complete__wrapper__links
+      .users-complete__wrapper__links__newcard
+        .users-complete__wrapper__links__newcard__button
+          = link_to "クレジットカード登録（任意）", new_card_path
+        .users-complete__wrapper__links__newcard__desc
+          %p ※カードはご購入時に必要です。
+      .users-complete__wrapper__links__mypage
+        .users-complete__wrapper__links__mypage__button
+          = link_to "マイページ", users_path(current_user)
+.wrapper
+  .app_banner__banner
+    %section.app_banner__banner__image
+    .app_banner__banner__inner
+      %h2.app_banner__banner__inner--title
+        だれでも簡単、人生を変えるフリマアプリ
+      %p.app_banner__banner__inner--text
+        今すぐ無料ダウンロード
+      .app_banner__banner__inner--icon
+        = link_to "#", class: "app_banner__banner__inner--icon" do
+          = image_tag "/app-store.svg",class: "appBtn"
+        = link_to "#", class: "app_banner__banner__inner--icon" do
+          = image_tag "/google-play.svg",class: "googleBtn"
+  .footer
+    .contents
+      .content_main
+        .content_head
+        %h2
+          FURIMAについて
+          %ul
+            %li
+              = link_to "会社概要（運営会社）","#"
+            %li
+              = link_to "プライバシーポリシー","#"
+            %li
+              = link_to "FURIMA利用規約","#"
+            %li
+              = link_to "ポイントに関する特約","#"
+      .content_main
+        .content_head
+        %h2
+          FURIMAを見る
+          %ul
+            %li
+              = link_to "カテゴリー一覧","#"
+            %li
+              = link_to "ブランド一覧"
+      .content_main
+        .content_head
+        %h2
+          ヘルプ＆ガイド
+          %ul
+            %li
+              = link_to "FURIMAガイド","#"
+            %li
+              = link_to "FURIMAロゴ利用ガイドライン","#"
+            %li
+              = link_to "お知らせ","#"
+    .footer_logo
+      = link_to '#' do
+        %p
+          = image_tag src="/logo-white.png",size:"185x49"
+          .footer_company_name
+            %h3
+              © FURIMA, Inc.

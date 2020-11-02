@@ -16,7 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new and return
     end
     session["devise.regist_data"] = {user: @user.attributes}
-    session["devise.regist_data"][:user]["password"] = params[:user][:password]
+    session["devise.regist_data"][:user][:password] = params[:user][:password]
     @profile = @user.build_profile
     render action: :new_users_info
     # redirect_to profiles_path
@@ -54,7 +54,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.save
     session["devise.regist_data"].clear
     sign_in(:user, @user)
-    redirect_to root_path
+    redirect_to complete_users_path
+    # redirect_to root_path
   end
 
   private
