@@ -27,12 +27,12 @@
             .listsright_logout
               = link_to "ログアウト", destroy_user_session_path, method: :delete
               .listsright_mypage
-                = link_to "users/index" do
+                = link_to users_path do
                   マイページ
           -else
             .listsright_login
-              = link_to "users/sign_in" do
+              = link_to new_user_session_path do
                 ログイン
               .listsright_new
-                = link_to "users/sign_up" do
+                = link_to new_user_registration_path do
                   新規登録
