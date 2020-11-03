@@ -6,25 +6,6 @@ class ItemsController < ApplicationController
     @items_brand = Item.where("buyer_id IS NULL AND  trading_status = 0 AND brand_id = 1").order(created_at: "DESC")
   end
 
-  # def get_category_children
-  #   respond_to do |format|
-  #     format.html
-  #     format.json do
-  #       @children = Category.find(params[:parent_id]).children
-  #     end
-  #   end
-  # end
-
-  # def get_category_grandchildren
-  #   respond_to do |format|
-  #     format.html
-  #     format.json do
-  #       @grandchildren = Category.find("#{params[:child_id]}").children
-  #     end
-  #   end
-  #   @items = Item.all
-  # end
-
   def new
     @item = Item.new
     @item.item_imgs.new
@@ -50,18 +31,8 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
   
-  # def create
-  #   @item = Item.new(item_params)
-  #   if @item.save
-  #     redirect_to  post_done_items_path
-  #   else
-  #     @item.item_imgs.new
-  #     render :new
-  #   end
-  # end
   def create
     @item = Item.new(item_params)
-    # binding.pry
     if @item.save
       redirect_to @item
     else
@@ -81,9 +52,7 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    # binding.pry
     if @item.update!(item_params)
-      # redirect_to item_path(@item)
       redirect_to item_path(@item)
     end
   end
@@ -114,6 +83,5 @@ class ItemsController < ApplicationController
   private
   def item_params
     params.require(:item).permit( :name, :introduction, :price, :prefecture_code_id, :brand_id, :size, :item_condition_id, :postage_payer_id, :preparation_day_id, :postage_type_id, :category_id, :comment_id, item_imgs_attributes: [:src, :id]).merge(seller_id: current_user.id, user_id: current_user.id)
-    # params.require(:item).permit(:name, :introduction, :price, :prefecture_code, :brand_id, :pref_id, :size_id, :item_condition_id, :postage_payer_id, :preparation_day_id, :postage_type_id, :category_id, :trading_status, item_imgs_attributes: [:url, :id]).merge(seller_id: current_user.id)
   end
 end

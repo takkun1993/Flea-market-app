@@ -110,7 +110,6 @@
           .value_register_form
             ¥
           = f.text_field :price, placeholder: "1000", value: "", class: "input-default"
-          -# %input(class="value_form" type="number" name="item[price]" id="item_price")/
           %br/
           .product_price-fee
             販売手数料(10%)
@@ -118,8 +117,6 @@
             販売利益
         .form_section
           .register_btn
-            -# .register_btn__exhibition
-            -#   = link_to '出品する', item_path(@item.id)
             %input(type="submit" name="commit" value="出品する" class="register_btn__exhibition")/
         .attentions
           禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律

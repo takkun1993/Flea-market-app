@@ -17,7 +17,6 @@
                 #previews
                   - if @item.persisted?
                     - @item.item_imgs.each_with_index do |image, i|
-                      -# = f.label :item_imgs_attributes_0_src, data: { index: i }, width: "100", height: '100'
                       = image_tag image.src.url, width: "100", height: '100'
                 = f.fields_for :item_imgs do |i|
                   .js-file_group{data: {index:i.index }}
@@ -118,7 +117,6 @@
           .value_register_form
             ¥
           = f.text_field :price, placeholder: "1000", class: "input-default"
-          -# %input(class="value_form" type="number" name="item[price]" id="item_price")/
           %br/
           .product_price-fee
             販売手数料(10%)
@@ -127,8 +125,8 @@
           .form_section
             .register_btn
               .register_btn_edit
-                -# = link_to '編集を完了する'#, @item,method: :patch
-                = f.submit '編集を完了する'#, @item,method: :patch
+                
+                = f.submit '編集を完了する'
         .attentions
           禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律
           により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
