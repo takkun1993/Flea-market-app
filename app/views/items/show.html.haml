@@ -35,9 +35,6 @@
         .item-img2
           - @item.item_imgs.each do |i|
             = image_tag i.src.url, class: "itemList-img",size:"140x87"
-          -# %li
-          -#   = image_tag @item.item_imgs[0].src.url,size:"140x87"
-          -#   = image_tag @item.item_imgs[1].src.url,size:"140x87"
       .item_detail_main_itembox_price
         %span
           ¥
@@ -70,11 +67,11 @@
               %td
                 = link_to '#' do
                   %b
-                    =@item.category.name
+                    =@item.category.root.name
                 %br/
                 = link_to '#' do
                   %b
-                    =@item.category.name
+                    =@item.category.parent.name
                 %br/
                 = link_to '#' do
                   %b
@@ -148,10 +145,7 @@
                   = link_to comment.user.nickname, "/users/#{comment.user_id}"
                   ：
                 = comment.comment
-          -# %p
-          -# testuser : テストテストテストテストテスト
-          -# %br
-          -# テストユーザー : テストテストテストテストテスト
+          
 .appBanner
   .inner
     .inner_title

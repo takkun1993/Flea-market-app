@@ -112,6 +112,19 @@
     }
   }
 }
+.form_section {
+  
+  textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height: 150px;
+    margin: 0;
+    outline: none;
+    padding: 0 16px;
+  }
+}
   input,
   select {
     width: 100%;
@@ -124,16 +137,6 @@
     padding: 0 16px;
   
 
-    textarea {
-      width: 100%;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-      height: 150px;
-      margin: 0;
-      outline: none;
-      padding: 0 16px;
-    }
     
     .image-attend {
       margin: 10px;
