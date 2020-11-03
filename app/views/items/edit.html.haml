@@ -3,7 +3,7 @@
 
   .items_new_page
     .items_register_form
-      = form_with model: @item, html: {class: "items_form"}, local: true do |f|
+      = form_with model: @item,  html: {class: "items_form"}, local: true do |f|
         .form_section
           %label(for="item_img")
             出品画像
@@ -17,7 +17,8 @@
                 #previews
                   - if @item.persisted?
                     - @item.item_imgs.each_with_index do |image, i|
-                      = f.label :item_imgs_attributes_0_src, data: { index: i }, width: "100", height: '100'
+                      -# = f.label :item_imgs_attributes_0_src, data: { index: i }, width: "100", height: '100'
+                      = image_tag image.src.url, width: "100", height: '100'
                 = f.fields_for :item_imgs do |i|
                   .js-file_group{data: {index:i.index }}
                     = i.file_field :src, class: 'js-file'
@@ -57,11 +58,17 @@
           %span.form-group__require
             必須
           %br
-          = f.collection_select :category_id, Category.roots, :id,:name, {include_blank: "---"}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+          = f.collection_select :category_id, Category.roots, :id,:name, {include_blank: "---" ,class: 'listing-select-wrapper__box--select', id: 'parent_category',selected: @item.category.root_id}
           %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
           %br/
-          %br
           .listing-product-detail__category
+          %br/
+
+          = f.collection_select :category_id, @item.category.parent.siblings, :id,:name, {include_blank: "---" ,class: 'listing-select-wrapper__box--select', id: 'parent_category',selected: @item.category.parent.id}
+          %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
+          %br/
+          = f.collection_select :category_id, @item.category.siblings, :id,:name, {include_blank: "---" ,class: 'listing-select-wrapper__box--select', id: 'parent_category',selected: @item.category.id}
+          %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
           %br/
           %label(for="brand_id")
             ブランド
@@ -120,7 +127,8 @@
           .form_section
             .register_btn
               .register_btn_edit
-                = link_to '編集を完了する', @item,method: :patch
+                -# = link_to '編集を完了する'#, @item,method: :patch
+                = f.submit '編集を完了する'#, @item,method: :patch
         .attentions
           禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律
           により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
