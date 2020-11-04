@@ -10,7 +10,7 @@
         -# - elsif @category.has_children?
         - breadcrumb :child_category
         -# - else
-        - breadcrumb :grandchild_category
+        - breadcrumb :grandchild_category, @item
         = breadcrumbs separator: " &rsaquo; ", class: "breadcrumbs-list"
       
 
