@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:index, :create]
   # post 'items/edit/:id', to: 'items#update'
   patch 'show_item_path', to: 'items#update'
-  get "search" => "items#search"
+  get "search" => "items#index"
   # get 'show_item_path', to: 'items#show'
   # resources :users, only: [:index, :edit, :update]
   resources :users, only: [:index, :edit, :update] do
