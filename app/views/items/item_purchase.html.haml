@@ -11,7 +11,7 @@
       .item_purchase_main_box_area_itemInfo
         .item_purchase_main_box_area_itemInfo_box
           .item_img
-            = image_tag src="/beef.jpg",size:"80x80"
+            = image_tag @item.item_imgs[0].src.url,size:"80x80"
           .item_info_box
             .item_name
               %h1
