@@ -16,7 +16,7 @@
 
   .item_purchase_main_box {
     width: 700px;
-    height: 795px;
+    height: 900px;
     background-color: white;
     margin: 0 auto;
   }
@@ -147,23 +147,25 @@
   }
 
   .item_purchase_main_box_area_payment_method {
-    width: 343px;
-    height: 46px;
-    margin: 0 auto;
-    padding: 32px 16px;
-    vertical-align: baseline;
-    border-bottom: 1px solid rgb(245, 245, 245);
+    padding: 32px 0;
+    text-align: left;
   }
 
   .payment_method_title {
-    font-size: 14px;
+    max-width: 343px;
+    margin: 0 auto;
+    padding: 0;
   }
 
   .payment_method_registration {
+    line-height: 1.5;
+    text-align: left;
+    margin: 8px 0 0;
     font-size: 14px;
-    color: rgb(0, 149, 238);
-    justify-content: center;
-    padding: 0 100px;
+  }
+
+  .products-purchase-buy-card-logo {
+    margin: 8px 0 0;
   }
 
   h3 {
@@ -172,22 +174,39 @@
   }
 
   .item_purchase_main_box_area_shipping_address {
-    width: 343px;
-    height: 46px;
-    margin: 0 auto;
-    padding: 32px 16px;
-    vertical-align: baseline;
-    border-bottom: 1px solid rgb(245, 245, 245);
+    // width: 343px;
+    // height: 46px;
+    // margin: 0 auto;
+    padding: 32px 180px;
+    text-align: left;
+    // vertical-align: baseline;
+    // border-bottom: 1px solid rgb(245, 245, 245);
   }
 
   .shipping_address_title {
-    font-size: 14px;
+    // font-size: 14px;
+    padding: 0;
+    margin: 0;
+    // float: left;
+    // font-weight: 600;
+    max-width: 343px;
   }
+
+  .shipping_address_title_data {
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+    float: left;
+    font-weight: 600;
+  }
+
+
 
   .shipping_address_registration {
     font-size: 14px;
-    color: rgb(0, 149, 238);
-    padding: 0 100px;
+    margin: 8px 0 0;
+    line-height: 1.5;
+    text-align: left;
   }
 
   .item_purchase_main_box_area_purchase_area {
@@ -207,8 +226,8 @@
   .purchase_btn {
     height: 30px;
     border-radius: 4px;
-    background-color: #cccccc;
-    color: #888888;
+    background: #3CCACE;
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -224,6 +243,7 @@
     width: 100vw;
     height: 50px;
     background-color: #f8f8f8;
+    margin-bottom: 50px;
   }
 
   .item_purchase_footer {

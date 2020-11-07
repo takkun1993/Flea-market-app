@@ -11,11 +11,11 @@
       .item_purchase_main_box_area_itemInfo
         .item_purchase_main_box_area_itemInfo_box
           .item_img
-            = image_tag src="/beef.jpg",size:"80x80"
+            = image_tag @item.item_imgs[0].src.url,size:"80x80"
           .item_info_box
             .item_name
               %h1
-                神戸牛ヒレステーキ200g
+                =@item.name
                 .item_price
                   %p
                     .postage
@@ -23,7 +23,8 @@
                         送料込み（税込）
                     .price
                       %span
-                        ¥10000
+                        ￥
+                        =@item.price.to_s(:delimited)
       .item_purchase_main_box_area_payment_amount
         .payment_amount
           .payment_amount_title
@@ -31,7 +32,8 @@
               支払い金額
           .payment_amount_price
             %span
-              ¥10000
+              ¥
+              =@item.price.to_s(:delimited)
         .point_area
           = image_tag src="/logo.png",size:"48x14"
           .point_area2
@@ -42,26 +44,55 @@
                 所持ポイント：P0
       .item_purchase_main_box_area_payment_method
         .payment_method_title
-          支払い方法
-        .payment_method_registration
-          = link_to new_card_path do
-            %h3
-              登録してください
+          .payment_method_title-left
+            支払い方法
+          .payment_method_registration
+            - if @card
+              %br/
+              クレジットカード
+              %br/
+              = "**** **** **** " + @creditcard_information[:last4]
+              %br/
+              - mm = @creditcard_information.exp_month.to_s
+              - yy = @creditcard_information.exp_year.to_s.slice(2,3)
+              = mm + " / " + yy
+              %figure.products-purchase-buy-card-logo
+              = image_tag "logo/#{@card_src}", height: '33', width: '46', alt: @card_brand, id: "card_image"
+            - else
+              = link_to new_card_path do
+                %h3
+                  登録してください
       .item_purchase_main_box_area_shipping_address
         .shipping_address_title
-          配送先
+          .shipping_address_title_data
+            配送先
         .shipping_address_registration
-          = link_to items_shipping_address_path do
-            %h3
-              登録してください
+          %p
+            %br
+            =@user.sending_destination.post_code
+            %br
+            =@user.sending_destination.prefecture_code
+            %br
+            =@user.sending_destination.city
+            =@user.sending_destination.house_number
+            =@user.sending_destination.building_name
+            %br
+            =@user.sending_destination.phone_number
+            %br
+            =@user.sending_destination.family_name
+            =@user.sending_destination.first_name
+
+          -# = link_to items_shipping_address_path do
+          -#   %h3
+          -#     登録してください
       .item_purchase_main_box_area_purchase_area
         .purchase_area
-          %h4
-            配送先と支払い方法の入力を完了してください。
-            .purchase_btn
-              = link_to '#' do
-                %h5
-                  購入する
+          .purchase_btn
+            = form_tag(action: :pay, method: :post) do
+              %button.buy-button{type:"submit"} 購入する
+              -# = link_to '#' do
+              -#   %h5
+              -#     購入する
   .item_purchase_space
   .item_purchase_footer
     .precautions

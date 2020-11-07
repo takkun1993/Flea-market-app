@@ -79,6 +79,45 @@ class ItemsController < ApplicationController
       @items = Item.order(sort)
     end
   end
+
+  def purchase
+    @user = current_user
+    @creditcard = Card.where(user_id: current_user.id).first
+    @item = Item.find(params[:id])
+    user = User.find(params[:id])
+    @card = user.card
+    Payjp.api_key = Rails.application.credentials[:PAYJP_PRIVATE_KEY]
+    customer = Payjp::Customer.retrieve(@creditcard.customer_id)
+    @creditcard_information = customer.cards.first
+    @card_brand = @creditcard_information.brand 
+    case @card_brand
+    when "Visa"
+      @card_src = "visa.gif"
+    when "JCB"
+      @card_src = "jcb.gif"
+    when "MasterCard"
+      @card_src = "master.png"
+    when "American Express"
+      @card_src = "amex.gif"
+    when "Diners Club"
+      @card_src = "diners.gif"
+    when "Discover"
+      @card_src = "discover.gif"
+    end
+  end
+
+  def pay
+    @item = Item.find(params[:id])
+    user = User.find(params[:id])
+    @card = user.card
+    Payjp.api_key = Rails.application.credentials[:PAYJP_PRIVATE_KEY]
+    Payjp::Charge.create(
+      :amount => @item.price,
+      :customer => @card.customer_id,
+      :currency => 'jpy',
+    )
+    redirect_to root_path #??
+  end
   
   private
   def item_params
