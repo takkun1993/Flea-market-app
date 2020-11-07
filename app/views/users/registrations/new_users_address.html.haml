@@ -29,7 +29,7 @@
               %label.sending-content__prefectures 都道府県
               %span.form-group__require 必須
               %br
-              = f.text_field :prefecture_code, class: 'sending-municipalities-text', placeholder: '例）大阪府'
+              = f.collection_select :prefecture_code_id, PrefectureCode.all, :id, :name, {include_blank: "選択して下さい"}, {class: "sending-address-text"}
             .sending-content5
               %label.sending-content__municipalities 市町村
               %span.form-group__require 必須
