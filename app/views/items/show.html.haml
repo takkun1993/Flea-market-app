@@ -17,6 +17,9 @@
 .item_detail_main
   .item_detail_main_box
     .item_detail_main_itembox
+      - if @item.user_id.present? && @item.buyer_id.present?
+        .items-show-itemBox__status
+          = "Sold Out"
       .item_detail_main_itembox_name
         %h1
           =@item.name
@@ -24,7 +27,7 @@
         .item-img
           = image_tag @item.item_imgs[0].src.url,size:"620x346"
           %span.more
-            - if current_user.id == @item.seller_id
+            - if user_signed_in? && current_user.id == @item.seller_id
               = image_tag src="/arrow_top.png"
               .more_lists
                 %h3
@@ -47,6 +50,9 @@
         - if current_user.id == @item.seller_id
           %g
             出品者のため購入出来ません
+        - elsif @item.buyer_id.present?
+          %g
+            売り切れました
         - else
           = link_to '/items/item_purchase' do
             %g
