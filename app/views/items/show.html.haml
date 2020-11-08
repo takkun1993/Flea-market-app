@@ -56,6 +56,9 @@
         - elsif current_user.blank?
           %g
             購入にはログインが必要です
+        - elsif current_user.card.blank?
+          %g
+            購入にはクレジットカードの登録が必要です
         - else
           = link_to purchase_item_path do
             %g
