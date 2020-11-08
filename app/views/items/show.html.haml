@@ -47,12 +47,15 @@
         %span
           税込）送料込み
       .item_detail_main_itembox_purchase-btn
-        - if current_user.id == @item.seller_id
+        - if user_signed_in? && current_user.id == @item.seller_id
           %g
             出品者のため購入出来ません
         - elsif @item.buyer_id.present?
           %g
             売り切れました
+        - elsif current_user.blank?
+          %g
+            購入にはログインが必要です
         - else
           = link_to '/items/item_purchase' do
             %g
