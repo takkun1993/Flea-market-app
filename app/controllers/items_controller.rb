@@ -7,25 +7,6 @@ class ItemsController < ApplicationController
     @items_destroy = Item.includes(:item).order("created_at DESC")
   end
 
-  # def get_category_children
-  #   respond_to do |format|
-  #     format.html
-  #     format.json do
-  #       @children = Category.find(params[:parent_id]).children
-  #     end
-  #   end
-  # end
-
-  # def get_category_grandchildren
-  #   respond_to do |format|
-  #     format.html
-  #     format.json do
-  #       @grandchildren = Category.find("#{params[:child_id]}").children
-  #     end
-  #   end
-  #   @items = Item.all
-  # end
-
   def new
     @item = Item.new
     @item.item_imgs.new
@@ -41,7 +22,8 @@ class ItemsController < ApplicationController
   # 親カテゴリーが選択された後に動くアクション
   def category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
-    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+    # @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+    @category_children = Category.find_by("#{params[:parent_id]}").children
   end
 
   # 子カテゴリーが選択された後に動くアクション
@@ -50,18 +32,8 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
   
-  # def create
-  #   @item = Item.new(item_params)
-  #   if @item.save
-  #     redirect_to  post_done_items_path
-  #   else
-  #     @item.item_imgs.new
-  #     render :new
-  #   end
-  # end
   def create
     @item = Item.new(item_params)
-    # binding.pry
     if @item.save
       redirect_to @item
     else
@@ -78,11 +50,14 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    
   end
 
   def update
     @item = Item.find(params[:id])
-    @item.update(item_params)
+    if @item.update!(item_params)
+      redirect_to item_path(@item)
+    end
   end
 
   def show
@@ -107,10 +82,48 @@ class ItemsController < ApplicationController
       @items = Item.order(sort)
     end
   end
+
+  def purchase
+    @user = current_user
+    @creditcard = Card.where(user_id: current_user.id).first
+    @item = Item.find(params[:id])
+    user = User.find(params[:id])
+    @card = user.card
+    Payjp.api_key = Rails.application.credentials[:PAYJP_PRIVATE_KEY]
+    customer = Payjp::Customer.retrieve(@creditcard.customer_id)
+    @creditcard_information = customer.cards.first
+    @card_brand = @creditcard_information.brand 
+    case @card_brand
+    when "Visa"
+      @card_src = "visa.gif"
+    when "JCB"
+      @card_src = "jcb.gif"
+    when "MasterCard"
+      @card_src = "master.png"
+    when "American Express"
+      @card_src = "amex.gif"
+    when "Diners Club"
+      @card_src = "diners.gif"
+    when "Discover"
+      @card_src = "discover.gif"
+    end
+  end
+
+  def pay
+    @item = Item.find(params[:id])
+    user = User.find(params[:id])
+    @card = user.card
+    Payjp.api_key = Rails.application.credentials[:PAYJP_PRIVATE_KEY]
+    Payjp::Charge.create(
+      :amount => @item.price,
+      :customer => @card.customer_id,
+      :currency => 'jpy',
+    )
+    redirect_to root_path #??
+  end
   
   private
   def item_params
     params.require(:item).permit( :name, :introduction, :price, :prefecture_code_id, :brand_id, :size, :item_condition_id, :postage_payer_id, :preparation_day_id, :postage_type_id, :category_id, :comment_id, item_imgs_attributes: [:src, :id]).merge(seller_id: current_user.id, user_id: current_user.id)
-    # params.require(:item).permit(:name, :introduction, :price, :prefecture_code, :brand_id, :pref_id, :size_id, :item_condition_id, :postage_payer_id, :preparation_day_id, :postage_type_id, :category_id, :trading_status, item_imgs_attributes: [:url, :id]).merge(seller_id: current_user.id)
   end
 end

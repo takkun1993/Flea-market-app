@@ -16,7 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new and return
     end
     session["devise.regist_data"] = {user: @user.attributes}
-    session["devise.regist_data"][:user]["password"] = params[:user][:password]
+    session["devise.regist_data"][:user][:password] = params[:user][:password]
     @profile = @user.build_profile
     render action: :new_users_info
     # redirect_to profiles_path
@@ -47,24 +47,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @sending_destination = SendingDestination.new(sending_destination_params)
     unless @sending_destination.valid?
       flash.now[:alert] = @sending_destination.errors.full_messages
-      render :new_users_info and return
+      render :new_users_address and return
     end
     @user.build_profile(@profile.attributes)
     @user.build_sending_destination(@sending_destination.attributes)
     @user.save
     session["devise.regist_data"].clear
     sign_in(:user, @user)
-    redirect_to root_path
+    redirect_to complete_users_path
+    # redirect_to root_path
   end
 
   private
 
   def profile_params
-    params.permit(:first_name, :family_name, :first_name_kana, :family_name_kana, :birth_day)
+    params.require(:profile).permit(:first_name, :family_name, :first_name_kana, :family_name_kana, :birth_day)
   end
 
   def sending_destination_params
-    params.permit(:first_name, :family_name,:first_name_kana,:family_name_kana,:post_code,:prefecture_code,:city,:house_number,:building_name,:phone_number,:user,)
+    params.require(:sending_destination).permit(:first_name, :family_name,:first_name_kana,:family_name_kana,:post_code,:prefecture_code_id,:city,:house_number,:building_name,:phone_number,:user,)
   end
   # POST /resource
   # def create

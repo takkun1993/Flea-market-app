@@ -321,12 +321,12 @@
           .productList{
             width: 220px;
             padding-right: 10px;
-            display: inline-flex;
+            display: flex;
             a{
               background-color: #fff;
               display: inline-block;
               text-decoration: none;
-              .ProductList-img{
+              .productList-img{
                 width: 220px;
                 height: 150px;
                 position: relative;

@@ -6,7 +6,8 @@
       %h2.main-sending__member-info__title 会員情報入力
       .main-sending__member-info__title__input
         .main-sending__member-info__title__input__content1
-          = form_with url: sending_destinations_path,local: true do |f|
+          = form_with model:@sending_destination, url: sending_destinations_path,local: true do |f|
+            = render 'devise/shared/error_messages', model: f.object
             .sending-content1
               %label.sending-content__name お名前
               %span.form-group__require 必須
@@ -28,7 +29,7 @@
               %label.sending-content__prefectures 都道府県
               %span.form-group__require 必須
               %br
-              = f.text_field :prefecture_code, class: 'sending-municipalities-text', placeholder: '例）大阪府'
+              = f.collection_select :prefecture_code_id, PrefectureCode.all, :id, :name, {include_blank: "選択して下さい"}, {class: "sending-address-text"}
             .sending-content5
               %label.sending-content__municipalities 市町村
               %span.form-group__require 必須

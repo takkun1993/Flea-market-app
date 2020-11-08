@@ -110,6 +110,26 @@
     img {
       display: flex;
     }
+
+    .js-remove {
+      background-color: #3ccace;
+      color: white;
+      margin-top: 82px;
+    }
+
+  }
+}
+.form_section {
+
+  textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height: 150px;
+    margin: 0;
+    outline: none;
+    padding: 0 16px;
   }
 }
   input,
@@ -122,18 +142,13 @@
     margin: 0;
     outline: none;
     padding: 0 16px;
+
+    #item_introduction {
+      width: 100%;
+      height: 150px;
+    }
   
 
-    textarea {
-      width: 100%;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-      height: 150px;
-      margin: 0;
-      outline: none;
-      padding: 0 16px;
-    }
     
     .image-attend {
       margin: 10px;
@@ -149,6 +164,7 @@
       border-radius: 16px;
     }
   }
+
 
 .attentions {
   padding-top: 10px;

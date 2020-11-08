@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'buyers/index'
+  get 'buyers/done'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
@@ -30,13 +32,31 @@ Rails.application.routes.draw do
         get 'category_children', defaults: { format: 'json' }
         get 'category_grandchildren', defaults: { format: 'json' }
       end
+      member do
+        get 'purchase', to: 'items#purchase'
+        post 'buy', to: 'items#buy'
+        get 'pay', to: 'items#pay'
+        post 'pay', to: 'items#pay'
+      end
     end
   resources :comments, only: [:index, :create]
   # post 'items/edit/:id', to: 'items#update'
   patch 'show_item_path', to: 'items#update'
-  get "search" => "items#search"
+  get "search" => "items#index"
   # get 'show_item_path', to: 'items#show'
-  resources :users, only: [:index, :edit, :update]
+  # resources :users, only: [:index, :edit, :update]
+  resources :users, only: [:index, :edit, :update] do
+    collection do
+      get :complete
+    end
+  end
+  
   resources :categories
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :cards, only: [:new, :show, :destroy] do
+    collection do
+      post 'pay', to: 'cards#pay'
+    end
   end
+
+end

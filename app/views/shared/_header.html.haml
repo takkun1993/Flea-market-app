@@ -5,7 +5,7 @@
       .mainHeader
         .icon
           %a{ href: '/'}
-            %img{src:'/assets/furima.png'}
+            =image_tag asset_path('furima.png')
         .searchBox
           %form.form{ action: '/items/search', "accept-charset": 'UTF-8', method: 'get'}
             %input{name: 'utf8', type: 'hidden', value:'✔︎'}

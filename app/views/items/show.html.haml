@@ -10,13 +10,16 @@
         -# - elsif @category.has_children?
         - breadcrumb :child_category
         -# - else
-        - breadcrumb :grandchild_category
+        - breadcrumb :grandchild_category, @item
         = breadcrumbs separator: " &rsaquo; ", class: "breadcrumbs-list"
       
 
 .item_detail_main
   .item_detail_main_box
     .item_detail_main_itembox
+      - if @item.user_id.present? && @item.buyer_id.present?
+        .items-show-itemBox__status
+          = "Sold Out"
       .item_detail_main_itembox_name
         %h1
           =@item.name
@@ -24,20 +27,17 @@
         .item-img
           = image_tag @item.item_imgs[0].src.url,size:"620x346"
           %span.more
-            - if current_user.id == @item.seller_id
+            - if user_signed_in? && current_user.id == @item.seller_id
               = image_tag src="/arrow_top.png"
               .more_lists
                 %h3
                   = link_to '編集', edit_item_path(@item.id),method: :get
                 %h4
                   = link_to '削除', @item,method: :delete
-            - else
+            - else 
         .item-img2
           - @item.item_imgs.each do |i|
             = image_tag i.src.url, class: "itemList-img",size:"140x87"
-          -# %li
-          -#   = image_tag @item.item_imgs[0].src.url,size:"140x87"
-          -#   = image_tag @item.item_imgs[1].src.url,size:"140x87"
       .item_detail_main_itembox_price
         %span
           ¥
@@ -47,11 +47,20 @@
         %span
           税込）送料込み
       .item_detail_main_itembox_purchase-btn
-        - if current_user.id == @item.seller_id
+        - if user_signed_in? && current_user.id == @item.seller_id
           %g
             出品者のため購入出来ません
+        - elsif @item.buyer_id.present?
+          %g
+            売り切れました
+        - elsif current_user.blank?
+          %g
+            購入にはログインが必要です
+        - elsif current_user.card.blank?
+          %g
+            購入にはクレジットカードの登録が必要です
         - else
-          = link_to '/items/item_purchase' do
+          = link_to purchase_item_path do
             %g
               購入する
       .item_detail_main_itembox_item-detail-comment
@@ -70,11 +79,11 @@
               %td
                 = link_to '#' do
                   %b
-                    =@item.category.name
+                    =@item.category.root.name
                 %br/
                 = link_to '#' do
                   %b
-                    =@item.category.name
+                    =@item.category.parent.name
                 %br/
                 = link_to '#' do
                   %b
@@ -148,10 +157,7 @@
                   = link_to comment.user.nickname, "/users/#{comment.user_id}"
                   ：
                 = comment.comment
-          -# %p
-          -# testuser : テストテストテストテストテスト
-          -# %br
-          -# テストユーザー : テストテストテストテストテスト
+          
 .appBanner
   .inner
     .inner_title
@@ -169,10 +175,13 @@
           = image_tag src="/google-play-btn.svg",size:"180x58.33"
 .item_detail_footer
   =render 'items/top_page_footer'
-= link_to '/items/new' do
-  .purchaseBtn
-    .purchaseBtn_text
-      %span
-        出品する
-    .purchaseBtn_icon
-      = image_tag src="/icon_camera.png",size:"54x54"
+
+- if user_signed_in?
+  = link_to '/items/new' do
+    .purchaseBtn
+      .purchaseBtn_text
+        %span
+          出品する
+      .purchaseBtn_icon
+        = image_tag src="/icon_camera.png",size:"54x54"
+- else

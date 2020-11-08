@@ -118,24 +118,19 @@
             %h3.title
               新規投稿商品
         .productLists
+
           .productList
             - if @items
               - @items.each do |item|
                 = link_to item_path(item.id) do
-                  %figure.ProductList-img
-                    - item.item_imgs.each_with_index do |image, i|
-                      = image_tag "#{image.src}", class: "image__category"
-                  .productList-body
-                    %h3.product-name
-                      = item.name
-                    .details
-                      %ul
-                        %li
-                          %i.fa.fa-star
-                      %p
-                        (税込)
+                  .item
+                    .gradient
+                    .image
+                      - item.item_imgs.first(1).each do |image|
+                        = image_tag "#{image.src}", class: "productList-img"
+                      .price
+                        ¥
                         = item.price
-
 
     .pickup-brand
       %h2.head
@@ -146,7 +141,6 @@
             %h3.title
               アーカイバ
         .productLists
-
           .productList
             - if @items
               - @items.each do |item|
@@ -185,7 +179,7 @@
   =render 'items/top_page_footer'
 
 .display
-  = link_to 'items/new' do
+  = link_to new_item_path do
     .purchaseBtn
       %span.purchaseBtn__text
         出品する
