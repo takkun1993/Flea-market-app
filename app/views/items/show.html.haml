@@ -172,12 +172,13 @@
           = image_tag src="/google-play-btn.svg",size:"180x58.33"
 .item_detail_footer
   =render 'items/top_page_footer'
-= link_to '/items/new' do
-  .purchaseBtn
-    - if user_signed_in?
+
+- if user_signed_in?
+  = link_to '/items/new' do
+    .purchaseBtn
       .purchaseBtn_text
         %span
           出品する
       .purchaseBtn_icon
         = image_tag src="/icon_camera.png",size:"54x54"
-    - else
+- else
