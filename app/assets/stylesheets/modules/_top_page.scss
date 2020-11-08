@@ -321,7 +321,7 @@
           .productList{
             width: 220px;
             padding-right: 10px;
-            display: inline-block;
+            display: flex;
             a{
               background-color: #fff;
               display: inline-block;
@@ -411,7 +411,7 @@
         .productList{
           width: 220px;
           padding-right: 10px;
-          display: inline-block;
+          display: flex;
           a{
             display: inline-block;
             background-color: white;
