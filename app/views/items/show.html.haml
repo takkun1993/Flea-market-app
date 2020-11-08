@@ -34,7 +34,7 @@
                   = link_to '編集', edit_item_path(@item.id),method: :get
                 %h4
                   = link_to '削除', @item,method: :delete
-            - else
+            - else 
         .item-img2
           - @item.item_imgs.each do |i|
             = image_tag i.src.url, class: "itemList-img",size:"140x87"
@@ -57,7 +57,7 @@
           %g
             購入にはログインが必要です
         - else
-          = link_to '/items/item_purchase' do
+          = link_to purchase_item_path do
             %g
               購入する
       .item_detail_main_itembox_item-detail-comment
