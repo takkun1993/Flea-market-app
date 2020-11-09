@@ -4,6 +4,7 @@
   .items_new_page
     .items_register_form
       = form_with model: @item, html: {class: "items_form"}, local: true do |f|
+        = render 'layouts/error_messages', model: f.object
         .form_section
           %label(for="item_img")
             出品画像
