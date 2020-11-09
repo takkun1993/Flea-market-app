@@ -22,6 +22,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :preparation_day
   # belongs_to_active_hash :postage_type
   belongs_to :brand
+  validates :item_imgs ,:name ,:prefecture_code ,:item_condition ,:postage_payer ,:preparation_day ,:preparation_day ,:price ,presence: true
   # belongs_to :seller, class_name: "User"
   # belongs_to :buyer, class_name: "User"
   def self.search(search)

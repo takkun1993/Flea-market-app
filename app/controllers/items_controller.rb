@@ -37,6 +37,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to @item
     else
+      @item.item_imgs.new
       render :new
     end
   end
