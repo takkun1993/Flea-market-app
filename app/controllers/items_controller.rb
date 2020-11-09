@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
     item = Item.find_by(id: params[:id])
     item.destroy
 
-    redirect_to("/items/index")
+    redirect_to("/")
   end
 
   def edit
