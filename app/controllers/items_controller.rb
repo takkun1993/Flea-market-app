@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
     @category_parent_array = Category.where(ancestry: nil)
     @items_category = Item.where("buyer_id IS NULL AND trading_status = 0 AND category_id < 200").order(created_at: "DESC")
     @items_brand = Item.where("buyer_id IS NULL AND  trading_status = 0 AND brand_id = 1").order(created_at: "DESC")
+    @items_destroy = Item.includes(:item).order("created_at DESC")
   end
 
   def new
@@ -36,6 +37,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to @item
     else
+      @item.item_imgs.new
       render :new
     end
   end
@@ -43,6 +45,8 @@ class ItemsController < ApplicationController
   def destroy
     item = Item.find_by(id: params[:id])
     item.destroy
+
+    redirect_to("/")
   end
 
   def edit
@@ -119,7 +123,7 @@ class ItemsController < ApplicationController
   def pay
     @item = Item.find(params[:id])
     user = User.find(params[:id])
-    @card = user.card
+    @card = Card.find_by(params[:id])
     Payjp.api_key = Rails.application.credentials[:PAYJP_PRIVATE_KEY]
     Payjp::Charge.create(
       :amount => @item.price,

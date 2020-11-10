@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'users/sign_out'
   get 'items/item_detail'
   get 'items/item_purchase'
+  post 'items/:id/destroy' => 'items#destroy'
   resources :cards, only: :new
   root 'items#index'
   get 'items/top_page_header'
