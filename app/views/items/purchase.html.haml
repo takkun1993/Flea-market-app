@@ -88,7 +88,7 @@
       .item_purchase_main_box_area_purchase_area
         .purchase_area
           .purchase_btn
-            = form_tag(action: :pay, method: :post) do
+            = form_tag(action: :purchase, method: :post) do
               %button.buy-button{type:"submit"} 購入する
               -# = link_to '#' do
               -#   %h5
