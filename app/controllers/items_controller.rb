@@ -90,6 +90,10 @@ class ItemsController < ApplicationController
     customer = Payjp::Customer.retrieve(@creditcard.customer_id)
     @creditcard_information = customer.cards.first
     @card_brand = @creditcard_information.brand 
+    pay
+    @item_buyer = Item.find(params[:id])
+    @item_buyer.update( buyer_id: current_user.id)
+    redirect_to root_path, notice: '購入しました'
     case @card_brand
     when "Visa"
       @card_src = "visa.gif"
@@ -106,6 +110,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  
+  private
+  def item_params
+    params.require(:item).permit( :name, :introduction, :price, :prefecture_code_id, :brand_id, :size, :item_condition_id, :postage_payer_id, :preparation_day_id, :postage_type_id, :category_id, :comment_id, item_imgs_attributes: [:src, :id]).merge(seller_id: current_user.id, user_id: current_user.id)
+  end
+  
   def pay
     @item = Item.find(params[:id])
     user = User.find(params[:id])
@@ -116,11 +126,6 @@ class ItemsController < ApplicationController
       :customer => @card.customer_id,
       :currency => 'jpy',
     )
-    redirect_to root_path #??
   end
   
-  private
-  def item_params
-    params.require(:item).permit( :name, :introduction, :price, :prefecture_code_id, :brand_id, :size, :item_condition_id, :postage_payer_id, :preparation_day_id, :postage_type_id, :category_id, :comment_id, item_imgs_attributes: [:src, :id]).merge(seller_id: current_user.id, user_id: current_user.id)
-  end
 end
