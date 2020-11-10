@@ -294,7 +294,6 @@
     background-color: #f8f8f8;
     padding: 80px 0 0;
     height: 100%;
-    padding-bottom: 80px;
     .head{
       text-align: center;
       font-size: 28px;
@@ -302,6 +301,9 @@
       font-weight: bold;
     }
     .productBox{
+      width: 780px;
+      margin: 0 auto;
+      overflow-x: scroll;
       .productHead{
         text-align: center;
         a{
@@ -314,10 +316,10 @@
         }
       }
       .productLists{
-        width: 100%;
+        width: 780px;
         margin: 26px auto;
         display: flex;
-        overflow-x: scroll;
+        justify-content: space-around;
           .productList{
             width: 220px;
             padding-right: 10px;
@@ -380,159 +382,219 @@
     }
   }
 
-  .pickup-brand{
-    background-color: #f8f8f8;
-    padding: 80px 0 0;
-    height: 100%;
-    padding-bottom: 80px;
-    .head{
+  
+  .productLists{
+    width: 100%;
+    margin: 26px auto;
+    display: flex;
+    overflow-x: scroll;
+  }
+  .productList{
+    width: 220px;
+    padding-right: 10px;
+    display: flex;
+    a{
+      display: inline-block;
+      background-color: white;
+      text-decoration: none;
+    }
+  }
+  .image__category{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: auto;
+    height: 150px;
+    object-fit: cover;
+  }
+  .product-name{
+    overflow: hidden;
+    line-height: 1.5;
+    font-size: 16px;
+    text-align: left;
+  }
+  .details{
+    font-size: 16px;
+    ul{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      li{
+        i{
+          display: inline-block;
+          font-size: inherit;
+          text-rendering: auto;
+          -webkit-font-smoothing: antialiased;
+        }
+      }
+    }
+    p{
+      font-size: 10px;
+      text-align: left;
+    }
+  }
+  .appBanner__top{
+    background-image: url(/bg-appBanner-pict.jpg);
+    background-position: center;
+    background-size: cover;
+    padding: 100px 40px;
+    position: relative;
+    .inner{
       text-align: center;
-      font-size: 28px;
-      line-height: 1.4;
-      font-weight: bold;
-    }
-    .productBox{
-      .productHead{
-        text-align: center;
-        a{
-          font-size: 24px;
-          text-decoration: none;
-          color: #3CCACE;
-          .title{
-            font-weight: bold;
-          }
-        }
+      color: #fff;
+      .inner__title{
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 1.4;
       }
-      .productLists{
+      .inner__text{
+        font-size: 35px;
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      }
+      .inner__icon{
         width: 100%;
-        margin: 26px auto;
         display: flex;
-        overflow-x: scroll;
-        .productList{
-          width: 220px;
-          padding-right: 10px;
-          display: flex;
-          a{
-            display: inline-block;
-            background-color: white;
-            text-decoration: none;
-            .productList-img{
-              width: 220px;
-              height: 150px;
-              position: relative;
-              overflow: hidden;
-              margin: 0;
-              z-index: auto;
-              .image__category{
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                width: 100%;
-                z-index: auto;
-                height: 150px;
-                object-fit: cover;
-              }
-            }
-            .produ.productList-body{
-              background-color: white;
-              color: #333333;
-              padding: 16px;
-              .product-name{
-                overflow: hidden;
-                line-height: 1.5;
-                font-size: 16px;
-                text-align: left;
-              }
-              .details{
-                font-size: 16px;
-                ul{
-                  display: flex;
-                  align-items: center;
-                  justify-content: space-between;
-                  li{
-                    i{
-                      display: inline-block;
-                      font-size: inherit;
-                      text-rendering: auto;
-                      -webkit-font-smoothing: antialiased;
-                    }
-                  }
-                }
-                p{
-                  font-size: 10px;
-                  text-align: left;
-                }
-              }
-            }
+        justify-content: center;
+        margin: 20px auto 0;
+        .app-btn{
+          width: 180px;
+          margin-right: 20px;
+          .btn{
+            width: 180px;
+          }
+        }
+        .google-btn{
+          width: 180px;
+          margin-right: 20px;
+          .btn{
+            width: 180px;
           }
         }
       }
     }
+  }
+  
+  .display{
+    .purchaseBtn{
+      width: 120px;
+      background: #3ccace;
+      text-align: center;
+      border-radius: 4%;
+      bottom: 32px;
+      right: 32px;
+      position: fixed;
+      padding: 15px;
+      .purchaseBtn__text{
+        color: #ffffff;
+        display: block;
+        font-size: 18px;
+        text-decoration: none;
+        margin-bottom: 5px;
+      }
+      .purchaseBtn-icon{
+        width: 60%;
+      }
+    }
+  }
+  
+  .pickup_category__containerCategory__product--lists__list__status{
+    padding: 5px;
+    color: #fff;
+    background-color: red;
+    font-weight:  bold;
+    font-size: 34px;
+    text-align: center;
+    width: 80%;
+    position: absolute;
+    margin-top: 50px;
+    margin-left: 20px;
+    opacity: 0.7;
+    z-index: 2;
+    -moz-box-shadow:1px 1px 2px #333;
+    -webkit-box-shadow: 1px 1px 2px #333;
+    -moz-transform: rotate(340deg);
+    -webkit-transform: rotate(340deg);
+    -moz-transition: 0.4s ease-in-out;
+    -webkit-transition: 0.4s cubic-bezier(0.42, 0, 1, 1.14);
+  }
+  
+  .item {
+    width: 220px;
+    display: inline-block;
+    margin: 0 auto;
+    height: 100%;
+    position: relative;
+  }
+  
+  .title{
+    font-weight: bold;
   }
 
-.appBanner__top{
-  background-image: url(/bg-appBanner-pict.jpg);
-  background-position: center;
-  background-size: cover;
-  padding: 100px 40px;
-  position: relative;
-  .inner{
-    text-align: center;
-    color: #fff;
-    .inner__title{
-      text-shadow: 0 0 5px rgba(0,0,0,0.4);
-      font-size: 24px;
-      font-weight: bold;
-      line-height: 1.4;
-    }
-    .inner__text{
-      font-size: 35px;
-      text-shadow: 0 0 5px rgba(0,0,0,0.4);
-    }
-    .inner__icon{
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin: 20px auto 0;
-      .app-btn{
-        width: 180px;
-        margin-right: 20px;
-        .btn{
-          width: 180px;
-        }
-      }
-      .google-btn{
-        width: 180px;
-        margin-right: 20px;
-        .btn{
-          width: 180px;
-        }
-      }
-    }
-  }
+  .product__new {
+  font-size: 24px;
 }
 
-.display{
-  .purchaseBtn{
-    width: 120px;
-    background: #3ccace;
-    text-align: center;
-    border-radius: 4%;
-    bottom: 32px;
-    right: 32px;
-    position: fixed;
-    padding: 15px;
-    .purchaseBtn__text{
-      color: #ffffff;
-      display: block;
-      font-size: 18px;
-      text-decoration: none;
-      margin-bottom: 5px;
-    }
-    .purchaseBtn-icon{
-      width: 60%;
-    }
-  }
+.image {
+  width: 220px;
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  z-index: auto;
+}
+
+.productList-img{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: auto;
+  height: 150px;
+  object-fit: cover;
+}
+
+.price {
+  background-color: white;
+  color: black;
+  padding: 16px;
+}
+
+.produ_productList-body {
+  background-color: white;
+  color: #333333;
+  padding: 16px;
+}
+
+.item__name{
+  overflow: hidden;
+  line-height: 1.5;
+  font-size: 16px;
+  text-align: left;
+}
+
+.item__details {
+  font-size: 16px;
+}
+
+.datails__menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pickup_category__taxIncluded {
+  font-size: 10px;
+  text-align: left;
+}
+
+.pickup-brand__items--head{
+  font-size: 24px;
+  text-decoration: none;
+  color: #3CCACE;
 }

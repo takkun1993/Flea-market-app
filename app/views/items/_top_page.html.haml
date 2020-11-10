@@ -108,57 +108,78 @@
             様々な支払いに対応
           %p.item__detail
             お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
-
-    .pickup-category
-      %h2.head
-        ピックアップカテゴリー
-      .productBox
-        .productHead
-          = link_to "#" do
-            %h3.title
-              新規投稿商品
-        .productLists
-
-          .productList
-            - if @items
-              - @items.each do |item|
-                = link_to item_path(item.id) do
-                  .item
-                    .gradient
-                    .image
-                      - item.item_imgs.first(1).each do |image|
-                        = image_tag "#{image.src}", class: "productList-img"
-                      .price
-                        ¥
-                        = item.price
-
-    .pickup-brand
-      %h2.head
-        ピックアップブランド
-      .productBox
-        .productHead
-          = link_to '#' do
-            %h3.title
-              アーカイバ
-        .productLists
-          .productList
-            - if @items
-              - @items.each do |item|
-                = link_to item_path(item.id) do
-                  %figure.productList-img
-                    - item.item_imgs.each_with_index do |image, i|
-                      = image_tag "#{image.src}", class: "image__category"
-                  .produ.productList-body
-                    %h3.product-name
-                      = item.name
-                    .details
-                      %ul
-                        %li
-                          %i.fa.fa-star
-                      %p
-                        (税込)
-                        = item.price
-
+.wrapper
+  .pickup-category
+    %h2.head
+      ピックアップカテゴリー
+    .productBox
+      .productHead
+        = link_to "#", class: "product__new" do
+          %h3.title 新規投稿商品
+      .productLists
+        - @items.each do |item|
+          = link_to item_path(item.id) do
+            .item
+              - if item.user_id.present? && item.buyer_id.present?
+                .pickup_category__containerCategory__product--lists__list__status
+                  = "Sold_out"
+              %figure.image
+                - item.item_imgs.first(1).each do |image|
+                  = image_tag "#{image.src}", class: "productList-img"
+              .produ_productList-body
+                %h3.item__name
+                  =item.name
+                .item__datails
+                  %ul.datails__menu
+                    %li
+                      = "#{item.price.to_s(:delimited)}円"
+                    %li ★
+                %p.pickup_category__taxIncluded (税込)
+.wrapper
+  .pickup_brand__containerBrand
+    %h2.pickup_brand__containerBrand__title
+      ピックアップブランド
+    .pickup_brand__item
+      .pickup_brand__item__head
+        = link_to '#', class: "pickup-brand__items__head" do
+          %h3.pickup_brand__head Christian Dior
+      .pickup_brand__containerBrand__item--lists
+        .pickup_brand__containerBrand__item--lists__list
+          %figure.pickup_brand__item__images
+            = image_tag "https://static.mercdn.net/item/detail/orig/photos/m69199789239_1.jpg?1585451120", alt: "image_url", class:"pickup_brand__item__images--image"
+          .pickup_brand__containerBrand__item--lists__list__body
+            %h3.pickup_brand__item--name
+              ショルダーバック レザー ピンク レディース
+            .pickup_brand__containerBrand__item--lists__list__body__details
+              %ul.pickup_brand__details__menu
+                %li
+                  ="8,600円"
+                %li ★
+            %p.pickup_brand__taxIncluded (税込)
+        .pickup_brand__containerBrand__item--lists__list
+          %figure.pickup_brand__item__images
+            = image_tag "https://wwws.dior.com/couture/ecommerce/media/catalog/product/cache/1/cover_image_1/870x580/17f82f742ffe127f42dca9de82fb58b1/C/A/1544518182_CAL44550_N0_E01_ZHC.jpg", alt: "image_url", class:"pickup_brand__product__images--image", alt: "image_url", class:"pickup_brand__item__images--image"
+          .pickup_brand__containerBrand__item--lists__list__body
+            %h3.pickup_brand__item--name
+              ラムスキン "Lady Dior" バッグ
+            .pickup_brand__containerBrand__item--lists__list__body__details
+              %ul.pickup_brand__details__menu
+                %li
+                  = "528,000円"
+                %li ★
+            %p.pickup_brand__taxIncluded (税込)
+        .pickup_brand__containerBrand__item--lists__list
+          %figure.pickup_brand__item__images
+            = image_tag "https://www.dior.com/beauty/version-5.1563986503612/resize-image/ep/3000/2000/90/0/MISSDIOR_2019%252F01_Covers%252FY0782210_F078222009_E01_ZHC.jpg", alt: "image_url", class:"pickup_brand__product__images--image", alt: "image_url", class:"pickup_brand__item__images--image"
+          .pickup_brand__containerBrand__item--lists__list__body
+            %h3.pickup_brand__item--name
+              ミス ディオール アブソリュートリー ブルーミング
+            .pickup_brand__containerBrand__item--lists__list__body__details
+              %ul.pickup_brand__details__menu
+                %li
+                  ="8,800円"
+                %li ★
+            %p.pickup_brand__taxIncluded (税込)
 %aside.appBanner__top
   .inner
     %h2.inner__title
