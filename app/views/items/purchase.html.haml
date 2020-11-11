@@ -47,7 +47,7 @@
           .payment_method_title-left
             支払い方法
           .payment_method_registration
-            - if @card
+            - if @card.present?
               %br/
               クレジットカード
               %br/
