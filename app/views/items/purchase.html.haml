@@ -70,9 +70,9 @@
           %p
             %br
             =@user.sending_destination.post_code
-            %br
-            -# =@user.sending_destination.prefecture_code_id
-            %br
+            -# %br
+            -# =@user.sending_destination.prefecture_code
+            -# %br
             =@user.sending_destination.city
             =@user.sending_destination.house_number
             =@user.sending_destination.building_name
@@ -90,9 +90,7 @@
           .purchase_btn
             = form_tag(action: :purchase, method: :post) do
               %button.buy-button{type:"submit"} 購入する
-              -# = link_to '#' do
-              -#   %h5
-              -#     購入する
+                      
   .item_purchase_space
   .item_purchase_footer
     .precautions
