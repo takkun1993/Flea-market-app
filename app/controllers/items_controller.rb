@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all.order(" created_at DESC ")
+    @items = Item.limit(3).order(" created_at DESC ")
     @category_parent_array = Category.where(ancestry: nil)
     @items_category = Item.where("buyer_id IS NULL AND trading_status = 0 AND category_id < 200").order(created_at: "DESC")
     @items_brand = Item.where("buyer_id IS NULL AND  trading_status = 0 AND brand_id = 1").order(created_at: "DESC")
@@ -86,11 +86,18 @@ class ItemsController < ApplicationController
     end
   end
 
+  # def confilm
+  #   @item = Item.find_by(params[:id])
+  #   @user = current_user
+  #   user = User.find_by(params[:id])
+  #   redirect_to purchase_item_path(@item)
+  # end
+  
   def purchase
     @user = current_user
     @creditcard = Card.where(user_id: current_user.id).first
     @item = Item.find(params[:id])
-    user = User.find(params[:id])
+    user = User.find_by(params[:id])
     @card = user.card
     Payjp.api_key = Rails.application.credentials[:PAYJP_PRIVATE_KEY]
     customer = Payjp::Customer.retrieve(@creditcard.customer_id)
@@ -99,7 +106,6 @@ class ItemsController < ApplicationController
     pay
     @item_buyer = Item.find(params[:id])
     @item_buyer.update( buyer_id: current_user.id)
-    redirect_to root_path, notice: '購入しました'
     case @card_brand
     when "Visa"
       @card_src = "visa.gif"
@@ -115,7 +121,7 @@ class ItemsController < ApplicationController
       @card_src = "discover.gif"
     end
   end
-
+  
   
   private
   def item_params
@@ -124,7 +130,7 @@ class ItemsController < ApplicationController
   
   def pay
     @item = Item.find(params[:id])
-    user = User.find(params[:id])
+    user = User.find_by(params[:id])
     @card = Card.find_by(params[:id])
     Payjp.api_key = Rails.application.credentials[:PAYJP_PRIVATE_KEY]
     Payjp::Charge.create(
@@ -132,6 +138,8 @@ class ItemsController < ApplicationController
       :customer => @card.customer_id,
       :currency => 'jpy',
     )
+    redirect_to root_path, notice: '購入しました'
+    # redirect_to root_path, notice: '購入しました'
   end
   
 end

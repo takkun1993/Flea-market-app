@@ -27,21 +27,22 @@ Rails.application.routes.draw do
   get 'items/payment_method'
   get 'items/shipping_address'
   resources :items do
-      #Ajaxで動くアクションのルートを作成
-      collection do
-        get 'category_children', defaults: { format: 'json' }
-        get 'category_grandchildren', defaults: { format: 'json' }
-      end
-      member do
-        get 'purchase', to: 'items#purchase'
-        post 'purchase', to: 'items#purchase'
-        post 'buy', to: 'items#buy'
-        get 'pay', to: 'items#pay'
-        post 'pay', to: 'items#pay'
-      end
+    #Ajaxで動くアクションのルートを作成
+    collection do
+      get 'category_children', defaults: { format: 'json' }
+      get 'category_grandchildren', defaults: { format: 'json' }
     end
+    member do
+      get 'purchase', to: 'items#purchase'
+      post 'purchase', to: 'items#purchase'
+      post 'buy', to: 'items#buy'
+      get 'pay', to: 'items#pay'
+      post 'pay', to: 'items#pay'
+    end
+  end
   resources :comments, only: [:index, :create]
   # post 'items/edit/:id', to: 'items#update'
+  get 'confilm', to: 'items#confilm'
   patch 'show_item_path', to: 'items#update'
   get "search" => "items#index"
   # get 'show_item_path', to: 'items#show'

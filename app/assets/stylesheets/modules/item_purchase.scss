@@ -224,14 +224,27 @@
   }
 
   .purchase_btn {
-    height: 30px;
-    border-radius: 4px;
-    background: #3CCACE;
-    color: #fff;
+    // height: 30px;
+    // border-radius: 4px;
+    // background: #3CCACE;
+    // color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    // margin-top: 20px;
+
+    .buy-button {
+      height: 30px;
+      width: 500px;
+      border-radius: 4px;
+      background: #3CCACE;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 50px;
+    }
+
   }
 
   h5 {
