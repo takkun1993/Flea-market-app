@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'items#index'
   get 'buyers/index'
   get 'buyers/done'
   devise_for :users, controllers: {
@@ -21,7 +22,6 @@ Rails.application.routes.draw do
   get 'items/item_purchase'
   post 'items/:id/destroy' => 'items#destroy'
   resources :cards, only: :new
-  root 'items#index'
   get 'items/top_page_header'
   get 'items/top_page_footer'
   get 'items/payment_method'
