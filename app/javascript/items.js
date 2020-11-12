@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", function () {
                     <input class="js-file" type="file"
                     name="item[item_imgs_attributes][${index}][src]"
                     id="item_imgs_attributes_${index}_src"><br>
-                    <div class="js-remove">削除</div>
+                    <span class="js-remove">削除</span>
                   </div>`;
     return html;
   }

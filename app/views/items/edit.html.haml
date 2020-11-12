@@ -58,16 +58,16 @@
           %span.form-group__require
             必須
           %br
-          = f.collection_select :category_id, Category.roots, :id,:name, {include_blank: "---" ,class: 'listing-select-wrapper__box--select', id: 'parent_category',selected: @item.category.root_id}
+          = f.collection_select :category_id, Category.roots, :id,:name, {include_blank: "---" ,selected: @item.category.root_id},{class: 'listing-select-wrapper__box--select', id: 'parent_category'}
           %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
           %br/
           .listing-product-detail__category
           %br/
 
-          = f.collection_select :category_id, @item.category.parent.siblings, :id,:name, {include_blank: "---" ,class: 'listing-select-wrapper__box--select', id: 'parent_category',selected: @item.category.parent.id}
+          = f.collection_select :category_id, @item.category.parent.siblings, :id,:name, {include_blank: "---",selected: @item.category.parent.id} ,{class: 'listing-product-detail__category', id: 'children_wrapper'}
           %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
           %br/
-          = f.collection_select :category_id, @item.category.siblings, :id,:name, {include_blank: "---" ,class: 'listing-select-wrapper__box--select', id: 'parent_category',selected: @item.category.id}
+          = f.collection_select :category_id, @item.category.siblings, :id,:name, {include_blank: "---",selected: @item.category.id} ,{class: 'listing-product-detail__category', id: 'grandchildren_wrapper'}
           %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
           %br/
           %label(for="brand_id")
