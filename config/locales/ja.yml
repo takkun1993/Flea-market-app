@@ -1,5 +1,3 @@
-# ２ページ目の日本語化
-
 ja:
   activerecord:
     attributes:
@@ -9,17 +7,13 @@ ja:
         first_name_kana: "名前（カナ）"
         family_name_kana: "苗字（カナ）"
 
-# 3ページ目の日本語化
-ja:
-  activerecord:
-    attributes:
       sending_destination:
         first_name: "名前"
         family_name: "苗字"
         first_name_kana: "名前（カナ）"
         family_name_kana: "苗字（カナ）"
         post_code: "郵便番号"
-        prefecture_code: "都道府県"
+        prefecture_code_id: "都道府県"
         city: "市町村"
         house_number: "番地"
         building_name: "建物名"
