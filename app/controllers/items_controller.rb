@@ -23,7 +23,8 @@ class ItemsController < ApplicationController
   def category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     # @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
-    @category_children = Category.find_by("#{params[:parent_id]}").children
+  # binding.pry
+    @category_children = Category.find_by(id: "#{params[:parent_id]}").children
   end
 
   # 子カテゴリーが選択された後に動くアクション
@@ -56,6 +57,7 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
+    # binding.pry
     if @item.update(item_params)
       redirect_to item_path, notice: ''
     else
