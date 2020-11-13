@@ -25,6 +25,7 @@
                   .js-file_group{data: {index:i.index }}
                     = i.file_field :src, class: 'js-file'
                     .js-remove-file 削除
+                    = i.check_box :_destroy
                     = f.label :item_imgs_attributes_0_src, class: 'Form__inputImage' do
                       %i.fas.fa-camera
                       

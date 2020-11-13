@@ -65,6 +65,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @item_imgs = Item.all.order(" created_at DESC ")
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
   end

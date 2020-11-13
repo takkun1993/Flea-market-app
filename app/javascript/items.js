@@ -22,10 +22,10 @@ $(function(){
 
   $('.hidden-destroy').hide();
 
-  $('.image-box').on('click', `input[type="file"]`,function(e) {
-    console.log("test")
-    $('#image-box').append(buildFileField(fileIndex[0]));
-  })
+  // $('.image-box').on('click', `input[type="file"]`,function(e) {
+  //   console.log("test")
+  //   $('#image-box').append(buildFileField(fileIndex[0]));
+  // })
 
   $('#image-box').on('change', '.js-file', function(e) {
     console.log('ok1');
