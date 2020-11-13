@@ -23,8 +23,7 @@ class ItemsController < ApplicationController
   def category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     # @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
-  # binding.pry
-    @category_children = Category.find_by(id: "#{params[:parent_id]}").children
+    @category_children = Category.find_by("#{params[:parent_id]}").children
   end
 
   # 子カテゴリーが選択された後に動くアクション
@@ -57,34 +56,11 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    if item_params[:images_attributes].nil?
-      flash.now[:alert] = '更新できませんでした 【画像を１枚以上入れてください】'
-      render :edit
+    if @item.update(item_params)
+      redirect_to item_path, notice: ''
     else
-    # ②
-      exit_ids = []
-      item_params[:images_attributes].each do |a,b|
-        exit_ids << item_params[:images_attributes].dig(:"#{a}",:id).to_i
-      end
-      ids = Image.where(item_id: params[:id]).map{|image| image.id }
-    # ③
-      delete__db = ids - exit_ids
-      Image.where(id:delete__db).destroy_all
-    # ④
-      @item.touch
-      if @item.update(item_params)
-        redirect_to  update_done_items_path
-      else
-        flash.now[:alert] = '更新できませんでした'
-        render :edit
-      end
+      render :edit
     end
-    # binding.pry
-    # if @item.update(item_params)
-    #   redirect_to item_path, notice: ''
-    # else
-    #   render :edit
-    # end
   end
 
   def show
@@ -127,6 +103,9 @@ class ItemsController < ApplicationController
     customer = Payjp::Customer.retrieve(@creditcard.customer_id)
     @creditcard_information = customer.cards.first
     @card_brand = @creditcard_information.brand 
+    @item_buyer = Item.find(params[:id])
+    @item_buyer.update( buyer_id: current_user.id)
+    redirect_to root_path, notice: '購入しました'
     case @card_brand
     when "Visa"
       @card_src = "visa.gif"
@@ -143,9 +122,13 @@ class ItemsController < ApplicationController
     end
   end
   
+  
+  private
+  def item_params
+    params.require(:item).permit( :name, :introduction, :price, :prefecture_code_id, :brand_id, :size, :item_condition_id, :postage_payer_id, :preparation_day_id, :postage_type_id, :category_id, :comment_id, item_imgs_attributes: [:src, :id]).merge(seller_id: current_user.id, user_id: current_user.id)
+  end
+  
   def pay
-    @item_buyer = Item.find(params[:id])
-    @item_buyer.update( buyer_id: current_user.id)
     @item = Item.find(params[:id])
     user = User.find_by(params[:id])
     @card = Card.find_by(params[:id])
@@ -155,7 +138,6 @@ class ItemsController < ApplicationController
       :customer => @card.customer_id,
       :currency => 'jpy',
     )
-    redirect_to root_path, notice: '購入しました'
   end
   
   private

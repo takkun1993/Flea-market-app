@@ -1,16 +1,7 @@
 Rails.application.routes.draw do
+  root 'items#index'
   get 'buyers/index'
   get 'buyers/done'
-  devise_for :users, controllers: {
-    registrations: 'users/registrations',
-  }
-  devise_scope :user do
-    get 'profiles', to: 'users/registrations#new_users_info'
-    get 'profiles', to: 'users/registrations#create_profiles'
-    post 'profiles', to: 'users/registrations#create_profiles'
-    get 'sending_destinations', to: 'users/registrations#create_end'
-    post 'sending_destinations', to: 'users/registrations#create_end'
-  end
   get 'users/index'
   # get 'users/registrations/new'
   # get 'users/registrations/new_users_address'
@@ -21,7 +12,6 @@ Rails.application.routes.draw do
   get 'items/item_purchase'
   post 'items/:id/destroy' => 'items#destroy'
   resources :cards, only: :new
-  root 'items#index'
   get 'items/top_page_header'
   get 'items/top_page_footer'
   get 'items/payment_method'
@@ -59,6 +49,17 @@ Rails.application.routes.draw do
     collection do
       post 'pay', to: 'cards#pay'
     end
+  end
+
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+  }
+  devise_scope :user do
+    get 'profiles', to: 'users/registrations#new_users_info'
+    get 'profiles', to: 'users/registrations#create_profiles'
+    post 'profiles', to: 'users/registrations#create_profiles'
+    get 'sending_destinations', to: 'users/registrations#create_end'
+    post 'sending_destinations', to: 'users/registrations#create_end'
   end
 
 end
