@@ -11,33 +11,36 @@
           %span.form-group__require
             必須
           .image-attend
-            クリックで最大10枚まで貼れます。
-          .clearfix
-            .previews_box
-              #image-box
-                #previews
-                  - if @item.persisted?
-                    - @item.item_imgs.each_with_index do |image, i|
-                      = image_tag image.src.url, width: "100", height: '100'
-                = f.fields_for :item_imgs do |i|
-                  .js-file_group{data: {index:i.index }}
-                    = i.file_field :src, class: 'js-file'
-                    = f.label :item_imgs_attributes_0_src, class: 'Form__inputImage' do
-                      = icon('fas', 'camera', class: 'Form__icon')
-                    %br/
-                    %span.js-remove 削除
-                    = i.check_box :_destroy
-                    -# = f.file_field :camera, class: 'Hidden'
-                    %br/
-                    -# %span.js-remove 削除
-              
-                  -#   - @item.item_imgs.each_with_index do |image, i|
-                  -#     = f.label :item_imgs_attributes_0_src, class:'image-box', data: { index: i }, width: "100", height: '100'
-                  -# = f.fields_for :item_imgs do |i|
-                  -#   .js-file_group{data: {index:i.index }}
-                  -#     = i.file_field :src, class: 'js-file'
-                  -#     %br/
-                  -#     %span.js-remove 削除
+            クリックで最大5枚まで貼れます。
+          .post__drop__box__container
+            .prev-content
+
+              //JSで挿入したhtmlと同じ形　each文でのプレビュー表示
+              - @item.item_imgs.each do |image|
+                .preview-box
+                  .upper-box
+                    = image_tag image.src.url, width: "112", height: "112", alt: "preview"
+                  .lower-box
+                    .update-box
+                      %label.edit-btn 編集
+                    .delete-box
+                      .delete-btn
+                        %span 削除
+            .label-content
+
+              //プレビューの数に合わせてforオプションを指定
+              = f.label :"images_attributes_#{@item.item_imgs.length}_image", class: "label-box", id: "label-box--#{@item.item_imgs.length}" do
+                %pre.label-box__text-visible クリックしてファイルをアップロード
+            .hidden-content
+              = f.fields_for :images do |i|
+
+                //プレビューが出ている分のfile_fieldとdelete用のチェックボックスを設置
+                = i.file_field :image, class: "hidden-field"
+                = i.check_box:_destroy, class: "hidden-checkbox"
+
+                //5つのfile_fieldを準備するに当たって、足りない分を表示
+              - @item.item_imgs.length.upto(4) do |i|
+                %input{name: "item[images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
         .form_section
           %label(for="name")
             商品名
