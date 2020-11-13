@@ -92,19 +92,28 @@
     }
 
     
-     i {
-       color: #3CCACE;
-       position: absolute;
-       margin-top: 85px;
-       margin-left: 50px;
-     }
-
-
-    #item_item_imgs_attributes_0_src.js-file {
-      display: none;
-      width: 265px;
-      height: 27px;
+    i {
+      color: #3CCACE;
+      position: absolute;
+      margin-top: 85px;
+      margin-left: 50px;
     }
+
+    // .Form__inputImage {
+    //   display: none;
+    // }
+
+    #item_item_imgs_attributes_0_destoroy {
+      width: 20px;
+      height: 20px;
+    }
+
+    input {
+      position: absolute;
+      width: 50px;
+
+    }
+
     .Form__icon {
       color: #3ccace;
       width: 24px;
