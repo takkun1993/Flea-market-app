@@ -49,20 +49,20 @@ $(function(){
   });
 
   $('.js-file_group').on('click', '.js-remove-file','js-file', function() {
-    console.log('ok');
     
-
+    
     const targetIndex = $(this).parent().data('index');
     // 該当indexを振られているチェックボックスを取得する
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
     // もしチェックボックスが存在すればチェックを入れる
     if (hiddenCheck) hiddenCheck.prop('checked', true);
-
+    
     $('img').remove();
     $('js-file').remove();
-    console.log(this)
     $(`img[data-index="${targetIndex}"]`).remove();
-
+    console.log(this)
+    console.log('ok');
+    
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
 
