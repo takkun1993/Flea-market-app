@@ -11,7 +11,7 @@
           %span.form-group__require
             必須
           .image-attend
-            クリックで最大10枚まで貼れます。
+            クリックで最大10枚まで貼れます
           .clearfix
             .previews_box
               #image-box
@@ -20,8 +20,8 @@
                     - @item.item_imgs.each_with_index do |image, i|
                       = f.label :item_imgs_attributes_0_src, data: { index: i }, width: "100", height: '100'
                 = f.fields_for :item_imgs do |i|
-                  .js-file_group{data: {index:i.index }}
-                    = i.file_field :src, class: 'js-file'
+                  .items_new-js-file_group{"data-index" => "#{@item.item_imgs.index}"}
+                    = i.file_field :src, class: 'items_new-js-file'
                     = f.label :item_imgs_attributes_0_src, class: 'Form__inputImage' do
                       = icon('fas', 'camera', class: 'Form__icon')
                     %br/

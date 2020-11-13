@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
     @items_category = Item.where("buyer_id IS NULL AND trading_status = 0 AND category_id < 200").order(created_at: "DESC")
     @items_brand = Item.where("buyer_id IS NULL AND  trading_status = 0 AND brand_id = 1").order(created_at: "DESC")
     @items_destroy = Item.includes(:item).order("created_at DESC")
+
   end
 
   def new
@@ -144,6 +145,6 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit( :name, :introduction, :price, :prefecture_code_id, :brand_id, :size, :item_condition_id, :postage_payer_id, :preparation_day_id, :postage_type_id, :category_id, :comment_id, item_imgs_attributes: [:src, :_destroy, :id]).merge(seller_id: current_user.id, user_id: current_user.id)
   end
-  
+  # _destroy?
   
 end
