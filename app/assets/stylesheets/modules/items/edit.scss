@@ -79,18 +79,27 @@
       // color: #3CCACE;
     }
     
-    .js-file {
-      display: none;
+     .js-file {
+       width: 150px;
+     }
+
+    .js-remove-file {
+      background-color: #3CCACE;
+      color: white;
+      margin-top: 85px;
+      // border: dotted 4px silver;
+      // border-radius: 20px;
     }
 
-    // .image_area_set {
-      
-    // }
-
     
-    // input {
-    //   display: none;
-    // }
+     i {
+       color: #3CCACE;
+       position: absolute;
+       margin-top: 85px;
+       margin-left: 50px;
+     }
+
+
     #item_item_imgs_attributes_0_src.js-file {
       display: none;
       width: 265px;

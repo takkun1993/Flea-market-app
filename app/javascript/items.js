@@ -1,11 +1,10 @@
-window.addEventListener("DOMContentLoaded", function () {
+$(function(){
   // 画像用のinputを生成する関数
   const buildFileField = (index)=> {
     const html = `<div data-index="${index}" class="js-file_group">
                     <input class="js-file" type="file"
                     name="item[item_imgs_attributes][${index}][src]"
                     id="item_imgs_attributes_${index}_src"><br>
-                    <div class="js-remove">削除</div>
                   </div>`;
     return html;
   }
@@ -23,9 +22,15 @@ window.addEventListener("DOMContentLoaded", function () {
 
   $('.hidden-destroy').hide();
 
+  $('.image-box').on('click', `input[type="file"]`,function(e) {
+    console.log("test")
+    $('#image-box').append(buildFileField(fileIndex[0]));
+  })
+
   $('#image-box').on('change', '.js-file', function(e) {
-  
+    console.log('ok1');
     const targetIndex = $(this).parent().data('index');
+    console.log(lastIndex)
     // ファイルのブラウザ上でのURLを取得する
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
@@ -43,15 +48,19 @@ window.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  $('#image-box').on('click', '.js-remove', function() {
+  $('.js-file_group').on('click', '.js-remove-file','js-file', function() {
     console.log('ok');
-    const targetIndex = $(this).parent().parent().data('index');
+    
+
+    const targetIndex = $(this).parent().data('index');
     // 該当indexを振られているチェックボックスを取得する
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
     // もしチェックボックスが存在すればチェックを入れる
     if (hiddenCheck) hiddenCheck.prop('checked', true);
 
-    $(this).parent().parent().remove();
+    $('img').remove();
+    $('js-file').remove();
+    console.log(this)
     $(`img[data-index="${targetIndex}"]`).remove();
 
     // 画像入力欄が0個にならないようにしておく
