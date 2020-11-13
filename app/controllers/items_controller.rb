@@ -57,12 +57,34 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    # binding.pry
-    if @item.update(item_params)
-      redirect_to item_path, notice: ''
-    else
+    if item_params[:images_attributes].nil?
+      flash.now[:alert] = '更新できませんでした 【画像を１枚以上入れてください】'
       render :edit
+    else
+    # ②
+      exit_ids = []
+      item_params[:images_attributes].each do |a,b|
+        exit_ids << item_params[:images_attributes].dig(:"#{a}",:id).to_i
+      end
+      ids = Image.where(item_id: params[:id]).map{|image| image.id }
+    # ③
+      delete__db = ids - exit_ids
+      Image.where(id:delete__db).destroy_all
+    # ④
+      @item.touch
+      if @item.update(item_params)
+        redirect_to  update_done_items_path
+      else
+        flash.now[:alert] = '更新できませんでした'
+        render :edit
+      end
     end
+    # binding.pry
+    # if @item.update(item_params)
+    #   redirect_to item_path, notice: ''
+    # else
+    #   render :edit
+    # end
   end
 
   def show
