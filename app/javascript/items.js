@@ -49,16 +49,18 @@ $(function(){
   });
 
   $('.js-file_group').on('click', '.js-remove-file','js-file', function() {
-    
+    console.log("test")
     
     const targetIndex = $(this).parent().data('index');
+    console.log(targetIndex);
     // 該当indexを振られているチェックボックスを取得する
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
+    console.log(hiddenCheck[0]);
     // もしチェックボックスが存在すればチェックを入れる
     if (hiddenCheck) hiddenCheck.prop('checked', true);
     
-    $('img').remove();
-    $('js-file').remove();
+    // $('img').remove();
+    $('.js-file').remove();
     $(`img[data-index="${targetIndex}"]`).remove();
     console.log(this)
     console.log('ok');

@@ -151,3 +151,5 @@
 
 .footer
   =render 'items/top_page_footer'
+
+#{@item.item_imgs.length}
