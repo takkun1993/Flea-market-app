@@ -45,7 +45,7 @@
       height: 110px;
       // position: relative;
     }
-    #image-box {
+    .image-box {
       width: 100%;
       height: 100%;
       // background-color: #3CCACE;
@@ -56,11 +56,16 @@
       // color: #3CCACE;
     }
 
-    #previews {
+    .previews {
       // height: 100%;
       // width: 100%;
       display: flex;
       position: absolute;
+
+      img {
+        display: flex;
+      }
+
     }
 
     .js-file_group {
@@ -74,18 +79,27 @@
       // color: #3CCACE;
     }
     
-    // .js-file {
-      
-    // }
+     .js-file {
+       width: 150px;
+     }
 
-    // .image_area_set {
-      
-    // }
+    .js-remove-file {
+      background-color: #3CCACE;
+      color: white;
+      margin-top: 85px;
+      // border: dotted 4px silver;
+      // border-radius: 20px;
+    }
 
     
-    // input {
-    //   display: none;
-    // }
+     i {
+       color: #3CCACE;
+       position: absolute;
+       margin-top: 85px;
+       margin-left: 50px;
+     }
+
+
     #item_item_imgs_attributes_0_src.js-file {
       display: none;
       width: 265px;
