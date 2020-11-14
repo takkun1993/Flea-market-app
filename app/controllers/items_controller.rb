@@ -51,7 +51,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    
+    @item.item_imgs.build
   end
 
   def update
@@ -59,6 +59,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to item_path, notice: ''
     else
+      @item.item_imgs.build
       render :edit
     end
   end
@@ -126,7 +127,7 @@ class ItemsController < ApplicationController
   
   private
   def item_params
-    params.require(:item).permit( :name, :introduction, :price, :prefecture_code_id, :brand_id, :size, :item_condition_id, :postage_payer_id, :preparation_day_id, :postage_type_id, :category_id, :comment_id, item_imgs_attributes: [:src, :id]).merge(seller_id: current_user.id, user_id: current_user.id)
+    params.require(:item).permit( :name, :introduction, :price, :prefecture_code_id, :brand_id, :size, :item_condition_id, :postage_payer_id, :preparation_day_id, :postage_type_id, :category_id, :comment_id, item_imgs_attributes: [:src, :id, :_destroy]).merge(seller_id: current_user.id, user_id: current_user.id)
   end
   
   def pay
