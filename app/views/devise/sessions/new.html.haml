@@ -6,10 +6,10 @@
       .login-form
         = form_with model: @user,url: user_session_path, local: true do |f|
           = render 'devise/shared/error_messages', model: f.object
-          .login-flash-message
-            = flash[:notice]
-            = flash[:alert]
           .mail-content
+            .login-flash-message
+              = flash[:notice]
+              = flash[:alert]
             = f.email_field :email, autofocus: true, class: 'e-mail-text', placeholder: 'メールアドレス'
           .password-content
             = f.password_field :password, autocomplete: "off", class: 'password-text', placeholder: 'パスワード'
