@@ -6,7 +6,11 @@ class Item < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites
   has_many :item_imgs, dependent: :destroy
-  accepts_nested_attributes_for :item_imgs, allow_destroy: true
+  accepts_nested_attributes_for :item_imgs, allow_destroy: true,reject_if: :reject_item_imgs
+  
+  def reject_item_imgs(item_imgs_attributes)
+    item_imgs_attributes[:src].blank?
+  end
   # mount_uploader :src, ImageUploader
   # belongs_to :item, optional: true
   # accepts_nested_attributes_for :categories
