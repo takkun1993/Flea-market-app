@@ -79,6 +79,7 @@
     
      .js-file {
        width: 150px;
+       display: none;
      }
 
     .js-remove-file {
@@ -87,6 +88,10 @@
       margin-top: 85px;
       // border: dotted 4px silver;
       // border-radius: 20px;
+    }
+
+    input {
+      display: none;
     }
 
     
