@@ -34,7 +34,6 @@ class ItemsController < ApplicationController
   
   def create
     @item = Item.new(item_params)
-    binding.pry
     if @item.save
       redirect_to @item
     else
