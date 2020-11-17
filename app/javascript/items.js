@@ -51,7 +51,7 @@ $(function(){
       $('#previews').append(buildImg(targetIndex, blobUrl));
       // fileIndexの先頭の数字を使ってinputを作る
       
-      $('#image-box').append(buildFileField(targetIndex));
+      $('#image-file-box').append(buildFileField(targetIndex));
       // fileIndex.shift();
       // 末尾の数に1足した数を追加する
       // fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
