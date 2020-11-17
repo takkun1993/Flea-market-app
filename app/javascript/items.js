@@ -13,7 +13,11 @@ $(function(){
     const html = `<div class="js-file_group" data-index="${index}">
     <img src="${url}" width="100px" height="100px">
     <div class="js-remove-file">削除</div>
-      </div>`;
+    </div>
+    <div class="update-box">
+      <label class="edit-btn">編集</label>
+    </div>
+      `;
     return html;
   }
   $("#selecte-image").on("click", function() {
@@ -42,9 +46,11 @@ $(function(){
     const blobUrl = window.URL.createObjectURL(file);
 
     // 該当indexを持つimgがあれば取得して変数imgに入れる(画像変更の処理)
-    if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
+    // if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
+      if ($(`.js-file_group[data-index="${targetIndex }"]`)[0]) {
       preview_image = $(`.js-file_group[data-index="${targetIndex}"]`).children("img")
       preview_image.attr('src', blobUrl);
+      return false;
     }  // 新規画像追加の処理
       targetIndex += 1
       console.log(targetIndex)
@@ -59,10 +65,7 @@ $(function(){
   });
 
   $('#previews').on('click', '.js-remove-file', function() {
-    console.log("test")
-    
     const targetIndex = $(this).parent(".js-file_group").data('index');
-    console.log(targetIndex);
     // 該当indexを振られているチェックボックスを取得する
     $(this).parent(".js-file_group").remove(),
     $(`#item_item_imgs_attributes_${targetIndex}__destroy`).prop("checked", true);
@@ -81,7 +84,15 @@ $(function(){
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
 
-
+  });
+  // 編集ボタンを押した時に該当するファイルフィールドをクリックしたことにする。
+  $('#previews').on('click', '.edit-btn', function() {
+    console.log('ok')
+  // →編集ボタンを押した時にというイベントを作成する
+  // カスタムデータ属性を取得して定数にいれる
+    const targetIndex2 = $(this).parent(".update-box").parent(".js-file_group").data('index');
+    console.log(targetIndex2)
+    $(`#item_item_imgs_attributes_${targetIndex2}_src`).trigger('click');
   });
 });
 

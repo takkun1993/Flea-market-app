@@ -35,9 +35,7 @@ $(function(){
   }
   // 親カテゴリー選択後のイベント
   $('#parent_category').on('change', function(){
-    console.log('ok')
     const parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーの名前を取得
-    console.log(parentCategory)
     if (parentCategory != "---"){ //親カテゴリーが初期値でないことを確認
       $.ajax({
         url: '/items/category_children',
