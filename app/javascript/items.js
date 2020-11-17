@@ -2,7 +2,7 @@ $(function(){
   // 画像用のinputを生成する関数
   const buildFileField = (index)=> {
     const html = `
-                    <input class="js-file" type="file"
+                    <input class="js-file" type="file" data-index="${index}"
                     name="item[item_imgs_attributes][${index}][src]"
                     id="item_item_imgs_attributes_${index}_src">
                   `;
@@ -39,25 +39,28 @@ $(function(){
 
   $('#image-file-box').on('change', 'input[type="file"]', function(e) {
     console.log('ok1');
+
     let targetIndex = $(this).data('index');
     console.log(targetIndex)
     // ファイルのブラウザ上でのURLを取得する
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
+    console.log(`.js-file_group[data-index="${targetIndex}"]`)
 
-    // 該当indexを持つimgがあれば取得して変数imgに入れる(画像変更の処理)
-    // if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
-      if ($(`.js-file_group[data-index="${targetIndex }"]`)[0]) {
+    if($(`.js-file_group[data-index="${targetIndex}"]`)[0]){
       preview_image = $(`.js-file_group[data-index="${targetIndex}"]`).children("img")
       preview_image.attr('src', blobUrl);
       return false;
-    }  // 新規画像追加の処理
-      targetIndex += 1
-      console.log(targetIndex)
+    }
+    console.log(222)
+    // 該当indexを持つimgがあれば取得して変数imgに入れる(画像変更の処理)
+    // if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
+      // 新規画像追加の処理
       $('#previews').append(buildImg(targetIndex, blobUrl));
+      targetIndex += 1
       // fileIndexの先頭の数字を使ってinputを作る
       
-      $('#image-file-box').append(buildFileField(targetIndex));
+      $(".js-file_groups").append(buildFileField(targetIndex));
       // fileIndex.shift();
       // 末尾の数に1足した数を追加する
       // fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
@@ -93,6 +96,16 @@ $(function(){
     const targetIndex2 = $(this).parent(".update-box").parent(".js-file_group").data('index');
     console.log(targetIndex2)
     $(`#item_item_imgs_attributes_${targetIndex2}_src`).trigger('click');
+
+    // preview_image = $(`.js-file_group[data-index="${targetIndex2}"]`).children("img")
+    // preview_image.attr('src', blobUrl);
+
+
+    // if ($(`"${targetIndex2}"="${targetIndex}"]`)[0]) {
+    //   preview_image = $(`.js-file_group[data-index="${targetIndex}"]`).children("img")
+    //   preview_image.attr('src', blobUrl);
+    //   return false;
+    // } 
   });
 });
 

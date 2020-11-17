@@ -25,7 +25,7 @@
                         .js-remove-file 削除
               #image-file-box        
                 = f.fields_for :item_imgs do |i|
-                  .js-file_group
+                  .js-file_groups
                     = i.file_field :src, class: 'js-file', data: {index: i.index }
                     -# = f.label :"item_imgs_attributes_#{@item.item_imgs.length}_src", class: 'Form__inputImage' do
                     - if @item.persisted?
