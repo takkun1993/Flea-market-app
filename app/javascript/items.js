@@ -1,23 +1,23 @@
 $(function(){
   // 画像用のinputを生成する関数
   const buildFileField = (index)=> {
-    const html = `
+    const html = `<div class="js-file_group">
                     <input class="js-file" type="file" data-index="${index}"
                     name="item[item_imgs_attributes][${index}][src]"
                     id="item_item_imgs_attributes_${index}_src">
-                  `;
+                  </div>
+                 `;
     return html;
   }
   // プレビュー用のimgタグを生成する関数
   const buildImg = (index, url)=> {
     const html = `<div class="js-file_group" data-index="${index}">
-    <img src="${url}" width="100px" height="100px">
-    <div class="js-remove-file">削除</div>
-    </div>
-    <div class="update-box">
-      <label class="edit-btn">編集</label>
-    </div>
-      `;
+                    <img src="${url}" width="100px" height="100px">
+                    <div class="js-remove-file">削除</div>
+                    <div class="update-box">
+                    <label class="edit-btn">編集</label></div>
+                  </div>
+                 `;
     return html;
   }
   $("#selecte-image").on("click", function() {
@@ -47,6 +47,7 @@ $(function(){
     const blobUrl = window.URL.createObjectURL(file);
     console.log(`.js-file_group[data-index="${targetIndex}"]`)
 
+    // debugger
     if($(`.js-file_group[data-index="${targetIndex}"]`)[0]){
       preview_image = $(`.js-file_group[data-index="${targetIndex}"]`).children("img")
       preview_image.attr('src', blobUrl);
