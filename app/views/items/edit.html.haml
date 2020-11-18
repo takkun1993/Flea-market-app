@@ -27,13 +27,13 @@
                           %label.edit-btn 編集
               #image-file-box        
                 = f.fields_for :item_imgs do |i|
-                  .js-file_group
+                  .js-file_groups
                     = i.file_field :src, accept: "image/*", class: 'js-file', data: {index: i.index }
                     -# = f.label :"item_imgs_attributes_#{@item.item_imgs.length}_src", class: 'Form__inputImage' do
                     - if @item.persisted?
                       = i.check_box :_destroy, data:{ index: i.index }
-                    - if @item.persisted?
-                      .js-file_group{"data-index" => @item.item_imgs.count}
+                    -# - if @item.persisted?
+                      -# .js-file_group{"data-index" => @item.item_imgs.count}
                       -# = file_field_tag :src, name: "item[item_imgs_attributes][#{@item.item_imgs.count}][src]", class: 'js-file', id: "item_item_imgs_attributes_#{@item.item_imgs.length}_src"
 
         .form_section
