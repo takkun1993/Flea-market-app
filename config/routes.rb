@@ -30,7 +30,10 @@ Rails.application.routes.draw do
       post 'pay', to: 'items#pay'
     end
   end
-  resources :comments, only: [:index, :create]
+  # resources :comments, only: [:index, :create]
+  resources :items do
+    resources :comments, only: :create
+  end
   # post 'items/edit/:id', to: 'items#update'
   get 'confilm', to: 'items#confilm'
   patch 'show_item_path', to: 'items#update'
