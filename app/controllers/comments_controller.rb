@@ -7,10 +7,13 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
-    if @comment.save
+    if @comment.valid? 
+      @comment.save
       redirect_to "/items/#{@comment.item.id}"
     else
-      redirect_back(fallback_location: root_path)
+      redirect_to "/items/#{@comment.item.id}"
+
+      # redirect_back(fallback_location: root_path)
     end
 
   end
