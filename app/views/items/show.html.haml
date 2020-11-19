@@ -138,7 +138,7 @@
       .comment_content
         %ul
           .foom
-            = form_with(model: [@comment], local: true) do |form|
+            = form_with(model: [@item, @comment], local: true) do |form|
               = form.text_area :comment, placeholder: "コメントする", rows: "2"
               .notice_msg
                 %p
@@ -154,7 +154,7 @@
             - @comments.each do |comment|
               %p
                 %strong
-                  = link_to comment.user.nickname, "/users/#{comment.user_id}"
+                  = link_to comment.user.nickname
                   ：
                 = comment.comment
           
