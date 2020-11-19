@@ -145,7 +145,11 @@
                 相手の事を考え丁寧なコメントを心懸けましょう。
                 %br
                 不快な言葉遣いなどは利用制限や退会処分になる事があります。
-              = form.submit 'コメントする'
+              - if current_user.blank?
+                .comment_btn
+                  ログインして下さい
+              - else
+                = form.submit 'コメントする'
       .line
         %p
         コメント一覧
